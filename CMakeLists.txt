@@ -22,10 +22,15 @@ option(ENABLE_X11 "Enable X11 support" On)
 option(ENABLE_WAYLAND "Enable wayland support" On)
 
 if (ENABLE_X11)
+    set(REQUIRED_XKBCOMMON_COMPONENTS ${REQUIRED_XKBCOMMON_COMPONENTS} X11)
+    find_package(XCB REQUIRED COMPONENTS XCB AUX XKB XFIXES ICCCM XINERAMA RANDR EWMH KEYSYMS)
+    pkg_check_modules(CairoXCB IMPORTED_TARGET cairo-xcb)
     find_package(Fcitx5Module REQUIRED COMPONENTS XCB)
 endif()
 
 if (ENABLE_WAYLAND)
+    find_package(Wayland REQUIRED COMPONENTS Client Egl)
+    find_package(EGL)
     find_package(Fcitx5Module REQUIRED COMPONENTS Wayland)
 endif()
 
