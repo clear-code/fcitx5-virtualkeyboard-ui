@@ -13,15 +13,13 @@ find_package(Fcitx5Module REQUIRED COMPONENTS NotificationItem)
 find_package(Gettext REQUIRED)
 find_package(PkgConfig REQUIRED)
 
+pkg_check_modules(Cairo IMPORTED_TARGET cairo)
+pkg_check_modules(Pango IMPORTED_TARGET pango pangocairo)
+pkg_check_modules(GdkPixbuf IMPORTED_TARGET gdk-pixbuf-2.0)
+pkg_check_modules(GioUnix IMPORTED_TARGET gio-unix-2.0)
+
 option(ENABLE_X11 "Enable X11 support" On)
 option(ENABLE_WAYLAND "Enable wayland support" On)
-
-if (ENABLE_X11 OR ENABLE_WAYLAND)
-    pkg_check_modules(Cairo IMPORTED_TARGET cairo)
-    pkg_check_modules(Pango IMPORTED_TARGET pango pangocairo)
-    pkg_check_modules(GdkPixbuf IMPORTED_TARGET gdk-pixbuf-2.0)
-    pkg_check_modules(GioUnix IMPORTED_TARGET gio-unix-2.0)
-endif()
 
 if (ENABLE_X11)
     find_package(Fcitx5Module REQUIRED COMPONENTS XCB)
