@@ -12,6 +12,8 @@ find_package(Fcitx5Core 5.0.14 REQUIRED)
 find_package(Fcitx5Module REQUIRED COMPONENTS NotificationItem)
 find_package(Gettext REQUIRED)
 find_package(PkgConfig REQUIRED)
+find_package(fmt REQUIRED)
+set(FMT_TARGET fmt::fmt)
 
 pkg_check_modules(Cairo IMPORTED_TARGET cairo)
 pkg_check_modules(Pango IMPORTED_TARGET pango pangocairo)
