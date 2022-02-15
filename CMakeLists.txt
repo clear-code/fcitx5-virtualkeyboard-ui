@@ -41,6 +41,18 @@ fcitx5_add_i18n_definition()
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+# TODO
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib/fcitx-wayland/core)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib/fcitx-wayland/input-method)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib/fcitx-wayland/input-method-v2)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/frontend/waylandim)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/build/src/lib/fcitx)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/build/src/lib/fcitx-utils)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/build/src/lib/fcitx-config)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/build/src/lib/fcitx-wayland/input-method)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/build/src/lib/fcitx-wayland/input-method-v2)
+
 add_subdirectory(src)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
