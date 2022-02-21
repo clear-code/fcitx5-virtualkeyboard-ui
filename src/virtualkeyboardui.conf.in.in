@@ -1,7 +1,7 @@
 [Addon]
-Name=Classic User Inteface
+Name=Virtual Keyboard User Inteface
 Type=SharedLibrary
-Library=libclassicui
+Library=libvirtualkeyboardui
 Category=UI
 Version=@PROJECT_VERSION@
 OnDemand=True
