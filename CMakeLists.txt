@@ -46,10 +46,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 # TODO
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib/fcitx-wayland/core)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib/fcitx-wayland/input-method)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib/fcitx-wayland/input-method-v2)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/frontend/waylandim)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/build/src/lib/fcitx-wayland/input-method)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/build/src/lib/fcitx-wayland/input-method-v2)
 
 add_subdirectory(src)
 
