@@ -7,8 +7,8 @@ if (WAYLAND_FOUND)
         waylandui.cpp waylandwindow.cpp waylandeglwindow.cpp waylandshmwindow.cpp
         waylandpointer.cpp buffer.cpp waylandinputwindow.cpp)
     set(CLASSICUI_WAYLAND_LIBS ${CLASSICUI_WAYLAND_LIBS}
-        Fcitx5::Module::Wayland Fcitx5::Module::WaylandIM Wayland::Client Fcitx5::Wayland::Core
-        Fcitx5::Wayland::InputMethod Fcitx5::Wayland::InputMethodV2)
+        Fcitx5::Module::Wayland Wayland::Client Fcitx5::Wayland::Core
+        Fcitx5::Wayland::InputMethod)
 else()
 endif()
 
@@ -44,4 +44,4 @@ configure_file(classicui.conf.in.in classicui.conf.in @ONLY)
 fcitx5_translate_desktop_file(${CMAKE_CURRENT_BINARY_DIR}/classicui.conf.in classicui.conf)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/classicui.conf" DESTINATION "${FCITX_INSTALL_PKGDATADIR}/addon")
 
-#fcitx5_export_module(ClassicUI TARGET classicui BUILD_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR}" HEADERS classicui_public.h)
+add_subdirectory(fcitx-wayland)

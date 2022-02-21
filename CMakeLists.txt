@@ -4,6 +4,7 @@ project(fcitx5-virtualkeyboard VERSION 5.0.0)
 
 find_package(ECM 1.0.0 REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+
 include(FeatureSummary)
 include(GNUInstallDirs)
 include(ECMUninstallTarget)
@@ -32,8 +33,15 @@ endif()
 
 if (ENABLE_WAYLAND)
     find_package(Wayland REQUIRED COMPONENTS Client Egl)
+    find_package(WaylandScanner REQUIRED)
+    find_package(WaylandProtocols REQUIRED)
+    pkg_get_variable(WaylandProtocols_PKGDATADIR wayland-protocols pkgdatadir)
+    mark_as_advanced(WaylandProtocols_PKGDATADIR)
+    string(REGEX REPLACE "[\r\n]" "" WaylandProtocols_PKGDATADIR "${WaylandProtocols_PKGDATADIR}")
+    set(WAYLAND_PROTOCOLS_PKGDATADIR ${WaylandProtocols_PKGDATADIR})
     find_package(EGL)
     find_package(Fcitx5Module REQUIRED COMPONENTS Wayland)
+
 endif()
 
 include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
@@ -42,11 +50,6 @@ fcitx5_add_i18n_definition()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-
-# TODO
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib/fcitx-wayland/core)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/src/lib/fcitx-wayland/input-method)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../fcitx5/build/src/lib/fcitx-wayland/input-method)
 
 add_subdirectory(src)
 
