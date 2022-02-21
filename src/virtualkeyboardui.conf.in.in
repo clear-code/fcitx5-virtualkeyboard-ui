@@ -8,7 +8,7 @@ OnDemand=True
 Configurable=True
 
 [Addon/Dependencies]
-0=core:@PROJECT_VERSION@
+0=core:@REQUIRED_FCITX5_VERSION@
 
 [Addon/OptionalDependencies]
 0=xcb
