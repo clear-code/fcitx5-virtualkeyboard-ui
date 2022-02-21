@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.6)
 
-project(fcitx5-virtualkeyboard VERSION 5.0.0)
+project(fcitx5-virtualkeyboard-ui VERSION 5.0.0)
 
 find_package(ECM 1.0.0 REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
@@ -45,7 +45,7 @@ if (ENABLE_WAYLAND)
 endif()
 
 include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
-add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-virtualkeyboard\" -D_GNU_SOURCE)
+add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-virtualkeyboard-ui\" -D_GNU_SOURCE)
 fcitx5_add_i18n_definition()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
