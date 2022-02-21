@@ -7,8 +7,8 @@ if (WAYLAND_FOUND)
         waylandui.cpp waylandwindow.cpp waylandeglwindow.cpp waylandshmwindow.cpp
         waylandpointer.cpp buffer.cpp waylandinputwindow.cpp)
     set(CLASSICUI_WAYLAND_LIBS ${CLASSICUI_WAYLAND_LIBS}
-        Fcitx5::Module::Wayland Fcitx5::Module::WaylandIM Wayland::Client Fcitx5::Wayland::Core
-        Fcitx5::Wayland::InputMethod Fcitx5::Wayland::InputMethodV2)
+        Fcitx5::Module::Wayland waylandim Wayland::Client Fcitx5WaylandCore
+        Fcitx5WaylandInputMethod Fcitx5WaylandInputMethodV2)
 else()
 endif()
 
