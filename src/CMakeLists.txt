@@ -1,4 +1,6 @@
-add_subdirectory(themes)
+if (INATALL_THEME)
+    add_subdirectory(themes)
+endif()
 
 set(VIRTUALKEYBOARDUI_WAYLAND_SRCS)
 set(VIRTUALKEYBOARDUI_WAYLAND_LIBS)
