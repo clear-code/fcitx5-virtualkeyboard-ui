@@ -14,8 +14,16 @@ find_package(Fcitx5Core "${REQUIRED_FCITX5_VERSION}" REQUIRED)
 find_package(Fcitx5Module REQUIRED COMPONENTS NotificationItem)
 find_package(Gettext REQUIRED)
 find_package(PkgConfig REQUIRED)
-find_package(fmt REQUIRED)
-set(FMT_TARGET fmt::fmt)
+
+if (NOT (TARGET fmt::fmt OR TARGET fmt::fmt-header-only))
+    find_package(fmt REQUIRED)
+endif()
+
+if (TARGET fmt::fmt-header-only)
+  set(FMT_TARGET fmt::fmt-header-only)
+else()
+  set(FMT_TARGET fmt::fmt)
+endif ()
 
 pkg_check_modules(Cairo IMPORTED_TARGET cairo)
 pkg_check_modules(Pango IMPORTED_TARGET pango pangocairo)
