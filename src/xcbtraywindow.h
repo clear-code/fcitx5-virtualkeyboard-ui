@@ -50,6 +50,7 @@ private:
     MenuPool menuPool_;
 
     Menu menu_;
+    SimpleAction inputMethodAction_;
     SimpleAction groupAction_;
     SimpleAction separatorActions_[2];
     SimpleAction configureAction_;
@@ -74,6 +75,7 @@ private:
 
     Menu groupMenu_;
     std::list<SimpleAction> groupActions_;
+    Menu inputMethodMenu_;
     std::list<SimpleAction> inputMethodActions_;
 };
 } // namespace classicui

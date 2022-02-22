@@ -75,7 +75,6 @@ private:
 
     MenuPool *pool_;
 
-    GObjectUniquePtr<PangoFontMap> fontMap_;
     GObjectUniquePtr<PangoContext> context_;
     std::vector<MenuItem> items_;
 

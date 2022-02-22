@@ -83,12 +83,8 @@ void MultilineLayout::render(cairo_t *cr, int x, int y, int lineHeight,
 }
 
 InputWindow::InputWindow(ClassicUI *parent) : parent_(parent) {
-    fontMap_.reset(pango_cairo_font_map_new());
-    // Although documentation says it is 96 by default, try not rely on this
-    // behavior.
-    fontMapDefaultDPI_ = pango_cairo_font_map_get_resolution(
-        PANGO_CAIRO_FONT_MAP(fontMap_.get()));
-    context_.reset(pango_font_map_create_context(fontMap_.get()));
+    auto *fontMap = pango_cairo_font_map_get_default();
+    context_.reset(pango_font_map_create_context(fontMap));
     upperLayout_ = newPangoLayout(context_.get());
     lowerLayout_ = newPangoLayout(context_.get());
 
@@ -254,7 +250,7 @@ void InputWindow::setTextToLayout(
 }
 
 void InputWindow::update(InputContext *inputContext) {
-    if (parent_->suspended() || !inputContext) {
+    if (parent_->suspended()) {
         visible_ = false;
         return;
     }
@@ -357,6 +353,7 @@ std::pair<unsigned int, unsigned int> InputWindow::sizeHint() {
     auto *fontDesc =
         pango_font_description_from_string(parent_->config().font->c_str());
     pango_context_set_font_description(context_.get(), fontDesc);
+    pango_cairo_context_set_resolution(context_.get(), dpi_);
     pango_font_description_free(fontDesc);
     pango_layout_context_changed(upperLayout_.get());
     pango_layout_context_changed(lowerLayout_.get());
@@ -602,6 +599,9 @@ void InputWindow::paint(cairo_t *cr, unsigned int width, unsigned int height) {
             // Last candidate, fill.
             highlightWidth = width - *margin.marginLeft - *margin.marginRight -
                              *textMargin.marginRight - *textMargin.marginLeft;
+            CLASSICUI_DEBUG() << width << " "
+                              << highlightWidth + *highlightMargin.marginLeft +
+                                     *highlightMargin.marginRight;
         }
         const int highlightIndex = highlight();
         bool highlight = false;
@@ -660,6 +660,16 @@ void InputWindow::click(int x, int y, bool isRelease) {
     if (!candidateList) {
         return;
     }
+    for (size_t idx = 0, e = candidateRegions_.size(); idx < e; idx++) {
+        if (candidateRegions_[idx].contains(x, y)) {
+            const auto *candidate =
+                nthCandidateIgnorePlaceholder(*candidateList, idx);
+            if (candidate) {
+                candidate->select(inputContext);
+            }
+            break;
+        }
+    }
     if (auto *pageable = candidateList->toPageable()) {
         if (pageable->hasPrev() && prevRegion_.contains(x, y)) {
             pageable->prev();
@@ -671,17 +681,6 @@ void InputWindow::click(int x, int y, bool isRelease) {
             pageable->next();
             inputContext->updateUserInterface(
                 UserInterfaceComponent::InputPanel);
-            return;
-        }
-    }
-    for (size_t idx = 0, e = candidateRegions_.size(); idx < e; idx++) {
-        if (candidateRegions_[idx].contains(x, y)) {
-            const auto *candidate =
-                nthCandidateIgnorePlaceholder(*candidateList, idx);
-            if (candidate) {
-                candidate->select(inputContext);
-            }
-            break;
         }
     }
 }
@@ -722,32 +721,23 @@ int InputWindow::highlight() const {
 
 bool InputWindow::hover(int x, int y) {
     bool needRepaint = false;
-
-    bool prevHovered = false;
-    bool nextHovered = false;
     auto oldHighlight = highlight();
     hoverIndex_ = -1;
-
-    prevHovered = prevRegion_.contains(x, y);
-    if (!prevHovered) {
-        nextHovered = nextRegion_.contains(x, y);
-        if (!nextHovered) {
-            for (int idx = 0, e = candidateRegions_.size(); idx < e; idx++) {
-                if (candidateRegions_[idx].contains(x, y)) {
-                    hoverIndex_ = idx;
-                    break;
-                }
-            }
+    for (int idx = 0, e = candidateRegions_.size(); idx < e; idx++) {
+        if (candidateRegions_[idx].contains(x, y)) {
+            hoverIndex_ = idx;
+            break;
         }
     }
 
-    needRepaint = needRepaint || prevHovered_ != prevHovered;
-    prevHovered_ = prevHovered;
-
-    needRepaint = needRepaint || nextHovered_ != nextHovered;
-    nextHovered_ = nextHovered;
-
     needRepaint = needRepaint || oldHighlight != highlight();
+
+    auto prevHovered = prevRegion_.contains(x, y);
+    auto nextHovered = nextRegion_.contains(x, y);
+    needRepaint = needRepaint || prevHovered_ != prevHovered;
+    needRepaint = needRepaint || nextHovered_ != nextHovered;
+    prevHovered_ = prevHovered;
+    nextHovered_ = nextHovered;
     return needRepaint;
 }
 

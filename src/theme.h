@@ -151,26 +151,27 @@ FCITX_CONFIGURATION(ThemeMetadata,
                     Option<I18NString> description{this, "Description",
                                                    _("Description")};)
 
+FCITX_CONFIGURATION(ThemeGeneralConfig,
+                    OptionWithAnnotation<std::string, FontAnnotation> trayFont{
+                        this, "TrayFont", _("Tray Font"), "Sans 9"};);
+
 FCITX_CONFIGURATION(ThemeConfig,
                     HiddenOption<ThemeMetadata> metadata{this, "Metadata",
                                                          _("Metadata")};
+                    Option<ThemeGeneralConfig> config{this, "General",
+                                                      _("General")};
                     Option<InputPanelThemeConfig> inputPanel{this, "InputPanel",
                                                              _("Input Panel")};
                     Option<MenuThemeConfig> menu{this, "Menu", _("Menu")};);
 
-class ClassicUI;
-class ClassicUIConfig;
+enum class ImagePurpose { General, Tray };
 
 class ThemeImage {
 public:
     ThemeImage(const std::string &name, const BackgroundImageConfig &cfg);
     ThemeImage(const std::string &name, const ActionImageConfig &cfg);
-    ThemeImage(const IconTheme &iconTheme, const std::string &icon,
-               const std::string &label, uint32_t size,
-               const ClassicUI *classicui);
-
-    static void drawTextIcon(cairo_surface_t *surface, const std::string &label,
-                             uint32_t size, const ClassicUIConfig &config);
+    ThemeImage(const std::string &icon, const std::string &label,
+               const std::string &font, uint32_t size);
 
     operator cairo_surface_t *() const { return image_.get(); }
     auto height() const {
@@ -206,13 +207,11 @@ public:
         }
         return height <= 0 ? 1 : height;
     }
-    bool isImage() const { return isImage_; }
 
 private:
     bool valid_ = false;
     std::string currentText_;
     uint32_t size_ = 0;
-    bool isImage_ = false;
     UniqueCPtr<cairo_surface_t, cairo_surface_destroy> image_;
     UniqueCPtr<cairo_surface_t, cairo_surface_destroy> overlay_;
 };
@@ -226,7 +225,7 @@ public:
     void load(const std::string &name, const RawConfig &rawConfig);
     const ThemeImage &loadImage(const std::string &icon,
                                 const std::string &label, uint32_t size,
-                                const ClassicUI *classicui);
+                                ImagePurpose purpose = ImagePurpose::General);
     const ThemeImage &loadBackground(const BackgroundImageConfig &cfg);
     const ThemeImage &loadAction(const ActionImageConfig &cfg);
 
@@ -243,6 +242,7 @@ private:
     std::unordered_map<const BackgroundImageConfig *, ThemeImage>
         backgroundImageTable_;
     std::unordered_map<const ActionImageConfig *, ThemeImage> actionImageTable_;
+    std::unordered_map<std::string, ThemeImage> imageTable_;
     std::unordered_map<std::string, ThemeImage> trayImageTable_;
     IconTheme iconTheme_;
     std::string name_;

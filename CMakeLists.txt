@@ -9,7 +9,7 @@ include(FeatureSummary)
 include(GNUInstallDirs)
 include(ECMUninstallTarget)
 
-set(REQUIRED_FCITX5_VERSION 5.0.14)
+set(REQUIRED_FCITX5_VERSION 5.0.8)
 find_package(Fcitx5Core "${REQUIRED_FCITX5_VERSION}" REQUIRED)
 find_package(Fcitx5Module REQUIRED COMPONENTS NotificationItem)
 find_package(Gettext REQUIRED)

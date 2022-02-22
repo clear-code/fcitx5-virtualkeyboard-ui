@@ -20,7 +20,6 @@
 #include "fcitx/focusgroup.h"
 #include "fcitx/instance.h"
 #include "fcitx/userinterface.h"
-#include "classicui_public.h"
 #include "theme.h"
 #ifdef ENABLE_X11
 #include "xcb_public.h"
@@ -99,30 +98,11 @@ FCITX_CONFIGURATION(
         this, "Font", _("Font"), "Sans 10"};
     OptionWithAnnotation<std::string, MenuFontAnnotation> menuFont{
         this, "MenuFont", _("Menu Font"), "Sans 10"};
-    OptionWithAnnotation<std::string, FontAnnotation> trayFont{
-        this, "TrayFont", _("Tray Font"), "Sans Bold 10"};
-    Option<Color> trayBorderColor{this, "TrayOutlineColor",
-                                  _("Tray Label Outline Color"),
-                                  Color("#000000ff")};
-    Option<Color> trayTextColor{this, "TrayTextColor",
-                                _("Tray Label Text Color"), Color("#ffffffff")};
-    Option<bool> preferTextIcon{this, "PreferTextIcon", _("Prefer Text Icon"),
-                                false};
-    OptionWithAnnotation<bool, ToolTipAnnotation> showLayoutNameInIcon{
-        this,
-        "ShowLayoutNameInIcon",
-        _("Show Layout Name In Icon"),
-        true,
-        {},
-        {},
-        {_("Show layout name in icon if there is more than one active layout. "
-           "If prefer text icon is set to true, this option will be "
-           "ignored.")}};
     OptionWithAnnotation<bool, ToolTipAnnotation>
         useInputMethodLanguageToDisplayText{
             this,
             "UseInputMethodLangaugeToDisplayText",
-            _("Use input method language to display text"),
+            _("Use input method langauge to display text"),
             true,
             {},
             {},
@@ -141,7 +121,7 @@ public:
     FCITX_ADDON_DEPENDENCY_LOADER(xcb, instance_->addonManager());
     FCITX_ADDON_DEPENDENCY_LOADER(wayland, instance_->addonManager());
     FCITX_ADDON_DEPENDENCY_LOADER(waylandim, instance_->addonManager());
-    Instance *instance() const { return instance_; }
+    Instance *instance() { return instance_; }
     const Configuration *getConfig() const override;
     void setConfig(const RawConfig &config) override {
         config_.load(config, true);
@@ -151,7 +131,7 @@ public:
     const Configuration *getSubConfig(const std::string &path) const override;
     void setSubConfig(const std::string &path,
                       const RawConfig &config) override;
-    auto &config() const { return config_; }
+    auto &config() { return config_; }
     Theme &theme() { return theme_; }
     void suspend() override;
     void resume() override;
@@ -161,20 +141,11 @@ public:
                 InputContext *inputContext) override;
     void reloadConfig() override;
 
-    std::vector<unsigned char> labelIcon(const std::string &label,
-                                         unsigned int size);
-    bool preferTextIcon() const;
-    bool showLayoutNameInIcon() const;
-
 private:
     FCITX_ADDON_DEPENDENCY_LOADER(notificationitem, instance_->addonManager());
-    FCITX_ADDON_EXPORT_FUNCTION(ClassicUI, labelIcon);
-    FCITX_ADDON_EXPORT_FUNCTION(ClassicUI, preferTextIcon);
-    FCITX_ADDON_EXPORT_FUNCTION(ClassicUI, showLayoutNameInIcon);
 
     UIInterface *uiForEvent(Event &event);
     UIInterface *uiForInputContext(InputContext *inputContext);
-    UIInterface *uiForDisplay(const std::string &display);
     void reloadTheme();
 
 #ifdef ENABLE_X11

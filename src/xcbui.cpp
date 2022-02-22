@@ -9,7 +9,6 @@
 #include <xcb/randr.h>
 #include <xcb/xcb_aux.h>
 #include <xcb/xinerama.h>
-#include "fcitx-utils/endian_p.h"
 #include "fcitx-utils/stringutils.h"
 #include "xcbinputwindow.h"
 #include "xcbtraywindow.h"
@@ -195,14 +194,6 @@ XCBUI::XCBUI(ClassicUI *parent, const std::string &name, xcb_connection_t *conn,
     xsettingsAtom_ = parent_->xcb()->call<IXCBModule::atom>(
         name_, "_XSETTINGS_SETTINGS", false);
 
-    initScreenEvent_ = parent_->instance()->eventLoop().addTimeEvent(
-        CLOCK_MONOTONIC, now(CLOCK_MONOTONIC) + 10000, 0,
-        [this](EventSourceTime *, uint64_t) {
-            initScreen();
-            return true;
-        });
-    initScreenEvent_->setEnabled(false);
-
     eventHandlers_.emplace_back(parent_->xcb()->call<IXCBModule::addSelection>(
         name, compMgrAtomString_,
         [this](xcb_atom_t) { refreshCompositeManager(); }));
@@ -240,13 +231,6 @@ XCBUI::XCBUI(ClassicUI *parent, const std::string &name, xcb_connection_t *conn,
                         property->window == xsettingsWindow_) {
                         readXSettings();
                     }
-
-                    auto *screen = xcb_aux_get_screen(conn_, defaultScreen_);
-                    if (property->window == screen->root &&
-                        property->atom == XCB_ATOM_RESOURCE_MANAGER) {
-                        fontOption_ = forcedDpi(conn_, screen);
-                    }
-
                     break;
                 }
                 case XCB_CONFIGURE_NOTIFY: {
@@ -254,33 +238,24 @@ XCBUI::XCBUI(ClassicUI *parent, const std::string &name, xcb_connection_t *conn,
                         reinterpret_cast<xcb_configure_notify_event_t *>(event);
                     auto *screen = xcb_aux_get_screen(conn_, defaultScreen_);
                     if (configure->window == screen->root) {
-                        scheduleUpdateScreen();
+                        initScreen();
                     }
                     break;
                 }
                 }
-                if (multiScreen_ == MultiScreenExtension::Randr) {
-                    if (response_type ==
-                        xrandrFirstEvent_ + XCB_RANDR_SCREEN_CHANGE_NOTIFY) {
-                        scheduleUpdateScreen();
-                    } else if (response_type ==
-                               xrandrFirstEvent_ + XCB_RANDR_NOTIFY) {
-
-                        auto *randr =
-                            reinterpret_cast<xcb_randr_notify_event_t *>(event);
-                        if (randr->subCode == XCB_RANDR_NOTIFY_CRTC_CHANGE ||
-                            randr->subCode == XCB_RANDR_NOTIFY_OUTPUT_CHANGE) {
-                            scheduleUpdateScreen();
-                        }
+                if (multiScreen_ == MultiScreenExtension::Randr &&
+                    xrandrFirstEvent_ == XCB_RANDR_NOTIFY) {
+                    auto *randr =
+                        reinterpret_cast<xcb_randr_notify_event_t *>(event);
+                    if (randr->subCode == XCB_RANDR_NOTIFY_CRTC_CHANGE) {
+                        initScreen();
                     }
                 }
                 return false;
             }));
 
     xcb_screen_t *screen = xcb_aux_get_screen(conn_, defaultScreen_);
-    addEventMaskToWindow(conn_, screen->root,
-                         XCB_EVENT_MASK_STRUCTURE_NOTIFY |
-                             XCB_EVENT_MASK_PROPERTY_CHANGE);
+    addEventMaskToWindow(conn_, screen->root, XCB_EVENT_MASK_STRUCTURE_NOTIFY);
     root_ = screen->root;
     fontOption_ = forcedDpi(conn_, screen);
     CLASSICUI_DEBUG() << "Xft.dpi: " << fontOption_.dpi;
@@ -295,17 +270,12 @@ XCBUI::~XCBUI() {}
 void XCBUI::initScreen() {
     auto *screen = xcb_aux_get_screen(conn_, defaultScreen_);
     int newScreenCount = xcb_setup_roots_length(xcb_get_setup(conn_));
-    if (multiScreen_ == MultiScreenExtension::EXTNone && newScreenCount == 1) {
+    if (newScreenCount == 1) {
         const xcb_query_extension_reply_t *reply =
             xcb_get_extension_data(conn_, &xcb_randr_id);
         if (reply && reply->present) {
             multiScreen_ = MultiScreenExtension::Randr;
             xrandrFirstEvent_ = reply->first_event;
-            xcb_randr_select_input(conn_, screen->root,
-                                   XCB_RANDR_NOTIFY_MASK_SCREEN_CHANGE |
-                                       XCB_RANDR_NOTIFY_MASK_OUTPUT_CHANGE |
-                                       XCB_RANDR_NOTIFY_MASK_CRTC_CHANGE |
-                                       XCB_RANDR_NOTIFY_MASK_OUTPUT_PROPERTY);
         } else {
             const xcb_query_extension_reply_t *reply =
                 xcb_get_extension_data(conn_, &xcb_xinerama_id);
@@ -425,12 +395,8 @@ void XCBUI::initScreen() {
             Rect(0, 0, screen->width_in_pixels, screen->height_in_pixels), -1);
     }
 
-    screenDpi_ =
-        25.4 * screen->height_in_pixels / screen->height_in_millimeters;
-
     CLASSICUI_DEBUG() << "Screen rects are: " << rects_
-                      << " Primary DPI: " << primaryDpi_
-                      << " XScreen DPI: " << screenDpi_;
+                      << " Primary DPI: " << primaryDpi_;
 }
 
 void XCBUI::refreshCompositeManager() {
@@ -519,7 +485,14 @@ void XCBUI::readXSettings() {
     if (error || data.empty()) {
         return;
     }
-    auto byteOrder = hostByteOrder();
+    enum { BYTE_ORDER_MSB_FIRST = 1, BYTE_ORDER_LSB_FIRST = 0 };
+    const uint16_t endian = 1;
+    uint8_t byteOrder = 0;
+    if (*reinterpret_cast<const char *>(&endian)) {
+        byteOrder = BYTE_ORDER_LSB_FIRST;
+    } else {
+        byteOrder = BYTE_ORDER_MSB_FIRST;
+    }
     if (data[0] != BYTE_ORDER_LSB_FIRST && data[0] != BYTE_ORDER_MSB_FIRST) {
         return;
     }
@@ -694,25 +667,20 @@ int XCBUI::dpiByPosition(int x, int y) {
 
 int XCBUI::scaledDPI(int dpi) {
     if (!*parent_->config().perScreenDPI) {
-        // CLASSICUI_DEBUG() << "Use font option dpi: " << fontOption_.dpi;
-        if (fontOption_.dpi > 0) {
-            return fontOption_.dpi;
-        } else if (screenDpi_ >= 96) {
-            // Nowadays their should not be tiny dpi screen I assume.
-            // In ancient days, there used to be invalid DPI value that make
-            // font extremely tiny.
-            return screenDpi_;
-        }
-        return -1;
+        // CLASSICUI_DEBUG() << "Use font dpi: " << fontOption_.dpi;
+        return fontOption_.dpi;
     }
     if (dpi < 0) {
         return fontOption_.dpi;
     }
 
     double targetDPI;
-    auto baseScreenDPI = primaryDpi_ > 0 ? primaryDpi_ : maxDpi_;
-    auto baseDPI = fontOption_.dpi > 0 ? fontOption_.dpi : screenDpi_;
-    targetDPI = (static_cast<double>(dpi) / baseScreenDPI) * baseDPI;
+    if (fontOption_.dpi < 0) {
+        targetDPI = dpi;
+    } else {
+        auto baseDPI = primaryDpi_ > 0 ? primaryDpi_ : maxDpi_;
+        targetDPI = (static_cast<double>(dpi) / baseDPI) * fontOption_.dpi;
+    }
     double scale = targetDPI / 96;
     if (scale < 1) {
         targetDPI = 96;
@@ -741,10 +709,5 @@ void XCBUI::setEnableTray(bool enable) {
         enableTray_ = enable;
         updateTray();
     }
-}
-
-void XCBUI::scheduleUpdateScreen() {
-    initScreenEvent_->setNextInterval(100000);
-    initScreenEvent_->setOneShot();
 }
 } // namespace fcitx::classicui

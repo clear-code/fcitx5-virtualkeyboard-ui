@@ -66,6 +66,7 @@ private:
     std::unique_ptr<WaylandPointer> pointer_;
     std::unique_ptr<WaylandInputWindow> inputWindow_;
 
+    bool isSuspend_ = true;
     bool hasEgl_ = false;
 #ifdef CAIRO_EGL_FOUND
     // EGL stuff

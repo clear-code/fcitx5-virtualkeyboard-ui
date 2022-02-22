@@ -35,10 +35,13 @@ XCBTrayWindow::XCBTrayWindow(XCBUI *ui) : XCBWindow(ui, 48, 48) {
     }
     groupAction_.setShortText(_("Group"));
     groupAction_.setMenu(&groupMenu_);
+    inputMethodAction_.setShortText(_("Input Method"));
+    inputMethodAction_.setMenu(&inputMethodMenu_);
     configureAction_.setShortText(_("Configure"));
     restartAction_.setShortText(_("Restart"));
     exitAction_.setShortText(_("Exit"));
     menu_.addAction(&groupAction_);
+    menu_.addAction(&inputMethodAction_);
     menu_.addAction(&separatorActions_[0]);
     menu_.addAction(&configureAction_);
     menu_.addAction(&restartAction_);
@@ -53,6 +56,7 @@ XCBTrayWindow::XCBTrayWindow(XCBUI *ui) : XCBWindow(ui, 48, 48) {
 
     auto &uiManager = ui_->parent()->instance()->userInterfaceManager();
     uiManager.registerAction(&groupAction_);
+    uiManager.registerAction(&inputMethodAction_);
     uiManager.registerAction(&configureAction_);
     uiManager.registerAction(&restartAction_);
     uiManager.registerAction(&exitAction_);
@@ -348,7 +352,7 @@ void XCBTrayWindow::paint(cairo_t *c) {
     }
 
     const auto &image = theme.loadImage(
-        icon, label, std::min(height(), width()), ui_->parent());
+        icon, label, std::min(height(), width()), ImagePurpose::Tray);
 
     cairo_save(c);
     cairo_set_operator(c, CAIRO_OPERATOR_SOURCE);
@@ -429,14 +433,14 @@ void XCBTrayWindow::suspend() {
 
 void XCBTrayWindow::updateMenu() {
     updateGroupMenu();
+    updateInputMethodMenu();
 
     auto &imManager = ui_->parent()->instance()->inputMethodManager();
     if (imManager.groupCount() > 1) {
-        menu_.insertAction(&separatorActions_[0], &groupAction_);
+        menu_.insertAction(&inputMethodAction_, &groupAction_);
     } else {
         menu_.removeAction(&groupAction_);
     }
-    updateInputMethodMenu();
     bool start = false;
     for (auto *action : menu_.actions()) {
         if (action == &separatorActions_[0]) {
@@ -512,7 +516,7 @@ void XCBTrayWindow::updateInputMethodMenu() {
 
         auto &uiManager = ui_->parent()->instance()->userInterfaceManager();
         uiManager.registerAction(&inputMethodAction);
-        menu_.insertAction(&separatorActions_[0], &inputMethodAction);
+        inputMethodMenu_.addAction(&inputMethodAction);
     }
 }
 } // namespace fcitx::classicui

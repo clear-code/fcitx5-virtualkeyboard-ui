@@ -78,46 +78,34 @@ WaylandInputWindow::WaylandInputWindow(WaylandUI *ui)
 }
 
 void WaylandInputWindow::initPanel() {
+    if (panelSurface_) {
+        return;
+    }
     if (!window_->surface()) {
         window_->createWindow();
         return;
     }
+    auto panel = ui_->display()->getGlobal<wayland::ZwpInputPanelV1>();
+    if (!panel) {
+        return;
+    }
+    panelSurface_.reset(panel->getInputPanelSurface(window_->surface()));
+    if (hasVirtualKeyboard())
+        panelSurface_->setToplevel(ui_->display()->output(), 0);
+    else
+        panelSurface_->setOverlayPanel();
 }
 
 void WaylandInputWindow::resetPanel() { panelSurface_.reset(); }
 
 void WaylandInputWindow::update(fcitx::InputContext *ic) {
-    const auto oldVisible = visible();
     InputWindow::update(ic);
-
-    if (!oldVisible && !visible()) {
+    if (!panelSurface_) {
         return;
     }
 
     if (!visible()) {
         window_->hide();
-        panelSurface_.reset();
-        window_->destroyWindow();
-        return;
-    }
-
-    assert(!visible() || ic != nullptr);
-    initPanel();
-    if (ic->frontend() == std::string_view("wayland")) {
-        auto panel = ui_->display()->getGlobal<wayland::ZwpInputPanelV1>();
-        if (!panel) {
-            return;
-        }
-        if (!panelSurface_) {
-            panelSurface_.reset(
-                panel->getInputPanelSurface(window_->surface()));
-            if (hasVirtualKeyboard())
-                panelSurface_->setToplevel(ui_->display()->output(), 0);
-            else
-                panelSurface_->setOverlayPanel();
-        }
-    }
-    if (!panelSurface_) {
         return;
     }
     auto pair = sizeHint();
@@ -129,7 +117,6 @@ void WaylandInputWindow::update(fcitx::InputContext *ic) {
 
     if (auto *surface = window_->prerender()) {
         cairo_t *c = cairo_create(surface);
-        cairo_scale(c, window_->scale(), window_->scale());
         paint(c, width, height);
         cairo_destroy(c);
         window_->render();
@@ -139,13 +126,9 @@ void WaylandInputWindow::update(fcitx::InputContext *ic) {
 }
 
 void WaylandInputWindow::repaint() {
-    if (!visible()) {
-        return;
-    }
 
     if (auto *surface = window_->prerender()) {
         cairo_t *c = cairo_create(surface);
-        cairo_scale(c, window_->scale(), window_->scale());
         paint(c, window_->width(), window_->height());
         cairo_destroy(c);
         window_->render();
