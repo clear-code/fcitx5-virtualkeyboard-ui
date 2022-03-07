@@ -1,4 +1,4 @@
-# fcitx5-virutal-keyboard-ui
+# fcitx5-virutalkeyboard-ui
 
 ## What's this?
 
