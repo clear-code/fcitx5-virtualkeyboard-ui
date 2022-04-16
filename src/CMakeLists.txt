@@ -1,4 +1,4 @@
-if (INATALL_THEME)
+if (INSTALL_THEME)
     add_subdirectory(themes)
 endif()
 
