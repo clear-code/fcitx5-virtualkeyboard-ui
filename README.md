@@ -33,7 +33,7 @@ $ cmake --install build
 
 ## Example Configuration
 
-~/.config/fcitx5/profile
+`~/.config/fcitx5/profile`
 ```ini
 [Groups/0]
 # Group Name
@@ -150,4 +150,15 @@ Layout=
 3=TW
 4=KR
 5=RU
+```
+
+`~/.config/fcitx5/config`
+
+* Avoid displaying IM information that causes trouble when switching languages.
+
+```ini
+...
+[Behavior]
+ShowInputMethodInformation=False
+...
 ```
