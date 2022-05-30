@@ -110,9 +110,26 @@ bool I18nKeyboard::containInputMethod(
     return iter != items.end();
 }
 
-void I18nKeyboard::syncState(VirtualKeyboard *, const std::string &) {
-    // Do nothing.
-    // Override this if need to do some processes depending on the launguage.
+void I18nKeyboard::syncState(
+    VirtualKeyboard *keyboard,
+    const std::string &currentInputMethodName
+) {
+    // Always fix to this keyboard's input-method
+
+    // Note: The 0th item in each group is usually set to a simple keyboard
+    // such as `keyboard-us`, but most virtual keyboards using IME add-ons
+    // don't use the 0th item and use only the 1th item, which is the IME for
+    // the keyboard's language.
+    // Such keyboards do not normally select the 0th item, but it is possible
+    // that the 0th item is selected at the initiation of Fcitx5, so this process
+    // is necessary.
+    // On the other hand, for keyboards like AnthyKeyboard that have the function of
+    // switching items, this process should not be used and should be overridden.
+
+    if (imeNames[type()] == currentInputMethodName) {
+        return;
+    }
+    keyboard->setCurrentInputMethod(imeNames[type()]);
 }
 
 }
