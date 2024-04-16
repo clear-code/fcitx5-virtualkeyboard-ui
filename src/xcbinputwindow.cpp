@@ -47,55 +47,29 @@ void XCBInputWindow::updatePosition(InputContext *inputContext) {
     if (!visible()) {
         return;
     }
-    int x, y, h;
 
-    x = inputContext->cursorRect().left();
-    y = inputContext->cursorRect().top();
-    h = inputContext->cursorRect().height();
+    xcb_params_configure_window_t wc;
+    wc.x = inputContext->cursorRect().left();
+    wc.y = inputContext->cursorRect().top();
 
     const Rect *closestScreen = nullptr;
     int shortestDistance = INT_MAX;
     for (const auto &rect : ui_->screenRects()) {
-        int thisDistance = rect.first.distance(x, y);
+        int thisDistance = rect.first.distance(wc.x, wc.y);
         if (thisDistance < shortestDistance) {
             shortestDistance = thisDistance;
             closestScreen = &rect.first;
+
         }
     }
 
     if (closestScreen) {
-        int newX, newY;
-
-        if (x < closestScreen->left()) {
-            newX = closestScreen->left();
-        } else {
-            newX = x;
-        }
-
-        if (y < closestScreen->top()) {
-            newY = closestScreen->top();
-        } else {
-            newY = y + (h ? h : (10 * ((dpi_ < 0 ? 96.0 : dpi_) / 96.0)));
-        }
-
-        if ((newX + static_cast<int>(width())) > closestScreen->right()) {
-            newX = closestScreen->right() - width();
-        }
-
-        if ((newY + static_cast<int>(height())) > closestScreen->bottom()) {
-            if (newY > closestScreen->bottom()) {
-                newY = closestScreen->bottom() - height() - 40;
-            } else { /* better position the window */
-                newY = newY - height() - ((h == 0) ? 40 : h);
-            }
-        }
-        x = newX;
-        y = newY;
+        wc.x = (closestScreen->width() - width()) / 2;
+        wc.y = closestScreen->bottom() - height();
     }
 
-    xcb_params_configure_window_t wc;
-    wc.x = x;
-    wc.y = y;
+    wc.x = (closestScreen->width() - width()) / 2;
+    wc.y = closestScreen->bottom() - height();
     wc.stack_mode = XCB_STACK_MODE_ABOVE;
     xcb_aux_configure_window(ui_->connection(), wid_,
                              XCB_CONFIG_WINDOW_STACK_MODE |
