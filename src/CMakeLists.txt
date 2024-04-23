@@ -1,6 +1,7 @@
 if (INSTALL_THEME)
     add_subdirectory(themes)
 endif()
+add_subdirectory(keyboards)
 
 set(VIRTUALKEYBOARDUI_WAYLAND_SRCS)
 set(VIRTUALKEYBOARDUI_WAYLAND_LIBS)
