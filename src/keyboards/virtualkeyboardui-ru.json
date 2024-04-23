@@ -1,0 +1,702 @@
+[
+  {
+    "// The layout definition for Russian keyboard": "Designed for fcitx5-virtualkeyboard-ui",
+    "Keyboard": {
+      "label": "RU",
+      "languageCode": "ru",
+      "numberOfLayers": 2,
+      "layerOffset": [
+        1,
+        5
+      ]
+    },
+    "ModeSwitchKey": {
+      "numberOfStates": 2,
+      "stateLabel": [
+        "A",
+        "#"
+      ]
+    },
+    "NormalKey": {
+      "width": 50.0
+    }
+  },
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "NormalKey",
+      "code": 24,
+      "upperLabel": "Й"
+    },
+    "й",
+    {
+      "class": "NormalKey",
+      "code": 25,
+      "upperLabel": "Ц"
+    },
+    "ц",
+    {
+      "class": "NormalKey",
+      "code": 26,
+      "upperLabel": "Ч"
+    },
+    "ч",
+    {
+      "class": "NormalKey",
+      "code": 27,
+      "upperLabel": "К"
+    },
+    "к",
+    {
+      "class": "NormalKey",
+      "code": 28,
+      "upperLabel": "Е"
+    },
+    "е",
+    {
+      "class": "NormalKey",
+      "code": 29,
+      "upperLabel": "Н"
+    },
+    "н",
+    {
+      "class": "NormalKey",
+      "code": 30,
+      "upperLabel": "Г"
+    },
+    "г",
+    {
+      "class": "NormalKey",
+      "code": 31,
+      "upperLabel": "Ш"
+    },
+    "ш",
+    {
+      "class": "NormalKey",
+      "code": 32,
+      "upperLabel": "Щ"
+    },
+    "щ",
+    {
+      "class": "NormalKey",
+      "code": 33,
+      "upperLabel": "З"
+    },
+    "з",
+    {
+      "class": "NormalKey",
+      "code": 34,
+      "upperLabel": "Х"
+    },
+    "х",
+    {
+      "class": "NormalKey",
+      "code": 35,
+      "upperLabel": "Ъ"
+    },
+    "ъ",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "NumberKey"
+    },
+    "7",
+    {
+      "class": "NumberKey"
+    },
+    "8",
+    {
+      "class": "NumberKey",
+      "scale": 1.0
+    },
+    "9"
+  ],
+  [
+    {
+      "x": 0.5,
+      "width": 20,
+      "class": "DummyKey"
+    },
+    {
+      "class": "NormalKey",
+      "code": 38,
+      "upperLabel": "Ф"
+    },
+    "ф",
+    {
+      "class": "NormalKey",
+      "code": 39,
+      "upperLabel": "Ы"
+    },
+    "ы",
+    {
+      "class": "NormalKey",
+      "code": 40,
+      "upperLabel": "В"
+    },
+    "в",
+    {
+      "class": "NormalKey",
+      "code": 41,
+      "upperLabel": "А"
+    },
+    "а",
+    {
+      "class": "NormalKey",
+      "code": 42,
+      "upperLabel": "П"
+    },
+    "п",
+    {
+      "class": "NormalKey",
+      "code": 43,
+      "upperLabel": "Р"
+    },
+    "р",
+    {
+      "class": "NormalKey",
+      "code": 44,
+      "upperLabel": "О"
+    },
+    "о",
+    {
+      "class": "NormalKey",
+      "code": 45,
+      "upperLabel": "Л"
+    },
+    "л",
+    {
+      "class": "NormalKey",
+      "code": 46,
+      "upperLabel": "Д"
+    },
+    "д",
+    {
+      "class": "NormalKey",
+      "code": 47,
+      "upperLabel": "Ж"
+    },
+    "ж",
+    {
+      "class": "NormalKey",
+      "code": 48,
+      "upperLabel": "Э"
+    },
+    "э",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "class": "EnterKey",
+      "scale": 1.5
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey",
+      "code": 13
+    },
+    "4",
+    {
+      "class": "NumberKey",
+      "code": 14
+    },
+    "5",
+    {
+      "class": "NumberKey",
+      "code": 15
+    },
+    "6"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "width": 40.0,
+      "class": "ShiftToggleKey"
+    },
+    "⇧",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "NormalKey",
+      "code": 52,
+      "upperLabel": "Я"
+    },
+    "я",
+    {
+      "class": "NormalKey",
+      "code": 53,
+      "upperLabel": "У"
+    },
+    "у",
+    {
+      "class": "NormalKey",
+      "code": 54,
+      "upperLabel": "С"
+    },
+    "с",
+    {
+      "class": "NormalKey",
+      "code": 55,
+      "upperLabel": "М"
+    },
+    "м",
+    {
+      "class": "NormalKey",
+      "code": 56,
+      "upperLabel": "И"
+    },
+    "и",
+    {
+      "class": "NormalKey",
+      "code": 57,
+      "upperLabel": "Т"
+    },
+    "т",
+    {
+      "class": "NormalKey",
+      "code": 58,
+      "upperLabel": "Ь"
+    },
+    "ь",
+    {
+      "class": "NormalKey",
+      "code": 59,
+      "upperLabel": "Б"
+    },
+    "б",
+    {
+      "class": "NormalKey",
+      "code": 60,
+      "upperLabel": "Ю"
+    },
+    "ю",
+    {
+      "class": "NormalKey",
+      "code": 49,
+      "upperLabel": "Ё"
+    },
+    "ё",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "RU",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey",
+      "code": 10
+    },
+    "1",
+    {
+      "class": "NumberKey",
+      "code": 11
+    },
+    "2",
+    {
+      "class": "NumberKey",
+      "code": 12,
+      "scale": 1.0
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2.5,
+      "class": "ModeSwitchKey",
+      "scale": 2.0
+    },
+    "A#",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "keyName": "",
+      "code": 61,
+      "withShift": true
+    },
+    ",",
+    {
+      "class": "MarkKey",
+      "keyName": "",
+      "code": 61
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 3.5,
+      "class": "SpaceKey",
+      "scale": 2.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "keyName": "",
+      "code": 10,
+      "withShift": true
+    },
+    "!",
+    {
+      "class": "MarkKey",
+      "keyName": "",
+      "code": 16,
+      "withShift": true
+    },
+    "?",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "w": 2,
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey",
+      "code": 19,
+      "scale": 2.0
+    },
+    "0",
+    {
+      "class": "MarkKey"
+    },
+    "."
+  ],
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "MarkKey"
+    },
+    "[",
+    {
+      "class": "MarkKey"
+    },
+    "]",
+    {
+      "class": "MarkKey"
+    },
+    "{",
+    {
+      "class": "MarkKey"
+    },
+    "}",
+    {
+      "class": "MarkKey"
+    },
+    "#",
+    {
+      "class": "MarkKey"
+    },
+    "%",
+    {
+      "class": "MarkKey"
+    },
+    "^",
+    {
+      "class": "MarkKey"
+    },
+    "*",
+    {
+      "class": "MarkKey"
+    },
+    "+",
+    {
+      "class": "MarkKey"
+    },
+    "=",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey",
+      "code": 16
+    },
+    "7",
+    {
+      "class": "NumberKey",
+      "code": 17
+    },
+    "8",
+    {
+      "class": "NumberKey",
+      "code": 18,
+      "scale": 1.0
+    },
+    "9"
+  ],
+  [
+    {
+      "x": 0.5,
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "MarkKey"
+    },
+    "/",
+    {
+      "class": "MarkKey"
+    },
+    "\\",
+    {
+      "class": "MarkKey"
+    },
+    ":",
+    {
+      "class": "MarkKey"
+    },
+    ";",
+    {
+      "class": "MarkKey"
+    },
+    "(",
+    {
+      "class": "MarkKey"
+    },
+    ")",
+    {
+      "class": "MarkKey"
+    },
+    "&",
+    {
+      "class": "MarkKey"
+    },
+    "@",
+    {
+      "class": "MarkKey"
+    },
+    "₽",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "scale": 1.5,
+      "class": "EnterKey"
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey",
+      "code": 13
+    },
+    "4",
+    {
+      "class": "NumberKey",
+      "code": 14
+    },
+    "5",
+    {
+      "class": "NumberKey",
+      "code": 15,
+      "scale": 1.0
+    },
+    "6"
+  ],
+  [
+    {
+      "class": "DummyKey",
+      "x": 1,
+      "scale": 1.0
+    },
+    {
+      "class": "MarkKey"
+    },
+    "\"",
+    {
+      "class": "MarkKey"
+    },
+    "'",
+    {
+      "class": "MarkKey"
+    },
+    "_",
+    {
+      "class": "MarkKey"
+    },
+    "|",
+    {
+      "class": "MarkKey"
+    },
+    "~",
+    {
+      "class": "MarkKey"
+    },
+    "<",
+    {
+      "class": "MarkKey"
+    },
+    ">",
+    {
+      "class": "MarkKey"
+    },
+    "-",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "RU",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey",
+      "code": 10
+    },
+    "1",
+    {
+      "class": "NumberKey",
+      "code": 11
+    },
+    "2",
+    {
+      "class": "NumberKey",
+      "code": 12
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2,
+      "class": "ModeSwitchKey",
+      "scale": 2.0
+    },
+    "A#",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    ",",
+    {
+      "class": "MarkKey"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2,
+      "class": "SpaceKey",
+      "scale": 2.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    "!",
+    {
+      "class": "MarkKey"
+    },
+    "?",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "w": 2,
+      "class": "NumberKey",
+      "scale": 2.0,
+      "code": 19
+    },
+    "0",
+    {
+      "class": "MarkKey"
+    },
+    "."
+  ]
+]
