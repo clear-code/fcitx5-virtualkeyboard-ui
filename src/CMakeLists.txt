@@ -22,6 +22,10 @@ if (ENABLE_X11)
         XCB::AUX XCB::ICCCM XCB::XINERAMA XCB::RANDR XCB::EWMH)
 endif()
 
+if (ENABLE_CUSTOM_LAYOUT)
+    set(VIRTUALKEYBOARDUI_WAYLAND_SRCS ${VIRTUALKEYBOARDUI_WAYLAND_SRCS} virtualkeyboardlayout.cpp)
+endif()
+
 add_library(virtualkeyboardui MODULE
     classicui.cpp window.cpp theme.cpp inputwindow.cpp virtualkeyboard.cpp virtualkeygeneral.cpp
     virtualkeyboardi18n.cpp virtualkeyboardanthy.cpp virtualkeyboardpinyin.cpp virtualkeyboardrussian.cpp
@@ -45,6 +49,7 @@ target_link_libraries(virtualkeyboardui
     Fcitx5::Core
     PkgConfig::Cairo PkgConfig::Pango
     PkgConfig::GdkPixbuf PkgConfig::GioUnix
+    PkgConfig::JsonC
     Fcitx5::Module::NotificationItem
     ${CAIRO_EGL_LIBRARY}
     ${VIRTUALKEYBOARDUI_WAYLAND_LIBS}

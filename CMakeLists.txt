@@ -29,6 +29,7 @@ pkg_check_modules(Cairo IMPORTED_TARGET cairo)
 pkg_check_modules(Pango IMPORTED_TARGET pango pangocairo)
 pkg_check_modules(GdkPixbuf IMPORTED_TARGET gdk-pixbuf-2.0)
 pkg_check_modules(GioUnix IMPORTED_TARGET gio-unix-2.0)
+pkg_check_modules(JsonC IMPORTED_TARGET json-c)
 
 option(ENABLE_X11 "Enable X11 support" On)
 option(ENABLE_WAYLAND "Enable wayland support" On)

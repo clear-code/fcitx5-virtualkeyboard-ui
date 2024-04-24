@@ -292,6 +292,29 @@ protected:
     virtual int currentIndex(VirtualKeyboard *keyboard) = 0;
 };
 
+#if USE_CUSTOM_LAYOUT
+class ModeSwitchKey : public SwitchKey {
+public:
+    ModeSwitchKey(const char *label, const int numberOfStates,
+                  std::vector<std::string> stateLabels)
+        : SwitchKey(), label_(label), numberOfStates_(numberOfStates),
+          stateLabels_(stateLabels) {}
+    const char *label(VirtualKeyboard *) const override { return label_; }
+
+protected:
+    const char *label_;
+    int numberOfStates_;
+    std::vector<std::string> stateLabels_;
+    int numberOfStates() const override { return numberOfStates_; }
+    const char *stateLabel(int index) const override {
+        return (stateLabels_[index]).c_str();
+    }
+    void switchState(VirtualKeyboard *keyboard,
+                     InputContext *inputContext) override;
+    int currentIndex(VirtualKeyboard *keyboard) override;
+};
+#endif
+
 class LanguageSwitchKey : public VirtualKey {
 public:
     LanguageSwitchKey() {

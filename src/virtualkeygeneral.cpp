@@ -7,6 +7,10 @@
 #include "virtualkeygeneral.h"
 #include <pango/pangocairo.h>
 
+#if USE_CUSTOM_LAYOUT
+#include "virtualkeyboardrussian.h"
+#endif
+
 namespace fcitx::classicui {
 
 const char* NormalKey::label(VirtualKeyboard *keyboard) const {
@@ -139,6 +143,28 @@ void SwitchKey::fillLayout(
 
     pango_layout_set_text(layout, label.c_str(), -1);
 }
+
+#if USE_CUSTOM_LAYOUT
+void ModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+    FCITX_KEYBOARD() << "ModeSwitchKey::switchState()";
+    if (keyboard->languageCode() == "ru") {
+        FCITX_KEYBOARD() << "i18Keyboard switchMode()";
+        keyboard->i18nKeyboard<RussianKeyboard>()->switchMode();
+    }
+}
+
+int ModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
+    FCITX_KEYBOARD() << "ModeSwitchKey::currentIndex()";
+    if (keyboard->languageCode() == "ru") {
+        if (keyboard->i18nKeyboard<RussianKeyboard>()->mode() ==
+            RussianKeyboardMode::Text) {
+            FCITX_KEYBOARD() << "ModeSwitchKey::currentIndex() RussianKeyboardMode::Text";
+            return 0;
+        }
+    }
+    return 1;
+}
+#endif
 
 const char *LanguageSwitchKey::label(VirtualKeyboard *keyboard) const {
     return keyboard->i18nKeyboard()->label();
