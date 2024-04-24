@@ -32,7 +32,7 @@ pkg_check_modules(GioUnix IMPORTED_TARGET gio-unix-2.0)
 
 option(ENABLE_X11 "Enable X11 support" On)
 option(ENABLE_WAYLAND "Enable wayland support" On)
-option(INATALL_THEME "Install theme files" Off)
+option(INSTALL_THEME "Install theme files" Off)
 
 if (ENABLE_X11)
     set(REQUIRED_XKBCOMMON_COMPONENTS ${REQUIRED_XKBCOMMON_COMPONENTS} X11)
