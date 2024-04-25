@@ -118,6 +118,21 @@ public:
         label_(label),
         upperLabel_(upperLabel) {}
 
+    /// Derived constructor for specifying width
+    NormalKey(
+        const std::string &label,
+        uint32_t code,
+        const std::string &upperLabel,
+        bool useLabelAsKeyName,
+        double width
+    ) : KeyByNameAndCode(
+            useLabelAsKeyName ? label : "",
+            code,
+            useLabelAsKeyName ? upperLabel : ""
+        ),
+        label_(label),
+        upperLabel_(upperLabel) { width_ = width; }
+
     virtual const char* label(VirtualKeyboard *keyboard) const override;
     virtual void click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) override;
 
