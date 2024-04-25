@@ -20,6 +20,10 @@ public:
     DummyKey() {
         visible_ = false;
     }
+    DummyKey(double width) {
+        visible_ = false;
+        width_ = width;
+    }
     const char* label(VirtualKeyboard *) const override { return ""; }
     void click(VirtualKeyboard *, InputContext *, bool) override {}
 };
