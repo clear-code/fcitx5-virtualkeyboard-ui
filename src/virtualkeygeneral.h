@@ -247,6 +247,7 @@ protected:
 class ShiftToggleKey : public ToggleKey {
 public:
     ShiftToggleKey() {}
+    ShiftToggleKey(double width) { width_ = width; }
     const char* label(VirtualKeyboard *) const override { return u8"\u21E7"; }
 
 protected:
