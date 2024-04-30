@@ -64,5 +64,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DI
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(src)
+if (ENABLE_CUSTOM_LAYOUT)
+    enable_testing()
+    add_subdirectory(test)
+endif()
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

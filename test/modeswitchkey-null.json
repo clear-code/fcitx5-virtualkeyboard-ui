@@ -1,0 +1,15 @@
+[
+  {
+    "Keyboard": {
+      "label": "RU",
+      "languageCode": "ru",
+      "numberOfLayers": 2,
+      "layerOffset": [
+        1,
+        5
+      ]
+    },
+    "ModeSwitchKey": null
+  },
+  []
+]

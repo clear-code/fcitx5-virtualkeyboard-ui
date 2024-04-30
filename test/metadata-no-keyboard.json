@@ -1,0 +1,15 @@
+[
+  {
+    "ModeSwitchKey": {
+      "numberOfStates": 2,
+      "stateLabel": [
+        "A",
+        "#"
+      ]
+    },
+    "NormalKey": {
+      "width": 50.0
+    }
+  },
+  []
+]
