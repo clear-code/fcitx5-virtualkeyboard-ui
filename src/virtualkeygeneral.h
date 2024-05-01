@@ -135,6 +135,8 @@ public:
 
     virtual const char* label(VirtualKeyboard *keyboard) const override;
     virtual void click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) override;
+    const char *label() { return label_.c_str(); }
+    const char *upperLabel() { return upperLabel_.c_str(); }
 
 protected:
     /// Text for display.
