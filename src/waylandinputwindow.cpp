@@ -31,26 +31,53 @@ WaylandInputWindow::WaylandInputWindow(WaylandUI *ui)
     });
     window_->click().connect([this](int x, int y, uint32_t button,
                                     uint32_t state) {
+        if (hasVirtualKeyboard()) {
+            // Work around to correct the position of the pointer.
+            // Because the position is updated only on hover(), x & y points old
+            // position when the window size is changed while clicking.
+            // See also waylandpointer.cpp for more detail.
+            // The window type is assumed to be `toplevel` of
+            // `zwp_input_panel_surface_v1` which is always placed at certer-
+            // bottom of the screen. Please note that this correction is wrong
+            // for the window type `overlay_panel`.
+            if (window_->width() != widthAtPrevPointerEvent_)
+                x += (window_->width() - widthAtPrevPointerEvent_) / 2;
+            if (window_->height() != heightAtPrevPointerEvent_)
+                y += window_->height() - heightAtPrevPointerEvent_;
+        }
         if (button == BTN_LEFT) {
             click(x, y, state == WL_POINTER_BUTTON_STATE_RELEASED);
             repaint();
         }
     });
     window_->hover().connect([this](int x, int y) {
+        widthAtPrevPointerEvent_ = window_->width();
+        heightAtPrevPointerEvent_ = window_->height();
         if (hover(x, y)) {
             repaint();
         }
     });
     window_->leave().connect([this]() {
+        widthAtPrevPointerEvent_ = 0;
+        heightAtPrevPointerEvent_ = 0;
         if (hover(-1, -1)) {
             repaint();
         }
     });
     window_->touchDown().connect([this](int x, int y) {
+        widthAtPrevPointerEvent_ = window_->width();
+        heightAtPrevPointerEvent_ = window_->height();
         click(x, y, false);
         repaint();
     });
     window_->touchUp().connect([this](int x, int y) {
+        if (hasVirtualKeyboard()) {
+            // Ditto
+            if (window_->width() != widthAtPrevPointerEvent_)
+                x += (window_->width() - widthAtPrevPointerEvent_) / 2;
+            if (window_->height() != heightAtPrevPointerEvent_)
+                y += window_->height() - heightAtPrevPointerEvent_;
+        }
         click(x, y, true);
         repaint();
     });
