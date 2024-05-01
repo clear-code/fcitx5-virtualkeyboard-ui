@@ -1,5 +1,6 @@
 set(VIRTUALKEYBOARD_LAYOUT_TEST
-    testkeyboardmetadata)
+    testkeyboardmetadata
+    testkeyboardlayout)
 
 set(VIRTUALKEYBOARD_LAYOUT_SRC
     ../src/virtualkeyboardlayout.cpp
