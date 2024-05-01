@@ -31,6 +31,8 @@ private:
     std::unique_ptr<wayland::ZwpInputPanelSurfaceV1> panelSurface_;
     std::unique_ptr<WaylandWindow> window_;
     TrackableObjectReference<InputContext> repaintIC_;
+    int widthAtPrevPointerEvent_ = 0;
+    int heightAtPrevPointerEvent_ = 0;
 };
 
 } // namespace classicui
