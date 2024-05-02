@@ -9,6 +9,7 @@
 
 #if USE_CUSTOM_LAYOUT
 #include "virtualkeyboardrussian.h"
+#include "virtualkeyboardus.h"
 #endif
 
 namespace fcitx::classicui {
@@ -150,6 +151,9 @@ void ModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
     if (keyboard->languageCode() == "ru") {
         FCITX_KEYBOARD() << "i18Keyboard switchMode()";
         keyboard->i18nKeyboard<RussianKeyboard>()->switchMode();
+    } else if (keyboard->languageCode() == "us") {
+        FCITX_KEYBOARD() << "i18Keyboard switchMode()";
+        keyboard->i18nKeyboard<UsKeyboard>()->switchMode();
     }
 }
 
@@ -159,6 +163,12 @@ int ModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
         if (keyboard->i18nKeyboard<RussianKeyboard>()->mode() ==
             RussianKeyboardMode::Text) {
             FCITX_KEYBOARD() << "ModeSwitchKey::currentIndex() RussianKeyboardMode::Text";
+            return 0;
+        }
+    } else if (keyboard->languageCode() == "us") {
+        if (keyboard->i18nKeyboard<UsKeyboard>()->mode() ==
+            UsKeyboardMode::Text) {
+            FCITX_KEYBOARD() << "ModeSwitchKey::currentIndex() UsKeyboardMode::Text";
             return 0;
         }
     }

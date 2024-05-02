@@ -9,12 +9,24 @@
 namespace fcitx::classicui {
 
 void UsKeyboard::updateKeys() {
+    FCITX_KEYBOARD() << "UsKeyboard::updateKeys()";
+#if USE_CUSTOM_LAYOUT
+    if (mode_ == UsKeyboardMode::Mark) {
+        FCITX_KEYBOARD() << "UsKeyboard::mode_: Mark";
+        setLayerKeys(static_cast<int>(UsKeyboardMode::Mark));
+        return;
+    }
+
+    FCITX_KEYBOARD() << "UsKeyboard::mode_: Text";
+    setLayerKeys(static_cast<int>(UsKeyboardMode::Text));
+#else
     if (mode_ == UsKeyboardMode::Mark) {
         setMarkKeys();
         return;
     }
 
     setTextKeys();
+#endif
 }
 
 void UsKeyboard::switchMode() {
@@ -27,6 +39,7 @@ void UsKeyboard::switchMode() {
     updateKeys();
 }
 
+#if !USE_CUSTOM_LAYOUT
 void UsModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
     keyboard->i18nKeyboard<UsKeyboard>()->switchMode();
 }
@@ -37,7 +50,20 @@ int UsModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
     }
     return 1;
 }
+#endif
 
+#if USE_CUSTOM_LAYOUT
+void UsKeyboard::setLayerKeys(size_t offset) {
+    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    keys_.clear();
+    loader_->load(offset);
+    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    for (size_t i = 0; i < loader_->keys().size(); i++) {
+        keys_.emplace_back(loader_->keys()[i]);
+    }
+}
+#else
+// clang-format off
 void UsKeyboard::setTextKeys() {
     keys_.clear();
     keys_.emplace_back(new NormalKey("q", 24, "Q", true));
@@ -165,5 +191,6 @@ void UsKeyboard::setMarkKeys() {
     keys_.emplace_back(new NumberKey("0")); keys_.back()->setCustomLayout(2.0);
     keys_.emplace_back(new MarkKey("."));
 }
+#endif
 
 }
