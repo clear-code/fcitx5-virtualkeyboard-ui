@@ -9,11 +9,22 @@
 namespace fcitx::classicui {
 
 void HangulKeyboard::updateKeys() {
+#if USE_CUSTOM_LAYOUT
+    if (mode_ == HangulKeyboardMode::Mark) {
+        FCITX_KEYBOARD() << "HangulKeyboard::mode_: Mark";
+        setLayerKeys(static_cast<int>(HangulKeyboardMode::Mark));
+        return;
+    }
+
+    FCITX_KEYBOARD() << "HangulKeyboard::mode_: Text";
+    setLayerKeys(static_cast<int>(HangulKeyboardMode::Text));
+#else
     if (mode_ == HangulKeyboardMode::Text) {
         setTextKeys();
     } else {
         setMarkKeys();
     }
+#endif
 }
 
 void HangulKeyboard::switchMode() {
@@ -26,17 +37,36 @@ void HangulKeyboard::switchMode() {
     updateKeys();
 }
 
-void HangulModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+#if !USE_CUSTOM_LAYOUT
+void HangulModeSwitchKey::switchState(VirtualKeyboard *keyboard,
+                                      InputContext *) {
+    FCITX_KEYBOARD() << "HangulModeSwitchKey::switchState()";
     keyboard->i18nKeyboard<HangulKeyboard>()->switchMode();
 }
 
 int HangulModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
-    if (keyboard->i18nKeyboard<HangulKeyboard>()->mode() == HangulKeyboardMode::Text) {
+    if (keyboard->i18nKeyboard<HangulKeyboard>()->mode() ==
+        HangulKeyboardMode::Text) {
+        FCITX_KEYBOARD() << "HangulModeSwitchKey::currentIndex(): 0";
         return 0;
     }
+    FCITX_KEYBOARD() << "HangulModeSwitchKey::currentIndex(): 1";
     return 1;
 }
+#endif
 
+#if USE_CUSTOM_LAYOUT
+void HangulKeyboard::setLayerKeys(size_t offset) {
+    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    keys_.clear();
+    loader_->load(offset);
+    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    for (size_t i = 0; i < loader_->keys().size(); i++) {
+        keys_.emplace_back(loader_->keys()[i]);
+    }
+}
+#else
+// clang-format off
 void HangulKeyboard::setTextKeys() {
     keys_.clear();
     keys_.emplace_back(new NormalKey("ᄇ", 24, "ᄈ", "q", "Q"));
@@ -164,5 +194,6 @@ void HangulKeyboard::setMarkKeys() {
     keys_.emplace_back(new NumberKey("0")); keys_.back()->setCustomLayout(2.0);
     keys_.emplace_back(new MarkKey("."));
 }
+#endif
 
 }

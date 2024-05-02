@@ -10,6 +10,9 @@
 #include "virtualkeyboard.h"
 #include "virtualkeyboardi18n.h"
 #include "virtualkeygeneral.h"
+#if USE_CUSTOM_LAYOUT
+#include "virtualkeyboardlayout.h"
+#endif
 
 namespace fcitx {
 namespace classicui {
@@ -27,26 +30,42 @@ public:
     void updateKeys() override;
     void switchMode();
     HangulKeyboardMode mode() const { return mode_; }
+#if USE_CUSTOM_LAYOUT
+    HangulKeyboard() : I18nKeyboard() {
+        const char *jsonPath =
+            FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-ko.json";
+        FCITX_KEYBOARD() << "path of Korean keyboard layout file: " << jsonPath;
+        loader_ = new KeyboardLayout(jsonPath);
+    }
+#endif
 
 private:
+#if USE_CUSTOM_LAYOUT
+    void setLayerKeys(size_t offset);
+    KeyboardLayout *loader_;
+#else
     void setTextKeys();
     void setMarkKeys();
+#endif
     HangulKeyboardMode mode_ = HangulKeyboardMode::Text;
 };
 
+#if !USE_CUSTOM_LAYOUT
 class HangulModeSwitchKey : public SwitchKey {
 public:
     HangulModeSwitchKey() : SwitchKey() {}
-    const char* label(VirtualKeyboard *) const override { return "한#"; }
+    const char *label(VirtualKeyboard *) const override { return "한#"; }
 
 protected:
     int numberOfStates() const override { return 2; }
     const char *stateLabel(int index) const override {
         return index == 0 ? "한" : "#";
     }
-    void switchState(VirtualKeyboard *keyboard, InputContext *inputContext) override;
+    void switchState(VirtualKeyboard *keyboard,
+                     InputContext *inputContext) override;
     int currentIndex(VirtualKeyboard *keyboard) override;
 };
+#endif
 
 } // namespace classicui
 } // namespace fcitx

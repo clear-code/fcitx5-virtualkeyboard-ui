@@ -10,6 +10,7 @@
 #if USE_CUSTOM_LAYOUT
 #include "virtualkeyboardrussian.h"
 #include "virtualkeyboardus.h"
+#include "virtualkeyboardhangul.h"
 #endif
 
 namespace fcitx::classicui {
@@ -154,6 +155,9 @@ void ModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
     } else if (keyboard->languageCode() == "us") {
         FCITX_KEYBOARD() << "i18Keyboard switchMode()";
         keyboard->i18nKeyboard<UsKeyboard>()->switchMode();
+    } else if (keyboard->languageCode() == "ko") {
+        FCITX_KEYBOARD() << "i18Keyboard switchMode()";
+        keyboard->i18nKeyboard<HangulKeyboard>()->switchMode();
     }
 }
 
@@ -169,6 +173,12 @@ int ModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
         if (keyboard->i18nKeyboard<UsKeyboard>()->mode() ==
             UsKeyboardMode::Text) {
             FCITX_KEYBOARD() << "ModeSwitchKey::currentIndex() UsKeyboardMode::Text";
+            return 0;
+        }
+    } else if (keyboard->languageCode() == "ko") {
+        if (keyboard->i18nKeyboard<HangulKeyboard>()->mode() ==
+            HangulKeyboardMode::Text) {
+            FCITX_KEYBOARD() << "ModeSwitchKey::currentIndex() HangulKeyboardMode::Text";
             return 0;
         }
     }
