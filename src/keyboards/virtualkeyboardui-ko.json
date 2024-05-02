@@ -1,0 +1,689 @@
+[
+  {
+    "// The layout definition for Korean keyboard": "Designed for fcitx5-virtualkeyboard-ui",
+    "Keyboard": {
+      "label": "KR",
+      "languageCode": "ko",
+      "numberOfLayers": 2,
+      "layerOffset": [
+        1,
+        5
+      ]
+    },
+    "ModeSwitchKey": {
+      "numberOfStates": 2,
+      "stateLabel": [
+        "한",
+        "#"
+      ]
+    },
+    "NormalKey": {
+      "width": 60.0
+    }
+  },
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "NormalKey",
+      "code": 24,
+      "upperLabel": "ᄈ",
+      "keyName": "q",
+      "upperName": "Q"
+    },
+    "ᄇ",
+    {
+      "class": "NormalKey",
+      "code": 25,
+      "upperLabel": "ᄍ",
+      "keyName": "w",
+      "upperName": "W"
+    },
+    "ᄌ",
+    {
+      "class": "NormalKey",
+      "code": 26,
+      "upperLabel": "ᄄ",
+      "keyName": "e",
+      "upperName": "E"
+    },
+    "ᄃ",
+    {
+      "class": "NormalKey",
+      "code": 27,
+      "upperLabel": "ᄁ",
+      "keyName": "r",
+      "upperName": "R"
+    },
+    "ᄀ",
+    {
+      "class": "NormalKey",
+      "code": 28,
+      "upperLabel": "ᄊ",
+      "keyName": "t",
+      "upperName": "T"
+    },
+    "ᄉ",
+    {
+      "class": "NormalKey",
+      "code": 29,
+      "upperLabel": "",
+      "keyName": "y",
+      "upperName": "Y"
+    },
+    "ᅭ",
+    {
+      "class": "NormalKey",
+      "code": 30,
+      "upperLabel": "",
+      "keyName": "u",
+      "upperName": "U"
+    },
+    "ᅧ",
+    {
+      "class": "NormalKey",
+      "code": 31,
+      "upperLabel": "",
+      "keyName": "i",
+      "upperName": "I"
+    },
+    "ᅣ",
+    {
+      "class": "NormalKey",
+      "code": 32,
+      "upperLabel": "ᅤ",
+      "keyName": "o",
+      "upperName": "O"
+    },
+    "ᅢ",
+    {
+      "class": "NormalKey",
+      "code": 33,
+      "upperLabel": "ᅨ",
+      "keyName": "p",
+      "upperName": "P"
+    },
+    "ᅦ",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "NumberKey"
+    },
+    "7",
+    {
+      "class": "NumberKey"
+    },
+    "8",
+    {
+      "class": "NumberKey",
+      "scale": 1.0
+    },
+    "9"
+  ],
+  [
+    {
+      "x": 0.5,
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "NormalKey",
+      "code": 38,
+      "upperLabel": "",
+      "keyName": "a",
+      "upperName": "A"
+    },
+    "ᄆ",
+    {
+      "class": "NormalKey",
+      "code": 39,
+      "upperLabel": "",
+      "keyName": "s",
+      "upperName": "S"
+    },
+    "ᄂ",
+    {
+      "class": "NormalKey",
+      "code": 40,
+      "upperLabel": "",
+      "keyName": "d",
+      "upperName": "D"
+    },
+    "ᄋ",
+    {
+      "class": "NormalKey",
+      "code": 41,
+      "upperLabel": "",
+      "keyName": "f",
+      "upperName": "F"
+    },
+    "ᄅ",
+    {
+      "class": "NormalKey",
+      "code": 42,
+      "upperLabel": "",
+      "keyName": "g",
+      "upperName": "G"
+    },
+    "ᄒ",
+    {
+      "class": "NormalKey",
+      "code": 43,
+      "upperLabel": "",
+      "keyName": "h",
+      "upperName": "H"
+    },
+    "ᅩ",
+    {
+      "class": "NormalKey",
+      "code": 44,
+      "upperLabel": "",
+      "keyName": "j",
+      "upperName": "J"
+    },
+    "ᅥ",
+    {
+      "class": "NormalKey",
+      "code": 45,
+      "upperLabel": "",
+      "keyName": "p",
+      "upperName": "P"
+    },
+    "ᅡ",
+    {
+      "class": "NormalKey",
+      "code": 46,
+      "upperLabel": "",
+      "keyName": "l",
+      "upperName": "L"
+    },
+    "ᅵ",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "class": "EnterKey",
+      "scale": 1.5
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey"
+    },
+    "4",
+    {
+      "class": "NumberKey"
+    },
+    "5",
+    {
+      "class": "NumberKey"
+    },
+    "6"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ShiftToggleKey"
+    },
+    "⇧",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "NormalKey",
+      "code": 52,
+      "upperLabel": "",
+      "keyName": "z",
+      "upperName": "Z"
+    },
+    "ᄏ",
+    {
+      "class": "NormalKey",
+      "code": 53,
+      "upperLabel": "",
+      "keyName": "x",
+      "upperName": "X"
+    },
+    "ᄐ",
+    {
+      "class": "NormalKey",
+      "code": 54,
+      "upperLabel": "",
+      "keyName": "c",
+      "upperName": "C"
+    },
+    "ᄎ",
+    {
+      "class": "NormalKey",
+      "code": 55,
+      "upperLabel": "",
+      "keyName": "v",
+      "upperName": "V"
+    },
+    "ᄑ",
+    {
+      "class": "NormalKey",
+      "code": 56,
+      "upperLabel": "",
+      "keyName": "b",
+      "upperName": "B"
+    },
+    "ᅲ",
+    {
+      "class": "NormalKey",
+      "code": 57,
+      "upperLabel": "",
+      "keyName": "n",
+      "upperName": "N"
+    },
+    "ᅮ",
+    {
+      "class": "NormalKey",
+      "code": 58,
+      "upperLabel": "",
+      "keyName": "m",
+      "upperName": "M"
+    },
+    "ᅳ",
+    {
+      "class": "MarkKey",
+      "keyname": "minus"
+    },
+    "-",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "KR",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey"
+    },
+    "1",
+    {
+      "class": "NumberKey"
+    },
+    "2",
+    {
+      "class": "NumberKey"
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2.0,
+      "class": "ModeSwitchKey",
+      "scale": 2.0
+    },
+    "한#",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "keyname": "comma"
+    },
+    ",",
+    {
+      "class": "MarkKey",
+      "keyname": "period"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2.0,
+      "class": "SpaceKey",
+      "scale": 2.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "keyname": "exclam"
+    },
+    "!",
+    {
+      "class": "MarkKey",
+      "keyname": "question"
+    },
+    "?",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "w": 2,
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey",
+      "scale": 2.0
+    },
+    "0",
+    {
+      "class": "MarkKey"
+    },
+    "."
+  ],
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "MarkKey"
+    },
+    "[",
+    {
+      "class": "MarkKey"
+    },
+    "]",
+    {
+      "class": "MarkKey"
+    },
+    "{",
+    {
+      "class": "MarkKey"
+    },
+    "}",
+    {
+      "class": "MarkKey"
+    },
+    "#",
+    {
+      "class": "MarkKey"
+    },
+    "%",
+    {
+      "class": "MarkKey"
+    },
+    "^",
+    {
+      "class": "MarkKey"
+    },
+    "*",
+    {
+      "class": "MarkKey"
+    },
+    "+",
+    {
+      "class": "MarkKey"
+    },
+    "=",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey"
+    },
+    "7",
+    {
+      "class": "NumberKey"
+    },
+    "8",
+    {
+      "class": "NumberKey"
+    },
+    "9"
+  ],
+  [
+    {
+      "x": 0.5,
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "MarkKey"
+    },
+    "/",
+    {
+      "class": "MarkKey"
+    },
+    "\\",
+    {
+      "class": "MarkKey"
+    },
+    ":",
+    {
+      "class": "MarkKey"
+    },
+    ";",
+    {
+      "class": "MarkKey"
+    },
+    "(",
+    {
+      "class": "MarkKey"
+    },
+    ")",
+    {
+      "class": "MarkKey"
+    },
+    "&",
+    {
+      "class": "MarkKey"
+    },
+    "@",
+    {
+      "class": "MarkKey"
+    },
+    "₩",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "scale": 1.5,
+      "class": "EnterKey"
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey"
+    },
+    "4",
+    {
+      "class": "NumberKey"
+    },
+    "5",
+    {
+      "class": "NumberKey"
+    },
+    "6"
+  ],
+  [
+    {
+      "class": "DummyKey",
+      "x": 1,
+      "scale": 1.0
+    },
+    {
+      "class": "MarkKey"
+    },
+    "\"",
+    {
+      "class": "MarkKey"
+    },
+    "'",
+    {
+      "class": "MarkKey"
+    },
+    "_",
+    {
+      "class": "MarkKey"
+    },
+    "|",
+    {
+      "class": "MarkKey"
+    },
+    "~",
+    {
+      "class": "MarkKey"
+    },
+    "<",
+    {
+      "class": "MarkKey"
+    },
+    ">",
+    {
+      "class": "MarkKey"
+    },
+    "-",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "KR",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "NumberKey"
+    },
+    "1",
+    {
+      "class": "NumberKey"
+    },
+    "2",
+    {
+      "class": "NumberKey"
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2,
+      "class": "ModeSwitchKey",
+      "scale": 2.0
+    },
+    "한#",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    ",",
+    {
+      "class": "MarkKey"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2,
+      "class": "SpaceKey",
+      "scale": 2.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    "!",
+    {
+      "class": "MarkKey"
+    },
+    "?",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "w": 2,
+      "class": "NumberKey",
+      "scale": 2.0
+    },
+    "0",
+    {
+      "class": "MarkKey"
+    },
+    "."
+  ]
+]
