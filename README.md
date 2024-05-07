@@ -15,6 +15,8 @@ Currently following languages/layouts are supported:
 * Simplified Chinese (using fcitx5-chinese-addons)
 * Traditional Chinese (using fcitx5-chewing)
 
+[![Demo Movie for fcitx5-virtualkeyboard-ui](https://img.youtube.com/vi/f1QBqWy_Ps4/0.jpg)](https://www.youtube.com/watch?v=f1QBqWy_Ps4)
+
 ## Prerequisites
 
 Currently some patches are required to Fcitx5:
