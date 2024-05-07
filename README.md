@@ -2,8 +2,9 @@
 
 ## What's this?
 
-A virtual keyboard UI module for [Fcitx5](https://github.com/fcitx/fcitx5), based on ClassicUI.
-The main target environment of this module [Weston](https://gitlab.freedesktop.org/wayland/weston/).
+A virtual keyboard UI module for [Fcitx5](https://github.com/fcitx/fcitx5), based on ClassicUI bundled in Fcitx5.
+The main target environment of this module is [Weston](https://gitlab.freedesktop.org/wayland/weston/).
+On X11, it partially works but not yet perfect, need further work.
 
 Currently following languages/layouts are supported:
 
@@ -22,6 +23,11 @@ Currently some patches are required to Fcitx5:
   * [fcitx5 5.0.14+virtual-keyboard-prerequisites](https://github.com/clear-code/fcitx5/tree/5.0.14%2Bvirtual-keyboard-prerequisites)
 * For fcitx5-virtualkeyboard-ui `fcitx-5.0.8` branch:
   * [fcitx5 5.0.8+virtual-keyboard-prerequisites](https://github.com/clear-code/fcitx5/tree/5.0.8%2Bvirtual-keyboard-prerequisites)
+
+Optionally Fcitx5's inputmethod addons listed above are also required to support each languages.
+
+In Yocto environment, you can use [meta-inputmethod](https://gitlab.com/clear-code/meta-inputmethod) to install these prerequisites.
+The yocto recipe for fcitx5-virtualkeyboard-ui itself isn's published. If you need it, please contact us.
 
 ## How to build
 
