@@ -96,7 +96,7 @@ FCITX_CONFIGURATION(
         true};
 
     OptionWithAnnotation<std::string, FontAnnotation> font{
-        this, "Font", _("Font"), "Sans 10"};
+        this, "Font", _("Font"), "Sans 14"};
     OptionWithAnnotation<std::string, MenuFontAnnotation> menuFont{
         this, "MenuFont", _("Menu Font"), "Sans 10"};
     OptionWithAnnotation<std::string, FontAnnotation> trayFont{
