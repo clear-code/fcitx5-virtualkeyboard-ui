@@ -1,0 +1,1056 @@
+[
+  {
+    "// The layout definition for Traditional Chinese keyboard": "Designed for fcitx5-virtualkeyboard-ui",
+    "Keyboard": {
+      "label": "TW",
+      "languageCode": "zh_TW",
+      "numberOfLayers": 3,
+      "layerOffset": [
+        1,
+        6,
+        10
+      ]
+    },
+    "ModeSwitchKey": {
+      "numberOfStates": 2,
+      "stateLabel": [
+        "注",
+        "#"
+      ]
+    },
+    "NormalKey": {
+      "width": 60.0
+    }
+  },
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "ChewingNumberKey",
+      "code": 10,
+      "keyName": "1"
+    },
+    "ㄅ",
+    {
+      "class": "ChewingNumberKey",
+      "code": 11,
+      "keyName": "2"
+    },
+    "ㄉ",
+    {
+      "class": "ChewingNumberKey",
+      "code": 12,
+      "keyName": "3"
+    },
+    "ˇ",
+    {
+      "class": "ChewingNumberKey",
+      "code": 13,
+      "keyName": "4"
+    },
+    "`",
+    {
+      "class": "ChewingNumberKey",
+      "code": 14,
+      "keyName": "5"
+    },
+    "ㄓ",
+    {
+      "class": "ChewingNumberKey",
+      "code": 15,
+      "keyName": "6"
+    },
+    "´",
+    {
+      "class": "ChewingNumberKey",
+      "code": 16,
+      "keyName": "7"
+    },
+    "˙",
+    {
+      "class": "ChewingNumberKey",
+      "code": 17,
+      "keyName": "8"
+    },
+    "ㄚ",
+    {
+      "class": "NormalKey",
+      "code": 18,
+      "keyName": "9",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄞ",
+    {
+      "class": "NormalKey",
+      "code": 19,
+      "keyName": "0",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄢ",
+    {
+      "class": "NormalKey",
+      "code": 20,
+      "keyName": "minus",
+      "upperLabel": "",
+      "upperName": "",
+      "scale": 1.0
+    },
+    "ㄦ"
+  ],
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "NormalKey",
+      "code": 24,
+      "keyName": "q",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄆ",
+    {
+      "class": "NormalKey",
+      "code": 25,
+      "keyName": "w",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄊ",
+    {
+      "class": "NormalKey",
+      "code": 26,
+      "keyName": "e",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄍ",
+    {
+      "class": "NormalKey",
+      "code": 27,
+      "keyName": "r",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄐ",
+    {
+      "class": "NormalKey",
+      "code": 28,
+      "keyName": "t",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄔ",
+    {
+      "class": "NormalKey",
+      "code": 29,
+      "keyName": "y",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄗ",
+    {
+      "class": "NormalKey",
+      "code": 30,
+      "keyName": "u",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄧ",
+    {
+      "class": "NormalKey",
+      "code": 31,
+      "keyName": "i",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄛ",
+    {
+      "class": "NormalKey",
+      "code": 32,
+      "keyName": "o",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄟ",
+    {
+      "class": "NormalKey",
+      "code": 33,
+      "keyName": "p",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄣ",
+    {
+      "w": 1.0,
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "7",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "8",
+    {
+      "class": "ChewingNumPadKey",
+      "scale": 1.0
+    },
+    "9"
+  ],
+  [
+    {
+      "class": "NormalKey",
+      "code": 38,
+      "keyName": "a",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄇ",
+    {
+      "class": "NormalKey",
+      "code": 39,
+      "keyName": "s",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄋ",
+    {
+      "class": "NormalKey",
+      "code": 40,
+      "keyName": "d",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄎ",
+    {
+      "class": "NormalKey",
+      "code": 41,
+      "keyName": "f",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄑ",
+    {
+      "class": "NormalKey",
+      "code": 42,
+      "keyName": "g",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄕ",
+    {
+      "class": "NormalKey",
+      "code": 43,
+      "keyName": "h",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄘ",
+    {
+      "class": "NormalKey",
+      "code": 44,
+      "keyName": "j",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄨ",
+    {
+      "class": "NormalKey",
+      "code": 45,
+      "keyName": "k",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄜ",
+    {
+      "class": "NormalKey",
+      "code": 46,
+      "keyName": "l",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄠ",
+    {
+      "class": "NormalKey",
+      "code": 47,
+      "keyName": "semicolon",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄤ",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "class": "ChewingEnterKey"
+    },
+    "換行",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "4",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "5",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "6"
+  ],
+  [
+    {
+      "class": "NormalKey",
+      "code": 52,
+      "keyName": "z",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄈ",
+    {
+      "class": "NormalKey",
+      "code": 53,
+      "keyName": "x",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄌ",
+    {
+      "class": "NormalKey",
+      "code": 54,
+      "keyName": "c",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄏ",
+    {
+      "class": "NormalKey",
+      "code": 55,
+      "keyName": "v",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄒ",
+    {
+      "class": "NormalKey",
+      "code": 56,
+      "keyName": "b",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄖ",
+    {
+      "class": "NormalKey",
+      "code": 57,
+      "keyName": "n",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄙ",
+    {
+      "class": "NormalKey",
+      "code": 58,
+      "keyName": "m",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄩ",
+    {
+      "class": "NormalKey",
+      "code": 59,
+      "keyName": "comma",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄝ",
+    {
+      "class": "NormalKey",
+      "code": 60,
+      "keyName": "period",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄡ",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "TW",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "1",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "2",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ChewingModeSwitchKey"
+    },
+    "注#",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "keyName": "comma"
+    },
+    "，",
+    {
+      "class": "MarkKey",
+      "keyName": "period"
+    },
+    "。",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2.0,
+      "class": "ChewingSpaceKey",
+      "scale": 2.0
+    },
+    "空格",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "keyName": "exclam"
+    },
+    "！",
+    {
+      "class": "MarkKey",
+      "keyName": "question"
+    },
+    "？",
+    {
+      "class": "NormalKey",
+      "code": 61,
+      "keyName": "slash",
+      "upperLabel": "",
+      "upperName": ""
+    },
+    "ㄥ",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "w": 2.0,
+      "class": "ChewingNumPadKey",
+      "scale": 2.0
+    },
+    "0",
+    {
+      "class": "MarkKey"
+    },
+    "."
+  ],
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "MarkKey"
+    },
+    "“",
+    {
+      "class": "MarkKey"
+    },
+    "”",
+    {
+      "class": "MarkKey"
+    },
+    "‘",
+    {
+      "class": "MarkKey"
+    },
+    "’",
+    {
+      "class": "MarkKey"
+    },
+    "（",
+    {
+      "class": "MarkKey"
+    },
+    "）",
+    {
+      "class": "MarkKey"
+    },
+    "「",
+    {
+      "class": "MarkKey"
+    },
+    "」",
+    {
+      "class": "MarkKey"
+    },
+    "『",
+    {
+      "class": "MarkKey"
+    },
+    "』",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "7",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "8",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "9"
+  ],
+  [
+    {
+      "x": 0.5,
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "MarkKey"
+    },
+    "《",
+    {
+      "class": "MarkKey"
+    },
+    "》",
+    {
+      "class": "MarkKey"
+    },
+    "〈",
+    {
+      "class": "MarkKey"
+    },
+    "〉",
+    {
+      "class": "MarkKey"
+    },
+    "：",
+    {
+      "class": "MarkKey"
+    },
+    "；",
+    {
+      "class": "MarkKey"
+    },
+    "—",
+    {
+      "class": "MarkKey"
+    },
+    "…",
+    {
+      "class": "MarkKey"
+    },
+    "@",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "scale": 1.5,
+      "class": "ChewingEnterKey"
+    },
+    "換行",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "4",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "5",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "6"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ChewingMarkToggleKey"
+    },
+    "更多",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    "·",
+    {
+      "class": "MarkKey"
+    },
+    "～",
+    {
+      "class": "MarkKey"
+    },
+    "￥",
+    {
+      "class": "MarkKey"
+    },
+    "$",
+    {
+      "class": "MarkKey"
+    },
+    "&",
+    {
+      "class": "MarkKey"
+    },
+    "|",
+    {
+      "class": "MarkKey"
+    },
+    "_",
+    {
+      "class": "MarkKey"
+    },
+    "、",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "TW",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "1",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "2",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ChewingModeSwitchKey"
+    },
+    "注#",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    "，",
+    {
+      "class": "MarkKey"
+    },
+    "。",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 3,
+      "class": "ChewingSpaceKey",
+      "scale": 3.0
+    },
+    "空格",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    "！",
+    {
+      "class": "MarkKey"
+    },
+    "？",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "w": 2,
+      "class": "ChewingNumPadKey",
+      "scale": 2.0
+    },
+    "0",
+    {
+      "class": "MarkKey"
+    },
+    "."
+  ],
+  [
+    {
+      "class": "MarkKey"
+    },
+    "[",
+    {
+      "class": "MarkKey"
+    },
+    "]",
+    {
+      "class": "MarkKey"
+    },
+    "{",
+    {
+      "class": "MarkKey"
+    },
+    "}",
+    {
+      "class": "MarkKey"
+    },
+    "#",
+    {
+      "class": "MarkKey"
+    },
+    "%",
+    {
+      "class": "MarkKey"
+    },
+    "^",
+    {
+      "class": "MarkKey"
+    },
+    "*",
+    {
+      "class": "MarkKey"
+    },
+    "+",
+    {
+      "class": "MarkKey"
+    },
+    "=",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "7",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "8",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "9"
+  ],
+  [
+    {
+      "class": "DummyKey",
+      "x": 0.5,
+      "scale": 0.5
+    },
+    {
+      "class": "MarkKey"
+    },
+    "/",
+    {
+      "class": "MarkKey"
+    },
+    "\\",
+    {
+      "class": "MarkKey"
+    },
+    ":",
+    {
+      "class": "MarkKey"
+    },
+    ";",
+    {
+      "class": "MarkKey"
+    },
+    "(",
+    {
+      "class": "MarkKey"
+    },
+    ")",
+    {
+      "class": "MarkKey"
+    },
+    "-",
+    {
+      "class": "MarkKey"
+    },
+    "~",
+    {
+      "class": "MarkKey"
+    },
+    "@",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "class": "ChewingEnterKey",
+      "scale": 1.5
+    },
+    "換行",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "x": 0.5,
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "4",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "5",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "6"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ChewingMarkToggleKey"
+    },
+    "更多",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    "\"",
+    {
+      "class": "MarkKey"
+    },
+    "'",
+    {
+      "class": "MarkKey"
+    },
+    "¥",
+    {
+      "class": "MarkKey"
+    },
+    "!",
+    {
+      "class": "MarkKey"
+    },
+    "?",
+    {
+      "class": "MarkKey"
+    },
+    "<",
+    {
+      "class": "MarkKey"
+    },
+    ">",
+    {
+      "class": "MarkKey"
+    },
+    "、",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "TW",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "1",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "2",
+    {
+      "class": "ChewingNumPadKey"
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ChewingModeSwitchKey"
+    },
+    "注#",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    "，",
+    {
+      "class": "MarkKey"
+    },
+    "。",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 3.0,
+      "class": "ChewingSpaceKey",
+      "scale": 3.0
+    },
+    "空格",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey"
+    },
+    "！",
+    {
+      "class": "MarkKey"
+    },
+    "？",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "ChewingNumPadKey",
+      "w": 2.0,
+      "scale": 2.0
+    },
+    "0",
+    {
+      "class": "MarkKey"
+    },
+    "."
+  ]
+]
