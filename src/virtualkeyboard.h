@@ -53,6 +53,10 @@ public:
     }
     bool contains(int x, int y) const { return region_.contains(x, y); }
 
+    void setCustomWidth(double width) {
+        width_ = width;
+    }
+
     void setCustomLayout(double scale, bool newLine = false) {
         newLine_ = newLine;
         width_ *= scale;
