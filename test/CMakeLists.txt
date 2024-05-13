@@ -12,7 +12,8 @@ set(VIRTUALKEYBOARD_LAYOUT_SRC
     ../src/virtualkeyboardpinyin.cpp
     ../src/virtualkeyboardrussian.cpp
     ../src/virtualkeyboardus.cpp
-    ../src/virtualkeygeneral.cpp)
+    ../src/virtualkeygeneral.cpp
+    testkeyboardutils.cpp)
 
 foreach(TESTCASE ${VIRTUALKEYBOARD_LAYOUT_TEST})
     add_executable(${TESTCASE} ${TESTCASE}.cpp ${VIRTUALKEYBOARD_LAYOUT_SRC})
