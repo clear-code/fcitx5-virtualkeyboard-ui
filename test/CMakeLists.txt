@@ -2,7 +2,8 @@ set(VIRTUALKEYBOARD_LAYOUT_TEST
     testkeyboardanthy
     testkeyboardchewing
     testkeyboardlayout
-    testkeyboardmetadata)
+    testkeyboardmetadata
+    testkeyboardpinyin)
 
 set(VIRTUALKEYBOARD_LAYOUT_SRC
     ../src/virtualkeyboardlayout.cpp
