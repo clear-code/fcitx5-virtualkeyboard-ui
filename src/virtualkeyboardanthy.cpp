@@ -9,13 +9,58 @@
 
 namespace fcitx::classicui {
 
-AnthyKeyboard::AnthyKeyboard() :
-    typingMethodNameOfKana_(translateDomain(anthyGetTextDomainName.c_str(), "Kana")),
-    inputModeNameOfKatakana_(translateDomain(anthyGetTextDomainName.c_str(), "Katakana")),
-    inputModeNameOfHalfKatakana_(translateDomain(anthyGetTextDomainName.c_str(), "Half width katakana"))
-    {}
+#if USE_CUSTOM_LAYOUT
+AnthyKeyboard::AnthyKeyboard()
+    : typingMethodNameOfKana_(
+          translateDomain(anthyGetTextDomainName.c_str(), "Kana")),
+      inputModeNameOfKatakana_(
+          translateDomain(anthyGetTextDomainName.c_str(), "Katakana")),
+      inputModeNameOfHalfKatakana_(translateDomain(
+          anthyGetTextDomainName.c_str(), "Half width katakana")) {
+
+    const char *jsonPath =
+        FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-ja.json";
+    FCITX_KEYBOARD() << "path of Japanese keyboard layout file: " << jsonPath;
+    loader_ = new KeyboardLayout(jsonPath);
+}
+#else
+AnthyKeyboard::AnthyKeyboard()
+    : typingMethodNameOfKana_(
+          translateDomain(anthyGetTextDomainName.c_str(), "Kana")),
+      inputModeNameOfKatakana_(
+          translateDomain(anthyGetTextDomainName.c_str(), "Katakana")),
+      inputModeNameOfHalfKatakana_(translateDomain(
+          anthyGetTextDomainName.c_str(), "Half width katakana")) {}
+#endif
 
 void AnthyKeyboard::updateKeys() {
+#if USE_CUSTOM_LAYOUT
+    FCITX_KEYBOARD() << "updateKeys()";
+    if (mode_ == AnthyKeyboardMode::Text) {
+        if (typingMethod_ == AnthyTypingMethod::Romaji || !isZenkakuOn_) {
+            // Romaji
+            if (numpadMode_ == AnthyNumpadMode::Number) {
+                setLayerKeys(static_cast<int>(AnthyKeyboardMode::Text));
+            } else {
+                setLayerKeys(static_cast<int>(AnthyKeyboardMode::Text) + 1);
+            }
+        } else {
+            // JisKana
+            if (numpadMode_ == AnthyNumpadMode::Number) {
+                setLayerKeys(4 * static_cast<int>(AnthyTypingMethod::Kana));
+            } else {
+                setLayerKeys(4 * static_cast<int>(AnthyTypingMethod::Kana) + 1);
+            }
+        }
+    } else {
+        // Mark
+        if (numpadMode_ == AnthyNumpadMode::Number) {
+            setLayerKeys(2 * static_cast<int>(AnthyKeyboardMode::Mark));
+        } else {
+            setLayerKeys(2 * static_cast<int>(AnthyKeyboardMode::Mark) + 1);
+        }
+    }
+#else
     if (mode_ == AnthyKeyboardMode::Text) {
         if (typingMethod_ == AnthyTypingMethod::Romaji || !isZenkakuOn_) {
             setTextRomajiKeys();
@@ -25,26 +70,39 @@ void AnthyKeyboard::updateKeys() {
     } else {
         setMarkKeys();
     }
+#endif
 }
 
-void AnthyKeyboard::syncState(
-    VirtualKeyboard *keyboard,
-    const std::string &currentInputMethodName
-) {
+#if USE_CUSTOM_LAYOUT
+void AnthyKeyboard::setLayerKeys(size_t offset) {
+    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    keys_.clear();
+    loader_->load(offset);
+    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    for (size_t i = 0; i < loader_->keys().size(); i++) {
+        keys_.emplace_back(loader_->keys()[i]);
+    }
+}
+#endif
+
+void AnthyKeyboard::syncState(VirtualKeyboard *keyboard,
+                              const std::string &currentInputMethodName) {
     isZenkakuOn_ = currentInputMethodName != hankakuImeName;
 
-    // In Mark-mode, TypingMethod of IME must be fixed to Romaji, without depending on
-    // this VirtualKeyboard's state.
-    // This is because most of Zenkaku-marks can't be handled in Kana-mode.
-    if (mode_ != AnthyKeyboardMode::Mark) syncTypingMethod(keyboard);
+    // In Mark-mode, TypingMethod of IME must be fixed to Romaji, without
+    // depending on this VirtualKeyboard's state. This is because most of
+    // Zenkaku-marks can't be handled in Kana-mode.
+    if (mode_ != AnthyKeyboardMode::Mark)
+        syncTypingMethod(keyboard);
 
     syncInputMode(keyboard);
 }
 
 void AnthyKeyboard::syncTypingMethod(VirtualKeyboard *keyboard) {
-    auto [curName, hasFound] = keyboard->getIMActionText(
-        actionNameOfAnthyTypingMethod, false);
-    if (!hasFound) return;
+    auto [curName, hasFound] =
+        keyboard->getIMActionText(actionNameOfAnthyTypingMethod, false);
+    if (!hasFound)
+        return;
 
     if (curName == typingMethodNameOfKana_) {
         if (typingMethod_ != AnthyTypingMethod::Kana) {
@@ -60,9 +118,10 @@ void AnthyKeyboard::syncTypingMethod(VirtualKeyboard *keyboard) {
 }
 
 void AnthyKeyboard::syncInputMode(VirtualKeyboard *keyboard) {
-    auto [curName, hasFound] = keyboard->getIMActionText(
-        actionNameOfAnthyInputMode, false);
-    if (!hasFound) return;
+    auto [curName, hasFound] =
+        keyboard->getIMActionText(actionNameOfAnthyInputMode, false);
+    if (!hasFound)
+        return;
 
     if (curName == inputModeNameOfKatakana_) {
         inputMode_ = AnthyInputMode::Katakana;
@@ -78,13 +137,15 @@ void AnthyKeyboard::switchMode(VirtualKeyboard *keyboard) {
         mode_ = AnthyKeyboardMode::Mark;
         if (typingMethod_ == AnthyTypingMethod::Kana) {
             // Most of Zenkaku-marks can't be handled in Kana-mode,
-            // so fix IME's state to Romaji without changing this keyboard's state.
+            // so fix IME's state to Romaji without changing this keyboard's
+            // state.
             keyboard->activateIMAction(actionNameOfAnthyRomaji);
         }
     } else {
         mode_ = AnthyKeyboardMode::Text;
         if (typingMethod_ == AnthyTypingMethod::Kana) {
-            // IME's state is fixed to Romaji in Mark-mode, so we have to put it back.
+            // IME's state is fixed to Romaji in Mark-mode, so we have to put it
+            // back.
             keyboard->activateIMAction(actionNameOfAnthyKana);
         }
     }
@@ -135,14 +196,16 @@ void AnthyKeyboard::toggleZenkakuHankaku(VirtualKeyboard *keyboard) {
     isZenkakuOn_ = !isZenkakuOn_;
     if (isZenkakuOn_) {
         keyboard->setCurrentInputMethod(imeNames[type()]);
-        if (typingMethod_ == AnthyTypingMethod::Kana) updateKeys();
+        if (typingMethod_ == AnthyTypingMethod::Kana)
+            updateKeys();
     } else {
         keyboard->setCurrentInputMethod(hankakuImeName);
-        if (typingMethod_ == AnthyTypingMethod::Kana) updateKeys();
+        if (typingMethod_ == AnthyTypingMethod::Kana)
+            updateKeys();
     }
 }
 
-const char* AnthyMarkKey::label(VirtualKeyboard *keyboard) const {
+const char *AnthyMarkKey::label(VirtualKeyboard *keyboard) const {
     if (keyboard->i18nKeyboard<AnthyKeyboard>()->isZenkakuOn()) {
         return zenkakuMark_.c_str();
     }
@@ -157,18 +220,21 @@ const char *AnthyKanaKey::label(VirtualKeyboard *keyboard) const {
     return super::label(keyboard);
 }
 
-void AnthyKanaNumPadKey::click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) {
+void AnthyKanaNumPadKey::click(VirtualKeyboard *keyboard,
+                               InputContext *inputContext, bool isRelease) {
     FCITX_KEYBOARD() << "AnthyKanaNumPadKey pushed";
 
-    // In JIS-kana-mode of fcitx5-anthy, nubmer keys are used for inputting KANAs, not numbers.
-    // So limit sending the event to IME into the case selecting candidates.
+    // In JIS-kana-mode of fcitx5-anthy, nubmer keys are used for inputting
+    // KANAs, not numbers. So limit sending the event to IME into the case
+    // selecting candidates.
     if (keyboard->isSeletingCandidates()) {
         auto event = KeyEvent(inputContext, fcitx::Key(name_), isRelease);
         inputContext->keyEvent(event);
         return;
     }
 
-    if (isRelease) return;
+    if (isRelease)
+        return;
 
     inputContext->commitString(label(keyboard));
 }
@@ -183,55 +249,66 @@ bool ZenkakuHankakuKey::isOn(VirtualKeyboard *keyboard) {
     return keyboard->i18nKeyboard<AnthyKeyboard>()->isZenkakuOn();
 }
 
-void AnthyModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+void AnthyModeSwitchKey::switchState(VirtualKeyboard *keyboard,
+                                     InputContext *) {
     keyboard->i18nKeyboard<AnthyKeyboard>()->switchMode(keyboard);
     // Because this switching changes the size of the keyboard.
     keyboard->updateInputPanel();
 }
 
 int AnthyModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
-    if (keyboard->i18nKeyboard<AnthyKeyboard>()->mode() == AnthyKeyboardMode::Text) {
+    if (keyboard->i18nKeyboard<AnthyKeyboard>()->mode() ==
+        AnthyKeyboardMode::Text) {
         return 0;
     }
     return 1;
 }
 
-void AnthyNumpadModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+void AnthyNumpadModeSwitchKey::switchState(VirtualKeyboard *keyboard,
+                                           InputContext *) {
     keyboard->i18nKeyboard<AnthyKeyboard>()->switchNumpadMode();
 }
 
 int AnthyNumpadModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
-    if (keyboard->i18nKeyboard<AnthyKeyboard>()->numpadMode() == AnthyNumpadMode::Number) {
+    if (keyboard->i18nKeyboard<AnthyKeyboard>()->numpadMode() ==
+        AnthyNumpadMode::Number) {
         return 0;
     }
     return 1;
 }
 
-void AnthyTypingMethodSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+void AnthyTypingMethodSwitchKey::switchState(VirtualKeyboard *keyboard,
+                                             InputContext *) {
     keyboard->i18nKeyboard<AnthyKeyboard>()->switchTypingMethod(keyboard);
     keyboard->updateInputPanel();
 }
 
 int AnthyTypingMethodSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
-    if (keyboard->i18nKeyboard<AnthyKeyboard>()->typingMethod() == AnthyTypingMethod::Romaji) {
+    if (keyboard->i18nKeyboard<AnthyKeyboard>()->typingMethod() ==
+        AnthyTypingMethod::Romaji) {
         return 0;
     }
     return 1;
 }
 
-void AnthyInputModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+void AnthyInputModeSwitchKey::switchState(VirtualKeyboard *keyboard,
+                                          InputContext *) {
     keyboard->i18nKeyboard<AnthyKeyboard>()->switchInputMode(keyboard);
 }
 
 int AnthyInputModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
-    if (keyboard->i18nKeyboard<AnthyKeyboard>()->inputMode() == AnthyInputMode::Hiragana) {
+    if (keyboard->i18nKeyboard<AnthyKeyboard>()->inputMode() ==
+        AnthyInputMode::Hiragana) {
         return 0;
-    } else if (keyboard->i18nKeyboard<AnthyKeyboard>()->inputMode() == AnthyInputMode::Katakana) {
+    } else if (keyboard->i18nKeyboard<AnthyKeyboard>()->inputMode() ==
+               AnthyInputMode::Katakana) {
         return 1;
     }
     return 2;
 }
 
+#if !USE_CUSTOM_LAYOUT
+// clang-format off
 void AnthyKeyboard::setTextRomajiKeys() {
     keys_.clear();
     keys_.emplace_back(new NormalKey("q", 24, "Q", true));
@@ -500,5 +577,6 @@ void AnthyKeyboard::setTextJisKanaKeys() {
     }
     keys_.emplace_back(new AnthyNumpadModeSwitchKey());
 }
+#endif
 
 }
