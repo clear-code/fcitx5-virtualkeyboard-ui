@@ -7,7 +7,6 @@
 #ifndef _FCITX_UI_CLASSIC_VIRTUALKEYBOARDLAYOUT_H_
 #define _FCITX_UI_CLASSIC_VIRTUALKEYBOARDLAYOUT_H_
 
-#include <filesystem>
 #include <json-c/json.h>
 #include "fcitx-utils/log.h"
 #include "virtualkeyboard.h"
@@ -22,7 +21,7 @@ public:
         FCITX_KEYBOARD() << "path of keyboard layout file: " << jsonPath;
         jsonPath_ = jsonPath;
         metadata_ = nullptr;
-        if (!std::filesystem::is_regular_file(jsonPath_)) {
+        if (!fs::isreg(jsonPath_)) {
             FCITX_ERROR() << "Failed to access keyboard layout file (JSON): "
                           << jsonPath_;
             return;
