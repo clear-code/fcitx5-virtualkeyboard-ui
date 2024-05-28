@@ -21,6 +21,7 @@ enum class KeyboardType {
     Russian,
     Hangul,
     Chewing,
+    Custom,
 };
 
 static std::map<KeyboardType, std::string> imeNames = {
@@ -47,17 +48,32 @@ public:
     );
     std::vector<std::unique_ptr<VirtualKey>> &keys() { return keys_; }
     bool checkOtherNecessaryImesExist(std::vector<fcitx::InputMethodGroupItem> &allItems);
+#if USE_CUSTOM_LAYOUT
+    std::string customImeName() {
+        return customImeName_;
+    }
+    std::string setCustomImeName(std::string name) {
+        customImeName_ = name;
+    }
+#endif
 protected:
     virtual std::vector<std::string> otherNecessaryImeList() { return {}; }
     std::vector<std::unique_ptr<VirtualKey>> keys_;
 private:
     bool containInputMethod(std::vector<fcitx::InputMethodGroupItem> &items,
                             const std::string &name);
+#if USE_CUSTOM_LAYOUT
+    std::string customImeName_;
+#endif
 };
 
 class I18nKeyboardSelector {
 public:
+#if USE_CUSTOM_LAYOUT
+    std::tuple<I18nKeyboard *, bool> select(InputMethodGroup &group, std::vector<fcitx::InputMethodGroupItem> &inputMethodItems);
+#else
     std::tuple<I18nKeyboard *, bool> select(std::vector<fcitx::InputMethodGroupItem> &inputMethodItems);
+#endif
 private:
     KeyboardType getTypeByName(const std::string &inputMethodName);
     std::tuple<I18nKeyboard *, bool> selectByType(KeyboardType type);

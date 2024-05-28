@@ -10,6 +10,7 @@ set(VIRTUALKEYBOARD_LAYOUT_SRC
     ../src/virtualkeyboard.cpp
     ../src/virtualkeyboardanthy.cpp
     ../src/virtualkeyboardchewing.cpp
+    ../src/virtualkeyboardcustom.cpp
     ../src/virtualkeyboardhangul.cpp
     ../src/virtualkeyboardi18n.cpp
     ../src/virtualkeyboardpinyin.cpp

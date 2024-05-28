@@ -23,7 +23,7 @@ if (ENABLE_X11)
 endif()
 
 if (ENABLE_CUSTOM_LAYOUT)
-    set(VIRTUALKEYBOARDUI_WAYLAND_SRCS ${VIRTUALKEYBOARDUI_WAYLAND_SRCS} virtualkeyboardlayout.cpp)
+    set(VIRTUALKEYBOARDUI_WAYLAND_SRCS ${VIRTUALKEYBOARDUI_WAYLAND_SRCS} virtualkeyboardlayout.cpp virtualkeyboardcustom.cpp)
 endif()
 
 add_library(virtualkeyboardui MODULE
