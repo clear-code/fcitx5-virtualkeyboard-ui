@@ -52,19 +52,19 @@ public:
     std::string customImeName() {
         return customImeName_;
     }
-    std::string setCustomImeName(std::string name) {
+    void setCustomImeName(std::string name) {
         customImeName_ = name;
     }
 #endif
 protected:
     virtual std::vector<std::string> otherNecessaryImeList() { return {}; }
     std::vector<std::unique_ptr<VirtualKey>> keys_;
-private:
-    bool containInputMethod(std::vector<fcitx::InputMethodGroupItem> &items,
-                            const std::string &name);
 #if USE_CUSTOM_LAYOUT
     std::string customImeName_;
 #endif
+private:
+    bool containInputMethod(std::vector<fcitx::InputMethodGroupItem> &items,
+                            const std::string &name);
 };
 
 class I18nKeyboardSelector {
