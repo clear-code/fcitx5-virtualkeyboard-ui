@@ -14,3 +14,15 @@ Configurable=True
 0=xcb
 1=wayland
 2=notificationitem
+
+[US]
+Name=keyboard-us
+Layout=/usr/share/fcitx5/addon/virtualkeyboardui-us.ext.json
+
+[RU]
+Name=keyboard-ru
+Layout=/usr/share/fcitx5/addon/virtualkeyboardui-ru.ext.json
+
+[KR]
+Name=hangul
+Layout=/usr/share/fcitx5/addon/virtualkeyboardui-ko.ext.json
