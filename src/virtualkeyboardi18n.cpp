@@ -4,7 +4,9 @@
  * SPDX-License-Identifier: LGPL-2.1-or-later
  *
  */
+#include <fcntl.h> // O_RDONLY
 #include "fcitx-utils/stringutils.h"
+#include "fcitx-config/iniparser.h"
 #include "virtualkeyboardi18n.h"
 #include "virtualkeyboard.h"
 #include "virtualkeyboardus.h"
@@ -13,6 +15,7 @@
 #include "virtualkeyboardrussian.h"
 #include "virtualkeyboardhangul.h"
 #include "virtualkeyboardchewing.h"
+#include "virtualkeyboardcustom.h"
 
 namespace fcitx::classicui {
 
@@ -37,9 +40,90 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::selectByType(KeyboardType
     return {new NullI18nKeyboard(), false};
 }
 
+#if USE_CUSTOM_LAYOUT
+std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
+    fcitx::InputMethodGroup &group,
+    std::vector<fcitx::InputMethodGroupItem> &inputMethodItems
+#else
 std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
     std::vector<fcitx::InputMethodGroupItem> &inputMethodItems
+#endif
 ) {
+#if USE_CUSTOM_LAYOUT
+    // Select custom keyboard layout when keyboard configuration
+    // is matched with virtualkeyboardui.conf.
+    //
+    // If section name matched with current ime name (e.g. keyboard-us)
+    // [keyboard-us]
+    // Layout=PATH_TO_JSON (e.g. /opt/fcitx5/share/fcitx5/addon/virtualkeyboardui-us.ext.json
+    auto file = StandardPath::global().open(
+        StandardPath::Type::PkgData,
+        stringutils::joinPath("addon", "virtualkeyboardui.conf"), O_RDONLY);
+    RawConfig config;
+    readFromIni(config, file.fd());
+    FCITX_KEYBOARD() << "I18nKeyboardSelector::select check virtualkeyboardui.conf";
+    // First, select from addon imes such as `anthy` or `pinyin`.
+    for (const auto &ime : inputMethodItems) {
+        auto isSimpleKeyboard = stringutils::startsWith(ime.name(), "keyboard-");
+        if (isSimpleKeyboard) continue;
+
+        if (!ime.name().empty() && ime.layout().empty()) {
+            FCITX_KEYBOARD() << "I18nKeyboardSelector::select Name:"
+                             << ime.name() << " Layout: " << ime.layout();
+            for (auto &uniqueName : config.subItems()) {
+                FCITX_KEYBOARD() << "current virtualkeyboardui.conf section name: " << uniqueName;
+                const auto *name = config.valueByPath(
+                    stringutils::joinPath(uniqueName, "Name"));
+                const auto *layout = config.valueByPath(
+                    stringutils::joinPath(uniqueName, "Layout"));
+
+                if (uniqueName == group.name() && *name == ime.name() && !layout->empty()) {
+                    FCITX_KEYBOARD() << "I18nKeyboardSelector::select matched ["
+                                     << group.name() << "] section in virtualkeyboardui.conf";
+                    auto isCustomKeyboard =
+                        stringutils::endsWith(*layout, ".json");
+                    if (isCustomKeyboard) {
+                        FCITX_KEYBOARD() << "I18nKeyboardSelector::select use " << layout;
+                        CustomKeyboard *custom = new CustomKeyboard(layout->c_str());
+                        custom->setCustomImeName(ime.name());
+                        return {custom, true};
+                    }
+                }
+            }
+        }
+    }
+    // Second, select from simple keyboards such as `keyboard-us`.
+    for (const auto &ime : inputMethodItems) {
+        auto isSimpleKeyboard = stringutils::startsWith(ime.name(), "keyboard-");
+        if (!isSimpleKeyboard) continue;
+
+        if (!ime.name().empty() && ime.layout().empty()) {
+            FCITX_KEYBOARD() << "I18nKeyboardSelector::select Name:"
+                             << ime.name() << " Layout: " << ime.layout();
+            for (auto &uniqueName : config.subItems()) {
+                FCITX_KEYBOARD() << "current virtualkeyboardui.conf section name: " << uniqueName;
+                const auto *name = config.valueByPath(
+                    stringutils::joinPath(uniqueName, "Name"));
+                const auto *layout = config.valueByPath(
+                    stringutils::joinPath(uniqueName, "Layout"));
+
+                if (uniqueName == group.name() && *name == ime.name() && !layout->empty()) {
+                    FCITX_KEYBOARD() << "I18nKeyboardSelector::select matched ["
+                                     << group.name() << "] section in virtualkeyboardui.conf";
+                    auto isCustomKeyboard =
+                        stringutils::endsWith(*layout, ".json");
+                    if (isCustomKeyboard) {
+                        FCITX_KEYBOARD() << "I18nKeyboardSelector::select use " << layout;
+                        CustomKeyboard *custom = new CustomKeyboard(layout->c_str());
+                        custom->setCustomImeName(ime.name());
+                        return {custom, true};
+                    }
+                }
+            }
+        }
+    }
+#endif
+
     // First, select from addon imes such as `anthy` or `pinyin`.
     for (const auto &ime : inputMethodItems)
     {
@@ -47,6 +131,8 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
         if (isSimpleKeyboard) continue;
 
         if (canSelect(inputMethodItems, ime.name())) {
+            FCITX_KEYBOARD() << "I18nKeyboardSelector::select check First choice Name:"
+                             << ime.name() << " Layout: " << ime.layout();
             return selectByType(getTypeByName(ime.name()));
         }
     }
@@ -58,9 +144,33 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
         if (!isSimpleKeyboard) continue;
 
         if (canSelect(inputMethodItems, ime.name())) {
+            FCITX_KEYBOARD() << "I18nKeyboardSelector::select check Second choice Name:"
+                             << ime.name() << " Layout: " << ime.layout();
             return selectByType(getTypeByName(ime.name()));
         }
     }
+
+#if USE_CUSTOM_LAYOUT
+    // Third, select from custom keyboard such as layout JSON.
+    // e.g. ~/.config/fcitx5/profile
+    // Name=chewing
+    // Layout=/opt/fcitx5/share/fcitx5/addon/layout.json
+    FCITX_KEYBOARD() << "I18nKeyboardSelector::select check Third choice";
+    for (const auto &ime : inputMethodItems) {
+        if (!ime.layout().empty()) {
+            auto isCustomKeyboard =
+                stringutils::endsWith(ime.layout(), ".json");
+            if (!isCustomKeyboard)
+                continue;
+
+            FCITX_KEYBOARD() << "I18nKeyboardSelector::select Use third choice, CustomKeyboard Name:"
+                             << ime.name() << " Layout: " << ime.layout();
+            CustomKeyboard *custom = new CustomKeyboard(ime.layout().c_str());
+            custom->setCustomImeName(ime.name());
+            return {custom, true};
+        }
+    }
+#endif
 
     return selectByType(KeyboardType::Unknown);
 }

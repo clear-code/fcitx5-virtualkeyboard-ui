@@ -9,6 +9,19 @@
 namespace fcitx::classicui {
 
 void ChewingKeyboard::updateKeys() {
+#if USE_CUSTOM_LAYOUT
+    if (mode_ == ChewingKeyboardMode::Text) {
+        FCITX_KEYBOARD() << "ChewingKeyboard::mode_: Text";
+        setLayerKeys(static_cast<int>(ChewingKeyboardMode::Text));
+        return;
+    }
+    if (isAdditionalMarkOn()) {
+        FCITX_KEYBOARD() << "HangulKeyboard::mode_: Text";
+        setLayerKeys(2);
+    } else {
+        setLayerKeys(static_cast<int>(ChewingKeyboardMode::Mark));
+    }
+#else
     if (mode_ == ChewingKeyboardMode::Text) {
         setTextKeys();
         return;
@@ -18,7 +31,20 @@ void ChewingKeyboard::updateKeys() {
     } else {
         setMarkKeys();
     }
+#endif
 }
+
+#if USE_CUSTOM_LAYOUT
+void ChewingKeyboard::setLayerKeys(size_t offset) {
+    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    keys_.clear();
+    loader_->load(offset);
+    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    for (size_t i = 0; i < loader_->keys().size(); i++) {
+        keys_.emplace_back(loader_->keys()[i]);
+    }
+}
+#endif
 
 void ChewingKeyboard::switchMode() {
     if (mode_ == ChewingKeyboardMode::Text) {
@@ -35,43 +61,46 @@ void ChewingKeyboard::toggleMark() {
     updateKeys();
 }
 
-const char* ChewingNumberKey::label(VirtualKeyboard *keyboard) const {
-    // `ㄅ` is NumberKey of `1`, and `1` is used for selecting a candidate while selecting candidates.
-    // So need to change the label while selecting candidates.
-    if (keyboard->isSeletingCandidates())
-    {
+const char *ChewingNumberKey::label(VirtualKeyboard *keyboard) const {
+    // `ㄅ` is NumberKey of `1`, and `1` is used for selecting a candidate while
+    // selecting candidates. So need to change the label while selecting
+    // candidates.
+    if (keyboard->isSeletingCandidates()) {
         return number_.c_str();
     }
 
     return label_.c_str();
 }
 
-void ChewingNumPadKey::click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) {
+void ChewingNumPadKey::click(VirtualKeyboard *keyboard,
+                             InputContext *inputContext, bool isRelease) {
     FCITX_KEYBOARD() << "ChewingNumPadKey pushed";
 
     // In order to numpad-keys can select candidates too.
-    // Number sym keys input chewings such as `ㄅ`, so we need `commitString` to input number chars.
+    // Number sym keys input chewings such as `ㄅ`, so we need `commitString` to
+    // input number chars.
     if (keyboard->isSeletingCandidates()) {
         auto event = KeyEvent(inputContext, fcitx::Key(name_), isRelease);
         inputContext->keyEvent(event);
         return;
     }
 
-    if (isRelease) return;
+    if (isRelease)
+        return;
 
     inputContext->commitString(label(keyboard));
 }
 
-const char* ChewingEnterKey::label(VirtualKeyboard *keyboard) const {
+const char *ChewingEnterKey::label(VirtualKeyboard *keyboard) const {
     return keyboard->isPreediting() ? "確認" : "換行";
 }
 
-void ChewingEnterKey::click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) {
+void ChewingEnterKey::click(VirtualKeyboard *keyboard,
+                            InputContext *inputContext, bool isRelease) {
     // In fcitx5-chewing, EnterKey does nothing while selecting candidates.
     // This is wierd because EnterKey displays `確認`.
     // So send `Up` key in order to cancel selecting.
-    if (keyboard->isSeletingCandidates())
-    {
+    if (keyboard->isSeletingCandidates()) {
         auto event = KeyEvent(inputContext, fcitx::Key("Up"), isRelease);
         inputContext->keyEvent(event);
         return;
@@ -80,18 +109,20 @@ void ChewingEnterKey::click(VirtualKeyboard *keyboard, InputContext *inputContex
     super::click(keyboard, inputContext, isRelease);
 }
 
-const char* ChewingSpaceKey::label(VirtualKeyboard *keyboard) const {
+const char *ChewingSpaceKey::label(VirtualKeyboard *keyboard) const {
     return keyboard->isPreediting() ? "一聲/變換" : "空格";
 }
 
-void ChewingModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+void ChewingModeSwitchKey::switchState(VirtualKeyboard *keyboard,
+                                       InputContext *) {
     keyboard->i18nKeyboard<ChewingKeyboard>()->switchMode();
     // Because this switching changes the size of the keyboard.
     keyboard->updateInputPanel();
 }
 
 int ChewingModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
-    if (keyboard->i18nKeyboard<ChewingKeyboard>()->mode() == ChewingKeyboardMode::Text) {
+    if (keyboard->i18nKeyboard<ChewingKeyboard>()->mode() ==
+        ChewingKeyboardMode::Text) {
         return 0;
     }
     return 1;
@@ -105,6 +136,8 @@ bool ChewingMarkToggleKey::isOn(VirtualKeyboard *keyboard) {
     return keyboard->i18nKeyboard<ChewingKeyboard>()->isAdditionalMarkOn();
 }
 
+#if !USE_CUSTOM_LAYOUT
+// clang-format off
 void ChewingKeyboard::setTextKeys() {
     keys_.clear();
     keys_.emplace_back(new ChewingNumberKey("ㄅ", "1", 10));
@@ -311,5 +344,6 @@ void ChewingKeyboard::setAdditionalMarkKeys() {
     keys_.emplace_back(new ChewingNumPadKey("0")); keys_.back()->setCustomLayout(2.0);
     keys_.emplace_back(new MarkKey("."));
 }
+#endif
 
 }

@@ -20,6 +20,10 @@ public:
     DummyKey() {
         visible_ = false;
     }
+    DummyKey(double width) {
+        visible_ = false;
+        width_ = width;
+    }
     const char* label(VirtualKeyboard *) const override { return ""; }
     void click(VirtualKeyboard *, InputContext *, bool) override {}
 };
@@ -114,8 +118,25 @@ public:
         label_(label),
         upperLabel_(upperLabel) {}
 
+    /// Derived constructor for specifying width
+    NormalKey(
+        const std::string &label,
+        uint32_t code,
+        const std::string &upperLabel,
+        bool useLabelAsKeyName,
+        double width
+    ) : KeyByNameAndCode(
+            useLabelAsKeyName ? label : "",
+            code,
+            useLabelAsKeyName ? upperLabel : ""
+        ),
+        label_(label),
+        upperLabel_(upperLabel) { width_ = width; }
+
     virtual const char* label(VirtualKeyboard *keyboard) const override;
     virtual void click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) override;
+    const char *label() { return label_.c_str(); }
+    const char *upperLabel() { return upperLabel_.c_str(); }
 
 protected:
     /// Text for display.
@@ -243,6 +264,7 @@ protected:
 class ShiftToggleKey : public ToggleKey {
 public:
     ShiftToggleKey() {}
+    ShiftToggleKey(double width) { width_ = width; }
     const char* label(VirtualKeyboard *) const override { return u8"\u21E7"; }
 
 protected:
@@ -269,6 +291,29 @@ protected:
     virtual void switchState(VirtualKeyboard *keyboard, InputContext *inputContext) = 0;
     virtual int currentIndex(VirtualKeyboard *keyboard) = 0;
 };
+
+#if USE_CUSTOM_LAYOUT
+class ModeSwitchKey : public SwitchKey {
+public:
+    ModeSwitchKey(const char *label, const int numberOfStates,
+                  std::vector<std::string> stateLabels)
+        : SwitchKey(), label_(label), numberOfStates_(numberOfStates),
+          stateLabels_(stateLabels) {}
+    const char *label(VirtualKeyboard *) const override { return label_; }
+
+protected:
+    const char *label_;
+    int numberOfStates_;
+    std::vector<std::string> stateLabels_;
+    int numberOfStates() const override { return numberOfStates_; }
+    const char *stateLabel(int index) const override {
+        return (stateLabels_[index]).c_str();
+    }
+    void switchState(VirtualKeyboard *keyboard,
+                     InputContext *inputContext) override;
+    int currentIndex(VirtualKeyboard *keyboard) override;
+};
+#endif
 
 class LanguageSwitchKey : public VirtualKey {
 public:

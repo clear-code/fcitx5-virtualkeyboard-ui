@@ -1,0 +1,15 @@
+[
+  {
+    "Keyboard": {
+      "label": "JP",
+      "languageCode": "ja",
+      "numberOfLayers": 2,
+      "layerOffset": [
+        1,
+        5
+      ]
+    },
+    "MarkKey": null
+  },
+  []
+]

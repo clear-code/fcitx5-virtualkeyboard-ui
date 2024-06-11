@@ -29,10 +29,12 @@ pkg_check_modules(Cairo IMPORTED_TARGET cairo)
 pkg_check_modules(Pango IMPORTED_TARGET pango pangocairo)
 pkg_check_modules(GdkPixbuf IMPORTED_TARGET gdk-pixbuf-2.0)
 pkg_check_modules(GioUnix IMPORTED_TARGET gio-unix-2.0)
+pkg_check_modules(JsonC IMPORTED_TARGET json-c)
 
 option(ENABLE_X11 "Enable X11 support" On)
 option(ENABLE_WAYLAND "Enable wayland support" On)
 option(INSTALL_THEME "Install theme files" Off)
+option(ENABLE_CUSTOM_LAYOUT "Use custom keyboard layout files (JSON)" Off)
 
 if (ENABLE_X11)
     set(REQUIRED_XKBCOMMON_COMPONENTS ${REQUIRED_XKBCOMMON_COMPONENTS} X11)
@@ -62,5 +64,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DI
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(src)
+if (ENABLE_CUSTOM_LAYOUT)
+    enable_testing()
+    add_subdirectory(test)
+endif()
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

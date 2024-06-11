@@ -91,21 +91,48 @@ bool VirtualKeyboard::syncState() {
     FCITX_KEYBOARD() << "Try to sync state.";
     auto imItems = instance_->inputMethodManager().currentGroup().inputMethodList();
 
-    auto [newI18nKeyboard, hasFound] = i18nKeyboardSelector_.select(imItems);
-    if (hasFound && newI18nKeyboard->type() != i18nKeyboard_->type()) {
+#if USE_CUSTOM_LAYOUT
+    auto group = instance_->inputMethodManager().currentGroup();
+    auto [newI18nKeyboard, hasFound] = i18nKeyboardSelector_.select(group, imItems);
+    if (hasFound &&  ((newI18nKeyboard->type() != i18nKeyboard_->type()) ||
+                      (newI18nKeyboard->type() == KeyboardType::Custom &&
+                       newI18nKeyboard->customImeName() != i18nKeyboard_->customImeName()))) {
+        // case 1. KeyboardType is changed
+        // case 2. KeyboardType::Custom and IME name (anthy, keyboard-ru and so on)
+        FCITX_KEYBOARD() << "Keyboard found, call setI18nKeyboard(newI18nKeyboard)";
         setI18nKeyboard(newI18nKeyboard);
         return true;
     }
+#else
+    auto [newI18nKeyboard, hasFound] = i18nKeyboardSelector_.select(imItems);
+    if (hasFound && newI18nKeyboard->type() != i18nKeyboard_->type()) {
+        FCITX_KEYBOARD() << "Keyboard found and changed: call setI18nKeyboard(newI18nKeyboard)";
+        setI18nKeyboard(newI18nKeyboard);
+        return true;
+    }
+#endif
 
     auto curImName = instance_->currentInputMethod();
 
+    FCITX_KEYBOARD() << "Keyboard has not changed: call syncState: " << curImName;
     i18nKeyboard_->syncState(this, curImName);
     return false;
 }
 
 void VirtualKeyboard::setI18nKeyboard(I18nKeyboard *i18nKeyboard) {
+#if USE_CUSTOM_LAYOUT
+    if (i18nKeyboard->type() == KeyboardType::Custom) {
+        // KeyboardType::Custom is special type and not listed in imeNames.
+        FCITX_KEYBOARD() << "Set I18nKeyboard:" << i18nKeyboard->customImeName();
+        setCurrentInputMethod(i18nKeyboard->customImeName());
+    } else {
+        FCITX_KEYBOARD() << "Set I18nKeyboard:" << imeNames[i18nKeyboard->type()];
+        setCurrentInputMethod(imeNames[i18nKeyboard->type()]);
+    }
+#else
     FCITX_KEYBOARD() << "Set I18nKeyboard:" << imeNames[i18nKeyboard->type()];
     setCurrentInputMethod(imeNames[i18nKeyboard->type()]);
+#endif
     i18nKeyboard_.reset(i18nKeyboard);
     i18nKeyboard_->updateKeys();
 }

@@ -9,6 +9,18 @@
 namespace fcitx::classicui {
 
 void PinyinKeyboard::updateKeys() {
+#if USE_CUSTOM_LAYOUT
+    if (mode_ == PinyinKeyboardMode::Text) {
+        FCITX_KEYBOARD() << "PinyinKeyboard::mode_: Text";
+        setLayerKeys(static_cast<int>(PinyinKeyboardMode::Text));
+        return;
+    }
+    if (isAdditionalMarkOn()) {
+        setLayerKeys(static_cast<int>(PinyinKeyboardMode::AdditionalMark));
+    } else {
+        setLayerKeys(static_cast<int>(PinyinKeyboardMode::Mark));
+    }
+#else
     if (mode_ == PinyinKeyboardMode::Text) {
         setTextKeys();
         return;
@@ -18,6 +30,7 @@ void PinyinKeyboard::updateKeys() {
     } else {
         setMarkKeys();
     }
+#endif
 }
 
 void PinyinKeyboard::switchMode() {
@@ -35,11 +48,11 @@ void PinyinKeyboard::toggleMark() {
     updateKeys();
 }
 
-const char* PinyinSpaceKey::label(VirtualKeyboard *keyboard) const {
+const char *PinyinSpaceKey::label(VirtualKeyboard *keyboard) const {
     return keyboard->isPreediting() ? "选定" : "空格";
 }
 
-const char* PinyinEnterKey::label(VirtualKeyboard *keyboard) const {
+const char *PinyinEnterKey::label(VirtualKeyboard *keyboard) const {
     return keyboard->isPreediting() ? "确认" : "换行";
 }
 
@@ -51,17 +64,31 @@ bool PinyinMarkToggleKey::isOn(VirtualKeyboard *keyboard) {
     return keyboard->i18nKeyboard<PinyinKeyboard>()->isAdditionalMarkOn();
 }
 
-void PinyinModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+void PinyinModeSwitchKey::switchState(VirtualKeyboard *keyboard,
+                                      InputContext *) {
     keyboard->i18nKeyboard<PinyinKeyboard>()->switchMode();
 }
 
 int PinyinModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
-    if (keyboard->i18nKeyboard<PinyinKeyboard>()->mode() == PinyinKeyboardMode::Text) {
+    if (keyboard->i18nKeyboard<PinyinKeyboard>()->mode() ==
+        PinyinKeyboardMode::Text) {
         return 0;
     }
     return 1;
 }
 
+#if USE_CUSTOM_LAYOUT
+void PinyinKeyboard::setLayerKeys(size_t offset) {
+    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    keys_.clear();
+    loader_->load(offset);
+    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    for (size_t i = 0; i < loader_->keys().size(); i++) {
+        keys_.emplace_back(loader_->keys()[i]);
+    }
+}
+#else
+// clang-format off
 void PinyinKeyboard::setTextKeys() {
     keys_.clear();
     keys_.emplace_back(new NormalKey("q", 24, "Q", true));
@@ -253,5 +280,6 @@ void PinyinKeyboard::setAdditionalMarkKeys() {
     keys_.emplace_back(new NumberKey("0")); keys_.back()->setCustomLayout(2.0);
     keys_.emplace_back(new MarkKey("."));
 }
+#endif
 
 }

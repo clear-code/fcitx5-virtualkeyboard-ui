@@ -1,6 +1,7 @@
 if (INSTALL_THEME)
     add_subdirectory(themes)
 endif()
+add_subdirectory(keyboards)
 
 set(VIRTUALKEYBOARDUI_WAYLAND_SRCS)
 set(VIRTUALKEYBOARDUI_WAYLAND_LIBS)
@@ -21,6 +22,10 @@ if (ENABLE_X11)
         XCB::AUX XCB::ICCCM XCB::XINERAMA XCB::RANDR XCB::EWMH)
 endif()
 
+if (ENABLE_CUSTOM_LAYOUT)
+    set(VIRTUALKEYBOARDUI_WAYLAND_SRCS ${VIRTUALKEYBOARDUI_WAYLAND_SRCS} virtualkeyboardlayout.cpp virtualkeyboardcustom.cpp)
+endif()
+
 add_library(virtualkeyboardui MODULE
     classicui.cpp window.cpp theme.cpp inputwindow.cpp virtualkeyboard.cpp virtualkeygeneral.cpp
     virtualkeyboardi18n.cpp virtualkeyboardanthy.cpp virtualkeyboardpinyin.cpp virtualkeyboardrussian.cpp
@@ -33,10 +38,18 @@ else()
 set(CAIRO_EGL_LIBRARY)
 endif()
 
+if (ENABLE_CUSTOM_LAYOUT)
+    set(FCITX_INSTALL_PKGDATADIR "${CMAKE_INSTALL_PREFIX}/share/fcitx5")
+    target_compile_definitions(virtualkeyboardui PUBLIC FCITX_INSTALL_PKGDATADIR="${FCITX_INSTALL_PKGDATADIR}")
+    target_compile_definitions(virtualkeyboardui PUBLIC USE_CUSTOM_LAYOUT=1)
+    target_compile_definitions(virtualkeyboardui PUBLIC "$<$<CONFIG:DEBUG>:DEBUG>")
+endif()
+
 target_link_libraries(virtualkeyboardui
     Fcitx5::Core
     PkgConfig::Cairo PkgConfig::Pango
     PkgConfig::GdkPixbuf PkgConfig::GioUnix
+    PkgConfig::JsonC
     Fcitx5::Module::NotificationItem
     ${CAIRO_EGL_LIBRARY}
     ${VIRTUALKEYBOARDUI_WAYLAND_LIBS}

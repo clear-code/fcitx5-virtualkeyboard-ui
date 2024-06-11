@@ -1,0 +1,2569 @@
+[
+  {
+    "// The layout definition for Japanese keyboard": "Designed for fcitx5-virtualkeyboard-ui",
+    "Keyboard": {
+      "label": "JP",
+      "languageCode": "ja",
+      "numberOfLayers": 6,
+      "layerOffset": [
+        1,
+        5,
+        9,
+        13,
+        17,
+        22
+      ]
+    },
+    "NormalKey": {
+      "width": 60.0,
+      "useLabelAsKeyName": true
+    }
+  },
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "NormalKey",
+      "code": 24,
+      "upperLabel": "Q"
+    },
+    "q",
+    {
+      "class": "NormalKey",
+      "code": 25,
+      "upperLabel": "W"
+    },
+    "w",
+    {
+      "class": "NormalKey",
+      "code": 26,
+      "upperLabel": "E"
+    },
+    "e",
+    {
+      "class": "NormalKey",
+      "code": 27,
+      "upperLabel": "R"
+    },
+    "r",
+    {
+      "class": "NormalKey",
+      "code": 28,
+      "upperLabel": "T"
+    },
+    "t",
+    {
+      "class": "NormalKey",
+      "code": 29,
+      "upperLabel": "Y"
+    },
+    "y",
+    {
+      "class": "NormalKey",
+      "code": 30,
+      "upperLabel": "U"
+    },
+    "u",
+    {
+      "class": "NormalKey",
+      "code": 31,
+      "upperLabel": "I"
+    },
+    "i",
+    {
+      "class": "NormalKey",
+      "code": 32,
+      "upperLabel": "O"
+    },
+    "o",
+    {
+      "class": "NormalKey",
+      "code": 33,
+      "upperLabel": "P"
+    },
+    "p",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "7",
+      "zenkakuMark": "７"
+    },
+    "7",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "8",
+      "zenkakuMark": "８"
+    },
+    "8",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "9",
+      "zenkakuMark": "９"
+    },
+    "9"
+  ],
+  [
+    {
+      "x": 0.5,
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "NormalKey",
+      "code": 38,
+      "upperLabel": "A"
+    },
+    "a",
+    {
+      "class": "NormalKey",
+      "code": 39,
+      "upperLabel": "S"
+    },
+    "s",
+    {
+      "class": "NormalKey",
+      "code": 40,
+      "upperLabel": "D"
+    },
+    "d",
+    {
+      "class": "NormalKey",
+      "code": 41,
+      "upperLabel": "F"
+    },
+    "f",
+    {
+      "class": "NormalKey",
+      "code": 42,
+      "upperLabel": "G"
+    },
+    "g",
+    {
+      "class": "NormalKey",
+      "code": 43,
+      "upperLabel": "H"
+    },
+    "h",
+    {
+      "class": "NormalKey",
+      "code": 44,
+      "upperLabel": "J"
+    },
+    "j",
+    {
+      "class": "NormalKey",
+      "code": 45,
+      "upperLabel": "K"
+    },
+    "k",
+    {
+      "class": "NormalKey",
+      "code": 46,
+      "upperLabel": "L"
+    },
+    "l",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "class": "EnterKey",
+      "scale": 1.5
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "4",
+      "zenkakuMark": "４"
+    },
+    "4",
+    {
+      "class": "NumberKey",
+      "zenkakuMark": "５"
+    },
+    "5",
+    {
+      "class": "NumberKey",
+      "zenkakuMark": "６"
+    },
+    "6"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ShiftToggleKey"
+    },
+    "⇧",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "NormalKey",
+      "code": 52,
+      "upperLabel": "Z"
+    },
+    "z",
+    {
+      "class": "NormalKey",
+      "code": 53,
+      "upperLabel": "X"
+    },
+    "x",
+    {
+      "class": "NormalKey",
+      "code": 54,
+      "upperLabel": "C"
+    },
+    "c",
+    {
+      "class": "NormalKey",
+      "code": 55,
+      "upperLabel": "V"
+    },
+    "v",
+    {
+      "class": "NormalKey",
+      "code": 56,
+      "upperLabel": "B"
+    },
+    "b",
+    {
+      "class": "NormalKey",
+      "code": 57,
+      "upperLabel": "N"
+    },
+    "n",
+    {
+      "class": "NormalKey",
+      "code": 58,
+      "upperLabel": "M"
+    },
+    "m",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "minus",
+      "zenkakuMark": "ー"
+    },
+    "-",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "JP",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "1",
+      "zenkakuMark": "１"
+    },
+    "1",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "2",
+      "zenkakuMark": "２"
+    },
+    "2",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "3",
+      "zenkakuMark": "３"
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyModeSwitchKey"
+    },
+    "A#",
+    {
+      "class": "ZenkakuHankakuKey"
+    },
+    "全角",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "period",
+      "zenkakuMark": "、"
+    },
+    ",",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "period",
+      "zenkakuMark": "。"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2.0,
+      "class": "SpaceKey",
+      "scale": 2.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "exclam",
+      "zenkakuMark": "！"
+    },
+    "!",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "question",
+      "zenkakuMark": "？"
+    },
+    "?",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "0",
+      "zenkakuMark": "０"
+    },
+    "0",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "period",
+      "zenkakuMark": "。"
+    },
+    ".",
+    {
+      "class": "AnthyNumpadModeSwitchKey"
+    },
+    "#S"
+  ],
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "class": "NormalKey",
+      "code": 24,
+      "upperLabel": "Q"
+    },
+    "q",
+    {
+      "class": "NormalKey",
+      "code": 25,
+      "upperLabel": "W"
+    },
+    "w",
+    {
+      "class": "NormalKey",
+      "code": 26,
+      "upperLabel": "E"
+    },
+    "e",
+    {
+      "class": "NormalKey",
+      "code": 27,
+      "upperLabel": "R"
+    },
+    "r",
+    {
+      "class": "NormalKey",
+      "code": 28,
+      "upperLabel": "T"
+    },
+    "t",
+    {
+      "class": "NormalKey",
+      "code": 29,
+      "upperLabel": "Y"
+    },
+    "y",
+    {
+      "class": "NormalKey",
+      "code": 30,
+      "upperLabel": "U"
+    },
+    "u",
+    {
+      "class": "NormalKey",
+      "code": 31,
+      "upperLabel": "I"
+    },
+    "i",
+    {
+      "class": "NormalKey",
+      "code": 32,
+      "upperLabel": "O"
+    },
+    "o",
+    {
+      "class": "NormalKey",
+      "code": 33,
+      "upperLabel": "P"
+    },
+    "p",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 3.0,
+      "class": "AnthyTypingMethodSwitchKey",
+      "scale": 3.0
+    },
+    "ローマ字かな"
+  ],
+  [
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "x": 0.5,
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "NormalKey",
+      "code": 38,
+      "upperLabel": "A"
+    },
+    "a",
+    {
+      "class": "NormalKey",
+      "code": 39,
+      "upperLabel": "S"
+    },
+    "s",
+    {
+      "class": "NormalKey",
+      "code": 40,
+      "upperLabel": "D"
+    },
+    "d",
+    {
+      "class": "NormalKey",
+      "code": 41,
+      "upperLabel": "F"
+    },
+    "f",
+    {
+      "class": "NormalKey",
+      "code": 42,
+      "upperLabel": "G"
+    },
+    "g",
+    {
+      "class": "NormalKey",
+      "code": 43,
+      "upperLabel": "H"
+    },
+    "h",
+    {
+      "class": "NormalKey",
+      "code": 44,
+      "upperLabel": "J"
+    },
+    "j",
+    {
+      "class": "NormalKey",
+      "code": 45,
+      "upperLabel": "K"
+    },
+    "k",
+    {
+      "class": "NormalKey",
+      "code": 46,
+      "upperLabel": "L"
+    },
+    "l",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "class": "EnterKey",
+      "scale": 1.5
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 3.0,
+      "class": "AnthyInputModeSwitchKey",
+      "scale": 3.0
+    },
+    "あアｱ"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ShiftToggleKey"
+    },
+    "⇧",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "NormalKey",
+      "code": 52,
+      "upperLabel": "Z"
+    },
+    "z",
+    {
+      "class": "NormalKey",
+      "code": 53,
+      "upperLabel": "X"
+    },
+    "x",
+    {
+      "class": "NormalKey",
+      "code": 54,
+      "upperLabel": "C"
+    },
+    "c",
+    {
+      "class": "NormalKey",
+      "code": 55,
+      "upperLabel": "V"
+    },
+    "v",
+    {
+      "class": "NormalKey",
+      "code": 56,
+      "upperLabel": "B"
+    },
+    "b",
+    {
+      "class": "NormalKey",
+      "code": 57,
+      "upperLabel": "N"
+    },
+    "n",
+    {
+      "class": "NormalKey",
+      "code": 58,
+      "upperLabel": "M"
+    },
+    "m",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "minus",
+      "zenkakuMark": "ー"
+    },
+    "-",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "JP",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "x": 3.0,
+      "class": "EmptyKey",
+      "scale": 3.0
+    }
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyModeSwitchKey"
+    },
+    "A#",
+    {
+      "class": "ZenkakuHankakuKey"
+    },
+    "全角",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "period",
+      "zenkakuMark": "、"
+    },
+    ",",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "period",
+      "zenkakuMark": "。"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2.0,
+      "class": "SpaceKey",
+      "scale": 2.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "exclam",
+      "zenkakuMark": "！"
+    },
+    "!",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "question",
+      "zenkakuMark": "？"
+    },
+    "?",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "w": 2,
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "w": 2.0,
+      "class": "EmptyKey",
+      "scale": 2.0
+    },
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyNumpadModeSwitchKey"
+    },
+    "#S"
+  ],
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "bracketleft",
+      "zenkakuMark": "「"
+    },
+    "[",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "bracketright",
+      "zenkakuMark": "」"
+    },
+    "]",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "braceleft",
+      "zenkakuMark": "｛"
+    },
+    "{",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "braceright",
+      "zenkakuMark": "｝"
+    },
+    "}",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "numbersign",
+      "zenkakuMark": "＃"
+    },
+    "#",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "percent",
+      "zenkakuMark": "％"
+    },
+    "%",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "asciicircum",
+      "zenkakuMark": "＾"
+    },
+    "^",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "asterisk",
+      "zenkakuMark": "＊"
+    },
+    "*",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "plus",
+      "zenkakuMark": "＋"
+    },
+    "+",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "equal",
+      "zenkakuMark": "＝"
+    },
+    "=",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "7",
+      "zenkakuMark": "７"
+    },
+    "7",
+    {
+      "class": "NumberKey",
+      "keyName": "8",
+      "zenkakuMark": "８"
+    },
+    "8",
+    {
+      "class": "NumberKey",
+      "keyName": "9",
+      "zenkakuMark": "９"
+    },
+    "9"
+  ],
+  [
+    {
+      "x": 0.5,
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "slash",
+      "zenkakuMark": "・"
+    },
+    "/",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "backslash",
+      "zenkakuMark": "＼"
+    },
+    "\\",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "colon",
+      "zenkakuMark": "："
+    },
+    ":",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "semicolon",
+      "zenkakuMark": "・"
+    },
+    ";",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "parenleft",
+      "zenkakuMark": "（"
+    },
+    "(",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "parenright",
+      "zenkakuMark": "）"
+    },
+    ")",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "ampersand",
+      "zenkakuMark": "＆"
+    },
+    "&",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "at",
+      "zenkakuMark": "＠"
+    },
+    "@",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "backslash",
+      "zenkakuMark": "＼"
+    },
+    "¥",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "scale": 1.5,
+      "class": "EnterKey"
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "4",
+      "zenkakuMark": "４"
+    },
+    "4",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "5",
+      "zenkakuMark": "５"
+    },
+    "5",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "6",
+      "zenkakuMark": "６"
+    },
+    "6"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ShiftToggleKey",
+      "scale": 1.0
+    },
+    "⇧",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "quotedbl",
+      "zenkakuMark": "”"
+    },
+    "\"",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "apostrophe",
+      "zenkakuMark": "’"
+    },
+    "'",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "underscore",
+      "zenkakuMark": "＿"
+    },
+    "_",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "bar",
+      "zenkakuMark": "｜"
+    },
+    "|",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "asciitilde",
+      "zenkakuMark": "〜"
+    },
+    "~",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "less",
+      "zenkakuMark": "＜"
+    },
+    "<",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "greater",
+      "zenkakuMark": "＞"
+    },
+    ">",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "minus",
+      "zenkakuMark": "ー"
+    },
+    "-",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "JP",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "1",
+      "zenkakuMark": "１"
+    },
+    "1",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "2",
+      "zenkakuMark": "２"
+    },
+    "2",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "3",
+      "zenkakuMark": "３"
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyModeSwitchKey"
+    },
+    "A#",
+    {
+      "class": "ZenkakuHankakuKey"
+    },
+    "全角",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "comma",
+      "zenkakuMark": "、"
+    },
+    ",",
+    {
+      "class": "MarkKey",
+      "keyName": "period",
+      "zenkakuMark": "。"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2,
+      "class": "SpaceKey",
+      "scale": 2.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "keyName": "exclam",
+      "zenkakuMark": "！"
+    },
+    "!",
+    {
+      "class": "MarkKey",
+      "keyName": "question",
+      "zenkakuMark": "？"
+    },
+    "?",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "0",
+      "zenkakuMark": "０"
+    },
+    "0",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "period",
+      "zenkakuMark": "。"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyNumpadModeSwitchKey"
+    },
+    "#S"
+  ],
+  [
+    {
+      "a": 7,
+      "f": 9,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "bracketleft",
+      "zenkakuMark": "「"
+    },
+    "[",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "bracketright",
+      "zenkakuMark": "」"
+    },
+    "]",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "braceleft",
+      "zenkakuMark": "｛"
+    },
+    "{",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "braceright",
+      "zenkakuMark": "｝"
+    },
+    "}",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "numbersign",
+      "zenkakuMark": "＃"
+    },
+    "#",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "percent",
+      "zenkakuMark": "％"
+    },
+    "%",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "asciicircum",
+      "zenkakuMark": "＾"
+    },
+    "^",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "asterisk",
+      "zenkakuMark": "＊"
+    },
+    "*",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "plus",
+      "zenkakuMark": "＋"
+    },
+    "+",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "equal",
+      "zenkakuMark": "＝"
+    },
+    "=",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 3.0,
+      "class": "AnthyTypingMethodSwitchKey",
+      "scale": 3.0
+    },
+    "ローマ字かな"
+  ],
+  [
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "x": 0.5,
+      "scale": 0.5,
+      "class": "DummyKey"
+    },
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "slash",
+      "zenkakuMark": "・"
+    },
+    "/",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "backslash",
+      "zenkakuMark": "＼"
+    },
+    "\\",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "colon",
+      "zenkakuMark": "："
+    },
+    ":",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "semicolon",
+      "zenkakuMark": "・"
+    },
+    ";",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "parenleft",
+      "zenkakuMark": "（"
+    },
+    "(",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "parenright",
+      "zenkakuMark": "）"
+    },
+    ")",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "ampersand",
+      "zenkakuMark": "＆"
+    },
+    "&",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "at",
+      "zenkakuMark": "＠"
+    },
+    "@",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "backslash",
+      "zenkakuMark": "＼"
+    },
+    "¥",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "w": 1.5,
+      "scale": 1.5,
+      "class": "EnterKey"
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "w": 3.0,
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyInputModeSwitchKey",
+      "scale": 3.0
+    },
+    "あアｱ"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ShiftToggleKey",
+      "scale": 1.0
+    },
+    "⇧",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "quotedbl",
+      "zenkakuMark": "”"
+    },
+    "\"",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "apostrophe",
+      "zenkakuMark": "’"
+    },
+    "'",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "underscore",
+      "zenkakuMark": "＿"
+    },
+    "_",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "bar",
+      "zenkakuMark": "｜"
+    },
+    "|",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "asciitilde",
+      "zenkakuMark": "〜"
+    },
+    "~",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "less",
+      "zenkakuMark": "＜"
+    },
+    "<",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "greater",
+      "zenkakuMark": "＞"
+    },
+    ">",
+    {
+      "class": "AnthyMarkKey",
+      "keyName": "minus",
+      "zenkakuMark": "ー"
+    },
+    "-",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "JP",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "x": 3.0,
+      "class": "EmptyKey",
+      "scale": 3.0
+    }
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyModeSwitchKey"
+    },
+    "A#",
+    {
+      "class": "ZenKakuHankakuKey"
+    },
+    "全角",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyMarkKey",
+      "keyName": "comma",
+      "zenkakuMark": "、"
+    },
+    ",",
+    {
+      "class": "MarkKey",
+      "keyName": "period",
+      "zenkakuMark": "。"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 2,
+      "class": "SpaceKey",
+      "scale": 2.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "keyName": "exclam",
+      "zenkakuMark": "！"
+    },
+    "!",
+    {
+      "class": "MarkKey",
+      "keyName": "question",
+      "zenkakuMark": "？"
+    },
+    "?",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "x": 2.0,
+      "class": "EmptyKey",
+      "scale": 2.0
+    },
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyNumpadModeSwitchKey"
+    },
+    "#S"
+  ],
+  [
+    {
+      "x": 0.4,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.4
+    },
+    {
+      "class": "AnthyKanaKey",
+      "code": 10,
+      "upperLabel": "",
+      "keyName": "1",
+      "upperName": "",
+      "isNumberKey": true
+    },
+    "ぬ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 11,
+      "upperLabel": "",
+      "keyName": "2",
+      "upperName": "",
+      "isNumberKey": true
+    },
+    "ふ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 12,
+      "upperLabel": "ぁ",
+      "keyName": "3",
+      "upperName": "numbersign",
+      "isNumberKey": true
+    },
+    "あ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 13,
+      "upperLabel": "ぅ",
+      "keyName": "4",
+      "upperName": "dollar",
+      "isNumberKey": true
+    },
+    "う",
+    {
+      "class": "AnthyKanaKey",
+      "code": 14,
+      "upperLabel": "ぇ",
+      "keyName": "5",
+      "upperName": "percent",
+      "isNumberKey": true
+    },
+    "え",
+    {
+      "class": "AnthyKanaKey",
+      "code": 15,
+      "upperLabel": "ぉ",
+      "keyName": "6",
+      "upperName": "ampersand",
+      "isNumberKey": true
+    },
+    "お",
+    {
+      "class": "AnthyKanaKey",
+      "code": 16,
+      "upperLabel": "ゃ",
+      "keyName": "7",
+      "upperName": "apostrophe",
+      "isNumberKey": true
+    },
+    "や",
+    {
+      "class": "AnthyKanaKey",
+      "code": 16,
+      "upperLabel": "ゅ",
+      "keyName": "8",
+      "upperName": "parenleft",
+      "isNumberKey": true
+    },
+    "ゆ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 17,
+      "upperLabel": "ょ",
+      "keyName": "9",
+      "upperName": "parenright",
+      "isNumberKey": true
+    },
+    "よ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 18,
+      "upperLabel": "を",
+      "keyName": "0",
+      "upperName": "asciitilde",
+      "isNumberKey": true
+    },
+    "わ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 19,
+      "upperLabel": "",
+      "keyName": "minus",
+      "upperName": ""
+    },
+    "ほ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 19,
+      "upperLabel": "",
+      "keyName": "asciicircum",
+      "upperName": ""
+    },
+    "へ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 19,
+      "upperLabel": "",
+      "keyName": "backslash",
+      "upperName": ""
+    },
+    "ー"
+  ],
+  [
+    {
+      "x": 0.4,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.4
+    },
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyKanaKey",
+      "code": 24,
+      "upperLabel": "",
+      "keyName": "q",
+      "upperName": "Q"
+    },
+    "た",
+    {
+      "class": "AnthyKanaKey",
+      "code": 25,
+      "upperLabel": "",
+      "keyName": "w",
+      "upperName": "W"
+    },
+    "て",
+    {
+      "class": "AnthyKanaKey",
+      "code": 26,
+      "upperLabel": "ぃ",
+      "keyName": "e",
+      "upperName": "E"
+    },
+    "い",
+    {
+      "class": "AnthyKanaKey",
+      "code": 27,
+      "upperLabel": "",
+      "keyName": "r",
+      "upperName": "R"
+    },
+    "す",
+    {
+      "class": "AnthyKanaKey",
+      "code": 28,
+      "upperLabel": "ヵ",
+      "keyName": "t",
+      "upperName": "T"
+    },
+    "か",
+    {
+      "class": "AnthyKanaKey",
+      "code": 29,
+      "upperLabel": "",
+      "keyName": "y",
+      "upperName": "Y"
+    },
+    "ん",
+    {
+      "class": "AnthyKanaKey",
+      "code": 30,
+      "upperLabel": "",
+      "keyName": "u",
+      "upperName": "U"
+    },
+    "な",
+    {
+      "class": "AnthyKanaKey",
+      "code": 31,
+      "upperLabel": "",
+      "keyName": "i",
+      "upperName": "I"
+    },
+    "に",
+    {
+      "class": "AnthyKanaKey",
+      "code": 32,
+      "upperLabel": "",
+      "keyName": "o",
+      "upperName": "O"
+    },
+    "ら",
+    {
+      "class": "AnthyKanaKey",
+      "code": 33,
+      "upperLabel": "",
+      "keyName": "p",
+      "upperName": "P"
+    },
+    "せ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 34,
+      "upperLabel": "",
+      "keyName": "at",
+      "upperName": ""
+    },
+    "゛",
+    {
+      "class": "AnthyKanaKey",
+      "code": 35,
+      "upperLabel": "「",
+      "keyName": "bracketleft",
+      "upperName": "braceleft"
+    },
+    "゜",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "7",
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "8",
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "9"
+  ],
+  [
+    {
+      "class": "AnthyKanaKey",
+      "code": 38,
+      "upperLabel": "",
+      "keyName": "a",
+      "upperName": "A"
+    },
+    "ち",
+    {
+      "class": "AnthyKanaKey",
+      "code": 39,
+      "upperLabel": "",
+      "keyName": "s",
+      "upperName": "S"
+    },
+    "と",
+    {
+      "class": "AnthyKanaKey",
+      "code": 40,
+      "upperLabel": "",
+      "keyName": "d",
+      "upperName": "D"
+    },
+    "し",
+    {
+      "class": "AnthyKanaKey",
+      "code": 41,
+      "upperLabel": "ゎ",
+      "keyName": "f",
+      "upperName": "F"
+    },
+    "は",
+    {
+      "class": "AnthyKanaKey",
+      "code": 42,
+      "upperLabel": "",
+      "keyName": "g",
+      "upperName": "G"
+    },
+    "き",
+    {
+      "class": "AnthyKanaKey",
+      "code": 43,
+      "upperLabel": "",
+      "keyName": "h",
+      "upperName": "H"
+    },
+    "く",
+    {
+      "class": "AnthyKanaKey",
+      "code": 44,
+      "upperLabel": "",
+      "keyName": "j",
+      "upperName": "J"
+    },
+    "ま",
+    {
+      "class": "AnthyKanaKey",
+      "code": 45,
+      "upperLabel": "",
+      "keyName": "k",
+      "upperName": "K"
+    },
+    "の",
+    {
+      "class": "AnthyKanaKey",
+      "code": 46,
+      "upperLabel": "",
+      "keyName": "l",
+      "upperName": "L"
+    },
+    "り",
+    {
+      "class": "AnthyKanaKey",
+      "code": 47,
+      "upperLabel": "",
+      "keyName": "semicolon",
+      "upperName": ""
+    },
+    "れ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 48,
+      "upperLabel": "",
+      "keyName": "colon",
+      "upperName": ""
+    },
+    "け",
+    {
+      "class": "AnthyKanaKey",
+      "code": 49,
+      "upperLabel": "」",
+      "keyName": "bracketright",
+      "upperName": "braceright"
+    },
+    "む",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "class": "EnterKey",
+      "scale": 1.4
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "4",
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "5",
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "6"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ShiftToggleKey"
+    },
+    "⇧",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyKanaKey",
+      "code": 52,
+      "upperLabel": "っ",
+      "keyName": "z",
+      "upperName": "Z"
+    },
+    "つ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 53,
+      "upperLabel": "",
+      "keyName": "x",
+      "upperName": "X"
+    },
+    "さ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 54,
+      "upperLabel": "",
+      "keyName": "c",
+      "upperName": "C"
+    },
+    "そ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 55,
+      "upperLabel": "ゐ",
+      "keyName": "v",
+      "upperName": "V"
+    },
+    "ひ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 56,
+      "upperLabel": "",
+      "keyName": "b",
+      "upperName": "B"
+    },
+    "こ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 57,
+      "upperLabel": "",
+      "keyName": "n",
+      "upperName": "N"
+    },
+    "み",
+    {
+      "class": "AnthyKanaKey",
+      "code": 58,
+      "upperLabel": "",
+      "keyName": "m",
+      "upperName": "M"
+    },
+    "も",
+    {
+      "class": "AnthyKanaKey",
+      "code": 59,
+      "upperLabel": "",
+      "keyName": "comma",
+      "upperName": ""
+    },
+    "ね",
+    {
+      "class": "AnthyKanaKey",
+      "code": 60,
+      "upperLabel": "",
+      "keyName": "period",
+      "upperName": ""
+    },
+    "る",
+    {
+      "class": "AnthyKanaKey",
+      "code": 61,
+      "upperLabel": "",
+      "keyName": "slash",
+      "upperName": ""
+    },
+    "め",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "JP",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "1",
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "2",
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "3"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyModeSwitchKey"
+    },
+    "A#",
+    {
+      "class": "ZenkakuHankakuKey"
+    },
+    "全角",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "code": 0,
+      "keyName": "less",
+      "withShift": true
+    },
+    "、",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 3.0,
+      "class": "SpaceKey",
+      "scale": 3.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "code": 0,
+      "keyName": "greater",
+      "withShift": true
+    },
+    "。",
+    {
+      "class": "AnthyKanaKey",
+      "code": 62,
+      "upperLabel": "",
+      "keyName": "underscore",
+      "upperName": "",
+      "scale": 1.25
+    },
+    "ろ",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "x": 0.5,
+      "scale": 0.5
+    },
+    {
+      "class": "AnthyKanaNumPadKey"
+    },
+    "0",
+    {
+      "class": "MarkKey"
+    },
+    ".",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyNumpadModeSwitchKey"
+    },
+    "#S"
+  ],
+  [
+    {
+      "x": 0.4,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.4
+    },
+    {
+      "class": "AnthyKanaKey",
+      "code": 10,
+      "upperLabel": "",
+      "keyName": "1",
+      "upperName": "",
+      "isNumberKey": true
+    },
+    "ぬ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 11,
+      "upperLabel": "",
+      "keyName": "2",
+      "upperName": "",
+      "isNumberKey": true
+    },
+    "ふ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 12,
+      "upperLabel": "ぁ",
+      "keyName": "3",
+      "upperName": "numbersign",
+      "isNumberKey": true
+    },
+    "あ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 13,
+      "upperLabel": "ぅ",
+      "keyName": "4",
+      "upperName": "dollar",
+      "isNumberKey": true
+    },
+    "う",
+    {
+      "class": "AnthyKanaKey",
+      "code": 14,
+      "upperLabel": "ぇ",
+      "keyName": "5",
+      "upperName": "percent",
+      "isNumberKey": true
+    },
+    "え",
+    {
+      "class": "AnthyKanaKey",
+      "code": 15,
+      "upperLabel": "ぉ",
+      "keyName": "6",
+      "upperName": "ampersand",
+      "isNumberKey": true
+    },
+    "お",
+    {
+      "class": "AnthyKanaKey",
+      "code": 16,
+      "upperLabel": "ゃ",
+      "keyName": "7",
+      "upperName": "apostrophe",
+      "isNumberKey": true
+    },
+    "や",
+    {
+      "class": "AnthyKanaKey",
+      "code": 16,
+      "upperLabel": "ゅ",
+      "keyName": "8",
+      "upperName": "parenleft",
+      "isNumberKey": true
+    },
+    "ゆ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 17,
+      "upperLabel": "ょ",
+      "keyName": "9",
+      "upperName": "parenright",
+      "isNumberKey": true
+    },
+    "よ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 18,
+      "upperLabel": "を",
+      "keyName": "0",
+      "upperName": "asciitilde",
+      "isNumberKey": true
+    },
+    "わ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 19,
+      "upperLabel": "",
+      "keyName": "minus",
+      "upperName": ""
+    },
+    "ほ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 19,
+      "upperLabel": "",
+      "keyName": "asciicircum",
+      "upperName": ""
+    },
+    "へ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 19,
+      "upperLabel": "",
+      "keyName": "backslash",
+      "upperName": ""
+    },
+    "ー"
+  ],
+  [
+    {
+      "x": 0.4,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.4
+    },
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyKanaKey",
+      "code": 24,
+      "upperLabel": "",
+      "keyName": "q",
+      "upperName": "Q"
+    },
+    "た",
+    {
+      "class": "AnthyKanaKey",
+      "code": 25,
+      "upperLabel": "",
+      "keyName": "w",
+      "upperName": "W"
+    },
+    "て",
+    {
+      "class": "AnthyKanaKey",
+      "code": 26,
+      "upperLabel": "ぃ",
+      "keyName": "e",
+      "upperName": "E"
+    },
+    "い",
+    {
+      "class": "AnthyKanaKey",
+      "code": 27,
+      "upperLabel": "",
+      "keyName": "r",
+      "upperName": "R"
+    },
+    "す",
+    {
+      "class": "AnthyKanaKey",
+      "code": 28,
+      "upperLabel": "ヵ",
+      "keyName": "t",
+      "upperName": "T"
+    },
+    "か",
+    {
+      "class": "AnthyKanaKey",
+      "code": 29,
+      "upperLabel": "",
+      "keyName": "y",
+      "upperName": "Y"
+    },
+    "ん",
+    {
+      "class": "AnthyKanaKey",
+      "code": 30,
+      "upperLabel": "",
+      "keyName": "u",
+      "upperName": "U"
+    },
+    "な",
+    {
+      "class": "AnthyKanaKey",
+      "code": 31,
+      "upperLabel": "",
+      "keyName": "i",
+      "upperName": "I"
+    },
+    "に",
+    {
+      "class": "AnthyKanaKey",
+      "code": 32,
+      "upperLabel": "",
+      "keyName": "o",
+      "upperName": "O"
+    },
+    "ら",
+    {
+      "class": "AnthyKanaKey",
+      "code": 33,
+      "upperLabel": "",
+      "keyName": "p",
+      "upperName": "P"
+    },
+    "せ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 34,
+      "upperLabel": "",
+      "keyName": "at",
+      "upperName": ""
+    },
+    "゛",
+    {
+      "class": "AnthyKanaKey",
+      "code": 35,
+      "upperLabel": "「",
+      "keyName": "bracketleft",
+      "upperName": "braceleft"
+    },
+    "゜",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "BackSpaceKey"
+    },
+    "Back",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "w": 3.0,
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyTypingMethodSwitchKey",
+      "scale": 3.0
+    },
+    "ローマ字かな"
+  ],
+  [
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyKanaKey",
+      "code": 38,
+      "upperLabel": "",
+      "keyName": "a",
+      "upperName": "A"
+    },
+    "ち",
+    {
+      "class": "AnthyKanaKey",
+      "code": 39,
+      "upperLabel": "",
+      "keyName": "s",
+      "upperName": "S"
+    },
+    "と",
+    {
+      "class": "AnthyKanaKey",
+      "code": 40,
+      "upperLabel": "",
+      "keyName": "d",
+      "upperName": "D"
+    },
+    "し",
+    {
+      "class": "AnthyKanaKey",
+      "code": 41,
+      "upperLabel": "ゎ",
+      "keyName": "f",
+      "upperName": "F"
+    },
+    "は",
+    {
+      "class": "AnthyKanaKey",
+      "code": 42,
+      "upperLabel": "",
+      "keyName": "g",
+      "upperName": "G"
+    },
+    "き",
+    {
+      "class": "AnthyKanaKey",
+      "code": 43,
+      "upperLabel": "",
+      "keyName": "h",
+      "upperName": "H"
+    },
+    "く",
+    {
+      "class": "AnthyKanaKey",
+      "code": 44,
+      "upperLabel": "",
+      "keyName": "j",
+      "upperName": "J"
+    },
+    "ま",
+    {
+      "class": "AnthyKanaKey",
+      "code": 45,
+      "upperLabel": "",
+      "keyName": "k",
+      "upperName": "K"
+    },
+    "の",
+    {
+      "class": "AnthyKanaKey",
+      "code": 46,
+      "upperLabel": "",
+      "keyName": "l",
+      "upperName": "L"
+    },
+    "り",
+    {
+      "class": "AnthyKanaKey",
+      "code": 47,
+      "upperLabel": "",
+      "keyName": "semicolon",
+      "upperName": ""
+    },
+    "れ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 48,
+      "upperLabel": "",
+      "keyName": "colon",
+      "upperName": ""
+    },
+    "け",
+    {
+      "class": "AnthyKanaKey",
+      "code": 49,
+      "upperLabel": "」",
+      "keyName": "bracketright",
+      "upperName": "braceright"
+    },
+    "む",
+    {
+      "c": "#33b299",
+      "t": "#ffffff",
+      "class": "EnterKey",
+      "scale": 1.4
+    },
+    "Enter",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "w": 3.0,
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyInputModeSwitchKey",
+      "scale": 3.0
+    },
+    "あアｱ"
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "ShiftToggleKey"
+    },
+    "⇧",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "AnthyKanaKey",
+      "code": 52,
+      "upperLabel": "っ",
+      "keyName": "z",
+      "upperName": "Z"
+    },
+    "つ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 53,
+      "upperLabel": "",
+      "keyName": "x",
+      "upperName": "X"
+    },
+    "さ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 54,
+      "upperLabel": "",
+      "keyName": "c",
+      "upperName": "C"
+    },
+    "そ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 55,
+      "upperLabel": "ゐ",
+      "keyName": "v",
+      "upperName": "V"
+    },
+    "ひ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 56,
+      "upperLabel": "",
+      "keyName": "b",
+      "upperName": "B"
+    },
+    "こ",
+    {
+      "class": "AnthyKanaKey",
+      "code": 57,
+      "upperLabel": "",
+      "keyName": "n",
+      "upperName": "N"
+    },
+    "み",
+    {
+      "class": "AnthyKanaKey",
+      "code": 58,
+      "upperLabel": "",
+      "keyName": "m",
+      "upperName": "M"
+    },
+    "も",
+    {
+      "class": "AnthyKanaKey",
+      "code": 59,
+      "upperLabel": "",
+      "keyName": "comma",
+      "upperName": ""
+    },
+    "ね",
+    {
+      "class": "AnthyKanaKey",
+      "code": 60,
+      "upperLabel": "",
+      "keyName": "period",
+      "upperName": ""
+    },
+    "る",
+    {
+      "class": "AnthyKanaKey",
+      "code": 61,
+      "upperLabel": "",
+      "keyName": "slash",
+      "upperName": ""
+    },
+    "め",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "UpKey"
+    },
+    "↑",
+    {
+      "class": "LanguageSwitchKey"
+    },
+    "JP",
+    {
+      "x": 0.5,
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "scale": 0.5
+    },
+    {
+      "x": 3.0,
+      "class": "EmptyKey",
+      "scale": 3.0
+    }
+  ],
+  [
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyModeSwitchKey"
+    },
+    "A#",
+    {
+      "class": "ZenkakuHankakuKey"
+    },
+    "全角",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "code": 0,
+      "keyName": "less",
+      "withShift": true
+    },
+    "、",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "w": 3.0,
+      "class": "SpaceKey",
+      "scale": 3.0
+    },
+    "",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "MarkKey",
+      "code": 0,
+      "keyName": "greater",
+      "withShift": true
+    },
+    "。",
+    {
+      "class": "AnthyKanaKey",
+      "code": 62,
+      "upperLabel": "",
+      "keyName": "underscore",
+      "upperName": "",
+      "scale": 1.25
+    },
+    "ろ",
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "LeftKey"
+    },
+    "←",
+    {
+      "class": "DownKey"
+    },
+    "↓",
+    {
+      "class": "RightKey"
+    },
+    "→",
+    {
+      "c": "#cccccc",
+      "t": "#000000",
+      "class": "DummyKey",
+      "x": 0.5,
+      "scale": 0.5
+    },
+    {
+      "x": 2.0,
+      "class": "EmptyKey",
+      "scale": 2.0
+    },
+    {
+      "c": "#333333",
+      "t": "#ffffff",
+      "class": "AnthyNumpadModeSwitchKey"
+    },
+    "#S"
+  ]
+]

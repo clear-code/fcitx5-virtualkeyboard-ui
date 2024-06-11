@@ -10,6 +10,9 @@
 #include "virtualkeyboard.h"
 #include "virtualkeyboardi18n.h"
 #include "virtualkeygeneral.h"
+#if USE_CUSTOM_LAYOUT
+#include "virtualkeyboardlayout.h"
+#endif
 
 namespace fcitx {
 namespace classicui {
@@ -30,29 +33,35 @@ public:
     bool isAdditionalMarkOn() const { return isAdditionalMarkOn_; }
     void toggleMark();
 
+#if USE_CUSTOM_LAYOUT
+    ChewingKeyboard() : I18nKeyboard() {
+        const char *jsonPath =
+            FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-zh_TW.json";
+        FCITX_KEYBOARD() << "path of Traditional chinese keyboard layout file: "
+                         << jsonPath;
+        loader_ = new KeyboardLayout(jsonPath);
+    }
+#endif
+
 private:
+#if USE_CUSTOM_LAYOUT
+    void setLayerKeys(size_t offset);
+    KeyboardLayout *loader_;
+#else
     void setTextKeys();
     void setMarkKeys();
     void setAdditionalMarkKeys();
+#endif
     ChewingKeyboardMode mode_ = ChewingKeyboardMode::Text;
     bool isAdditionalMarkOn_ = false;
 };
 
 class ChewingNumberKey : public NormalKey {
 public:
-    ChewingNumberKey(
-        const std::string &label,
-        const std::string &number,
-        uint32_t code
-    ) : NormalKey(
-            label,
-            code,
-            "",
-            number,
-            ""
-        ),
-        number_(number) {}
-    const char* label(VirtualKeyboard *keyboard) const override;
+    ChewingNumberKey(const std::string &label, const std::string &number,
+                     uint32_t code)
+        : NormalKey(label, code, "", number, ""), number_(number) {}
+    const char *label(VirtualKeyboard *keyboard) const override;
 
 private:
     const std::string number_;
@@ -61,16 +70,16 @@ private:
 class ChewingNumPadKey : public NumberKey {
 public:
     ChewingNumPadKey(const std::string &number) : NumberKey(number) {}
-    void click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) override;
+    void click(VirtualKeyboard *keyboard, InputContext *inputContext,
+               bool isRelease) override;
 };
 
 class ChewingEnterKey : public EnterKey {
 public:
-    ChewingEnterKey() {
-        setFontSize(18);
-    }
-    const char* label(VirtualKeyboard *keyboard) const override;
-    void click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) override;
+    ChewingEnterKey() { setFontSize(18); }
+    const char *label(VirtualKeyboard *keyboard) const override;
+    void click(VirtualKeyboard *keyboard, InputContext *inputContext,
+               bool isRelease) override;
 
 private:
     typedef EnterKey super;
@@ -78,32 +87,29 @@ private:
 
 class ChewingSpaceKey : public SpaceKey {
 public:
-    ChewingSpaceKey() {
-        setFontSize(18);
-    }
-    const char* label(VirtualKeyboard *keyboard) const override;
+    ChewingSpaceKey() { setFontSize(18); }
+    const char *label(VirtualKeyboard *keyboard) const override;
 };
 
 class ChewingModeSwitchKey : public SwitchKey {
 public:
     ChewingModeSwitchKey() : SwitchKey() {}
-    const char* label(VirtualKeyboard *) const override { return "注#"; }
+    const char *label(VirtualKeyboard *) const override { return "注#"; }
 
 protected:
     int numberOfStates() const override { return 2; }
     const char *stateLabel(int index) const override {
         return index == 0 ? "注" : "#";
     }
-    void switchState(VirtualKeyboard *keyboard, InputContext *inputContext) override;
+    void switchState(VirtualKeyboard *keyboard,
+                     InputContext *inputContext) override;
     int currentIndex(VirtualKeyboard *keyboard) override;
 };
 
 class ChewingMarkToggleKey : public ToggleKey {
 public:
-    ChewingMarkToggleKey() {
-        setFontSize(18);
-    }
-    const char* label(VirtualKeyboard *) const override { return "更多"; }
+    ChewingMarkToggleKey() { setFontSize(18); }
+    const char *label(VirtualKeyboard *) const override { return "更多"; }
 
 protected:
     void toggle(VirtualKeyboard *keyboard, InputContext *inputContext) override;

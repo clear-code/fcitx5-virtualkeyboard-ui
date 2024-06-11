@@ -9,15 +9,29 @@
 namespace fcitx::classicui {
 
 void RussianKeyboard::updateKeys() {
+    FCITX_KEYBOARD() << "RussianKeyboard::updateKeys()";
+#if USE_CUSTOM_LAYOUT
+    FCITX_KEYBOARD() << "RussianKeyboard:: mode: " << static_cast<int>(mode_);
+    if (mode_ == RussianKeyboardMode::Mark) {
+        FCITX_KEYBOARD() << "RussianKeyboard::mode_: Mark";
+        setLayerKeys(static_cast<int>(RussianKeyboardMode::Mark));
+        return;
+    }
+
+    FCITX_KEYBOARD() << "RussianKeyboard::mode_: Text";
+    setLayerKeys(static_cast<int>(RussianKeyboardMode::Text));
+#else
     if (mode_ == RussianKeyboardMode::Mark) {
         setMarkKeys();
         return;
     }
 
     setCyrillicTextKeys();
+#endif
 }
 
 void RussianKeyboard::switchMode() {
+    FCITX_KEYBOARD() << "RussianKeyboard::switchMode()";
     if (mode_ == RussianKeyboardMode::Text) {
         mode_ = RussianKeyboardMode::Mark;
     } else {
@@ -27,17 +41,33 @@ void RussianKeyboard::switchMode() {
     updateKeys();
 }
 
-void RussianModeSwitchKey::switchState(VirtualKeyboard *keyboard, InputContext *) {
+#if !USE_CUSTOM_LAYOUT
+void RussianModeSwitchKey::switchState(VirtualKeyboard *keyboard,
+                                       InputContext *) {
     keyboard->i18nKeyboard<RussianKeyboard>()->switchMode();
 }
 
 int RussianModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
-    if (keyboard->i18nKeyboard<RussianKeyboard>()->mode() == RussianKeyboardMode::Text) {
+    if (keyboard->i18nKeyboard<RussianKeyboard>()->mode() ==
+        RussianKeyboardMode::Text) {
         return 0;
     }
     return 1;
 }
+#endif
 
+#if USE_CUSTOM_LAYOUT
+void RussianKeyboard::setLayerKeys(size_t offset) {
+    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    keys_.clear();
+    loader_->load(offset);
+    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    for (size_t i = 0; i < loader_->keys().size(); i++) {
+        keys_.emplace_back(loader_->keys()[i]);
+    }
+}
+#else
+// clang-format off
 void RussianKeyboard::setCyrillicTextKeys() {
     keys_.clear();
     keys_.emplace_back(new RussianNormalKey("й", 24, "Й"));
@@ -171,5 +201,6 @@ void RussianKeyboard::setMarkKeys() {
     keys_.emplace_back(new NumberKey("0", 19)); keys_.back()->setCustomLayout(2.0);
     keys_.emplace_back(new MarkKey("."));
 }
+#endif
 
 }
