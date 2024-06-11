@@ -32,8 +32,8 @@ public:
     HangulKeyboardMode mode() const { return mode_; }
 #if USE_CUSTOM_LAYOUT
     HangulKeyboard() : I18nKeyboard() {
-        const char *jsonPath =
-            FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-ko.json";
+        const char *jsonPath = FCITX_INSTALL_PKGDATADIR
+            "/virtualkeyboardui/virtualkeyboardui-ko.json";
         FCITX_KEYBOARD() << "path of Korean keyboard layout file: " << jsonPath;
         loader_ = new KeyboardLayout(jsonPath);
     }

@@ -35,8 +35,8 @@ public:
     void toggleMark();
 #if USE_CUSTOM_LAYOUT
     PinyinKeyboard() : I18nKeyboard() {
-        const char *jsonPath =
-            FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-zh_CN.json";
+        const char *jsonPath = FCITX_INSTALL_PKGDATADIR
+            "/virtualkeyboardui/virtualkeyboardui-zh_CN.json";
         FCITX_KEYBOARD() << "path of Korean keyboard layout file: " << jsonPath;
         loader_ = new KeyboardLayout(jsonPath);
     }

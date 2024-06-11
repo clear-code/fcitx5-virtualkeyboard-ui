@@ -32,8 +32,8 @@ public:
     UsKeyboardMode mode() const { return mode_; }
 #if USE_CUSTOM_LAYOUT
     UsKeyboard() : I18nKeyboard() {
-        const char *jsonPath =
-            FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-us.json";
+        const char *jsonPath = FCITX_INSTALL_PKGDATADIR
+            "/virtualkeyboardui/virtualkeyboardui-us.json";
         FCITX_KEYBOARD() << "path of English keyboard layout file: "
                          << jsonPath;
         loader_ = new KeyboardLayout(jsonPath);

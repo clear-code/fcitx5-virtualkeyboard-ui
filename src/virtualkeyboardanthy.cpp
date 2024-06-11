@@ -19,7 +19,7 @@ AnthyKeyboard::AnthyKeyboard()
           anthyGetTextDomainName.c_str(), "Half width katakana")) {
 
     const char *jsonPath =
-        FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-ja.json";
+        FCITX_INSTALL_PKGDATADIR "/virtualkeyboardui/virtualkeyboardui-ja.json";
     FCITX_KEYBOARD() << "path of Japanese keyboard layout file: " << jsonPath;
     loader_ = new KeyboardLayout(jsonPath);
 }

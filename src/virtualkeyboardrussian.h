@@ -32,8 +32,8 @@ public:
     RussianKeyboardMode mode() const { return mode_; }
 #if USE_CUSTOM_LAYOUT
     RussianKeyboard() : I18nKeyboard() {
-        const char *jsonPath =
-            FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-ru.json";
+        const char *jsonPath = FCITX_INSTALL_PKGDATADIR
+            "/virtualkeyboardui/virtualkeyboardui-ru.json";
         FCITX_KEYBOARD() << "path of Russian keyboard layout file: "
                          << jsonPath;
         loader_ = new KeyboardLayout(jsonPath);

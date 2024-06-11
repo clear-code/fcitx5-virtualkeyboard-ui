@@ -35,8 +35,8 @@ public:
 
 #if USE_CUSTOM_LAYOUT
     ChewingKeyboard() : I18nKeyboard() {
-        const char *jsonPath =
-            FCITX_INSTALL_PKGDATADIR "/addon/virtualkeyboardui-zh_TW.json";
+        const char *jsonPath = FCITX_INSTALL_PKGDATADIR
+            "/virtualkeyboardui/virtualkeyboardui-zh_TW.json";
         FCITX_KEYBOARD() << "path of Traditional chinese keyboard layout file: "
                          << jsonPath;
         loader_ = new KeyboardLayout(jsonPath);
