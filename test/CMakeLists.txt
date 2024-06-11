@@ -1,6 +1,7 @@
 set(VIRTUALKEYBOARD_LAYOUT_TEST
     testkeyboardanthy
     testkeyboardchewing
+    testkeyboardcustom
     testkeyboardlayout
     testkeyboardmetadata
     testkeyboardpinyin)
