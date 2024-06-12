@@ -11,7 +11,7 @@ namespace fcitx::classicui {
 void PinyinKeyboard::updateKeys() {
 #if USE_CUSTOM_LAYOUT
     if (mode_ == PinyinKeyboardMode::Text) {
-        FCITX_KEYBOARD() << "PinyinKeyboard::mode_: Text";
+        FCITX_KEYBOARD_LAYOUT() << "PinyinKeyboard::mode_: Text";
         setLayerKeys(static_cast<int>(PinyinKeyboardMode::Text));
         return;
     }
@@ -79,10 +79,11 @@ int PinyinModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
 
 #if USE_CUSTOM_LAYOUT
 void PinyinKeyboard::setLayerKeys(size_t offset) {
-    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    FCITX_KEYBOARD_LAYOUT() << "setLayerKeys(): offset: " << offset;
     keys_.clear();
     loader_->load(offset);
-    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    FCITX_KEYBOARD_LAYOUT()
+        << "loaded size of keys: " << loader_->keys().size();
     for (size_t i = 0; i < loader_->keys().size(); i++) {
         keys_.emplace_back(loader_->keys()[i]);
     }

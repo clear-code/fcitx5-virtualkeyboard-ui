@@ -61,29 +61,29 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
         stringutils::joinPath("addon", "virtualkeyboardui.conf"), O_RDONLY);
     RawConfig config;
     readFromIni(config, file.fd());
-    FCITX_KEYBOARD() << "I18nKeyboardSelector::select check virtualkeyboardui.conf";
+    FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select check virtualkeyboardui.conf";
     // First, select from addon imes such as `anthy` or `pinyin`.
     for (const auto &ime : inputMethodItems) {
         auto isSimpleKeyboard = stringutils::startsWith(ime.name(), "keyboard-");
         if (isSimpleKeyboard) continue;
 
         if (!ime.name().empty() && ime.layout().empty()) {
-            FCITX_KEYBOARD() << "I18nKeyboardSelector::select Name:"
+            FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select Name:"
                              << ime.name() << " Layout: " << ime.layout();
             for (auto &uniqueName : config.subItems()) {
-                FCITX_KEYBOARD() << "current virtualkeyboardui.conf section name: " << uniqueName;
+                FCITX_KEYBOARD_LAYOUT() << "current virtualkeyboardui.conf section name: " << uniqueName;
                 const auto *name = config.valueByPath(
                     stringutils::joinPath(uniqueName, "Name"));
                 const auto *layout = config.valueByPath(
                     stringutils::joinPath(uniqueName, "Layout"));
 
                 if (uniqueName == group.name() && *name == ime.name() && !layout->empty()) {
-                    FCITX_KEYBOARD() << "I18nKeyboardSelector::select matched ["
+                    FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select matched ["
                                      << group.name() << "] section in virtualkeyboardui.conf";
                     auto isCustomKeyboard =
                         stringutils::endsWith(*layout, ".json");
                     if (isCustomKeyboard) {
-                        FCITX_KEYBOARD() << "I18nKeyboardSelector::select use " << layout;
+                        FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select use " << layout;
                         CustomKeyboard *custom = new CustomKeyboard(layout->c_str());
                         custom->setCustomImeName(ime.name());
                         return {custom, true};
@@ -98,22 +98,22 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
         if (!isSimpleKeyboard) continue;
 
         if (!ime.name().empty() && ime.layout().empty()) {
-            FCITX_KEYBOARD() << "I18nKeyboardSelector::select Name:"
+            FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select Name:"
                              << ime.name() << " Layout: " << ime.layout();
             for (auto &uniqueName : config.subItems()) {
-                FCITX_KEYBOARD() << "current virtualkeyboardui.conf section name: " << uniqueName;
+                FCITX_KEYBOARD_LAYOUT() << "current virtualkeyboardui.conf section name: " << uniqueName;
                 const auto *name = config.valueByPath(
                     stringutils::joinPath(uniqueName, "Name"));
                 const auto *layout = config.valueByPath(
                     stringutils::joinPath(uniqueName, "Layout"));
 
                 if (uniqueName == group.name() && *name == ime.name() && !layout->empty()) {
-                    FCITX_KEYBOARD() << "I18nKeyboardSelector::select matched ["
+                    FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select matched ["
                                      << group.name() << "] section in virtualkeyboardui.conf";
                     auto isCustomKeyboard =
                         stringutils::endsWith(*layout, ".json");
                     if (isCustomKeyboard) {
-                        FCITX_KEYBOARD() << "I18nKeyboardSelector::select use " << layout;
+                        FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select use " << layout;
                         CustomKeyboard *custom = new CustomKeyboard(layout->c_str());
                         custom->setCustomImeName(ime.name());
                         return {custom, true};
@@ -131,7 +131,7 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
         if (isSimpleKeyboard) continue;
 
         if (canSelect(inputMethodItems, ime.name())) {
-            FCITX_KEYBOARD() << "I18nKeyboardSelector::select check First choice Name:"
+            FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select check First choice Name:"
                              << ime.name() << " Layout: " << ime.layout();
             return selectByType(getTypeByName(ime.name()));
         }
@@ -144,7 +144,7 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
         if (!isSimpleKeyboard) continue;
 
         if (canSelect(inputMethodItems, ime.name())) {
-            FCITX_KEYBOARD() << "I18nKeyboardSelector::select check Second choice Name:"
+            FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select check Second choice Name:"
                              << ime.name() << " Layout: " << ime.layout();
             return selectByType(getTypeByName(ime.name()));
         }
@@ -155,7 +155,7 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
     // e.g. ~/.config/fcitx5/profile
     // Name=chewing
     // Layout=/opt/fcitx5/share/fcitx5/addon/layout.json
-    FCITX_KEYBOARD() << "I18nKeyboardSelector::select check Third choice";
+    FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select check Third choice";
     for (const auto &ime : inputMethodItems) {
         if (!ime.layout().empty()) {
             auto isCustomKeyboard =
@@ -163,7 +163,7 @@ std::tuple<I18nKeyboard *, bool> I18nKeyboardSelector::select(
             if (!isCustomKeyboard)
                 continue;
 
-            FCITX_KEYBOARD() << "I18nKeyboardSelector::select Use third choice, CustomKeyboard Name:"
+            FCITX_KEYBOARD_LAYOUT() << "I18nKeyboardSelector::select Use third choice, CustomKeyboard Name:"
                              << ime.name() << " Layout: " << ime.layout();
             CustomKeyboard *custom = new CustomKeyboard(ime.layout().c_str());
             custom->setCustomImeName(ime.name());

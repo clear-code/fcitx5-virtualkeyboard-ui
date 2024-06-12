@@ -9,16 +9,17 @@
 namespace fcitx::classicui {
 
 void RussianKeyboard::updateKeys() {
-    FCITX_KEYBOARD() << "RussianKeyboard::updateKeys()";
+    FCITX_KEYBOARD_LAYOUT() << "RussianKeyboard::updateKeys()";
 #if USE_CUSTOM_LAYOUT
-    FCITX_KEYBOARD() << "RussianKeyboard:: mode: " << static_cast<int>(mode_);
+    FCITX_KEYBOARD_LAYOUT()
+        << "RussianKeyboard:: mode: " << static_cast<int>(mode_);
     if (mode_ == RussianKeyboardMode::Mark) {
-        FCITX_KEYBOARD() << "RussianKeyboard::mode_: Mark";
+        FCITX_KEYBOARD_LAYOUT() << "RussianKeyboard::mode_: Mark";
         setLayerKeys(static_cast<int>(RussianKeyboardMode::Mark));
         return;
     }
 
-    FCITX_KEYBOARD() << "RussianKeyboard::mode_: Text";
+    FCITX_KEYBOARD_LAYOUT() << "RussianKeyboard::mode_: Text";
     setLayerKeys(static_cast<int>(RussianKeyboardMode::Text));
 #else
     if (mode_ == RussianKeyboardMode::Mark) {
@@ -31,7 +32,7 @@ void RussianKeyboard::updateKeys() {
 }
 
 void RussianKeyboard::switchMode() {
-    FCITX_KEYBOARD() << "RussianKeyboard::switchMode()";
+    FCITX_KEYBOARD_LAYOUT() << "RussianKeyboard::switchMode()";
     if (mode_ == RussianKeyboardMode::Text) {
         mode_ = RussianKeyboardMode::Mark;
     } else {
@@ -58,10 +59,11 @@ int RussianModeSwitchKey::currentIndex(VirtualKeyboard *keyboard) {
 
 #if USE_CUSTOM_LAYOUT
 void RussianKeyboard::setLayerKeys(size_t offset) {
-    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    FCITX_KEYBOARD_LAYOUT() << "setLayerKeys(): offset: " << offset;
     keys_.clear();
     loader_->load(offset);
-    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    FCITX_KEYBOARD_LAYOUT()
+        << "loaded size of keys: " << loader_->keys().size();
     for (size_t i = 0; i < loader_->keys().size(); i++) {
         keys_.emplace_back(loader_->keys()[i]);
     }

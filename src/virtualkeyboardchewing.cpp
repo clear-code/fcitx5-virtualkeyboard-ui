@@ -11,12 +11,12 @@ namespace fcitx::classicui {
 void ChewingKeyboard::updateKeys() {
 #if USE_CUSTOM_LAYOUT
     if (mode_ == ChewingKeyboardMode::Text) {
-        FCITX_KEYBOARD() << "ChewingKeyboard::mode_: Text";
+        FCITX_KEYBOARD_LAYOUT() << "ChewingKeyboard::mode_: Text";
         setLayerKeys(static_cast<int>(ChewingKeyboardMode::Text));
         return;
     }
     if (isAdditionalMarkOn()) {
-        FCITX_KEYBOARD() << "HangulKeyboard::mode_: Text";
+        FCITX_KEYBOARD_LAYOUT() << "HangulKeyboard::mode_: Text";
         setLayerKeys(2);
     } else {
         setLayerKeys(static_cast<int>(ChewingKeyboardMode::Mark));
@@ -36,10 +36,11 @@ void ChewingKeyboard::updateKeys() {
 
 #if USE_CUSTOM_LAYOUT
 void ChewingKeyboard::setLayerKeys(size_t offset) {
-    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    FCITX_KEYBOARD_LAYOUT() << "setLayerKeys(): offset: " << offset;
     keys_.clear();
     loader_->load(offset);
-    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    FCITX_KEYBOARD_LAYOUT()
+        << "loaded size of keys: " << loader_->keys().size();
     for (size_t i = 0; i < loader_->keys().size(); i++) {
         keys_.emplace_back(loader_->keys()[i]);
     }
@@ -74,7 +75,7 @@ const char *ChewingNumberKey::label(VirtualKeyboard *keyboard) const {
 
 void ChewingNumPadKey::click(VirtualKeyboard *keyboard,
                              InputContext *inputContext, bool isRelease) {
-    FCITX_KEYBOARD() << "ChewingNumPadKey pushed";
+    FCITX_KEYBOARD_LAYOUT() << "ChewingNumPadKey pushed";
 
     // In order to numpad-keys can select candidates too.
     // Number sym keys input chewings such as `ㄅ`, so we need `commitString` to

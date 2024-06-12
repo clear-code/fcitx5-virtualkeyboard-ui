@@ -20,7 +20,8 @@ AnthyKeyboard::AnthyKeyboard()
 
     const char *jsonPath =
         FCITX_INSTALL_PKGDATADIR "/virtualkeyboardui/virtualkeyboardui-ja.json";
-    FCITX_KEYBOARD() << "path of Japanese keyboard layout file: " << jsonPath;
+    FCITX_KEYBOARD_LAYOUT()
+        << "path of Japanese keyboard layout file: " << jsonPath;
     loader_ = new KeyboardLayout(jsonPath);
 }
 #else
@@ -35,7 +36,7 @@ AnthyKeyboard::AnthyKeyboard()
 
 void AnthyKeyboard::updateKeys() {
 #if USE_CUSTOM_LAYOUT
-    FCITX_KEYBOARD() << "updateKeys()";
+    FCITX_KEYBOARD_LAYOUT() << "updateKeys()";
     if (mode_ == AnthyKeyboardMode::Text) {
         if (typingMethod_ == AnthyTypingMethod::Romaji || !isZenkakuOn_) {
             // Romaji
@@ -75,10 +76,11 @@ void AnthyKeyboard::updateKeys() {
 
 #if USE_CUSTOM_LAYOUT
 void AnthyKeyboard::setLayerKeys(size_t offset) {
-    FCITX_KEYBOARD() << "setLayerKeys(): offset: " << offset;
+    FCITX_KEYBOARD_LAYOUT() << "setLayerKeys(): offset: " << offset;
     keys_.clear();
     loader_->load(offset);
-    FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
+    FCITX_KEYBOARD_LAYOUT()
+        << "loaded size of keys: " << loader_->keys().size();
     for (size_t i = 0; i < loader_->keys().size(); i++) {
         keys_.emplace_back(loader_->keys()[i]);
     }
@@ -222,7 +224,7 @@ const char *AnthyKanaKey::label(VirtualKeyboard *keyboard) const {
 
 void AnthyKanaNumPadKey::click(VirtualKeyboard *keyboard,
                                InputContext *inputContext, bool isRelease) {
-    FCITX_KEYBOARD() << "AnthyKanaNumPadKey pushed";
+    FCITX_KEYBOARD_LAYOUT() << "AnthyKanaNumPadKey pushed";
 
     // In JIS-kana-mode of fcitx5-anthy, nubmer keys are used for inputting
     // KANAs, not numbers. So limit sending the event to IME into the case
