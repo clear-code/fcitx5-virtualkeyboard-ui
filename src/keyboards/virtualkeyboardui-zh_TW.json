@@ -24,6 +24,7 @@
   },
   [
     {
+      "//Text": "R1",
       "a": 7,
       "f": 9,
       "class": "ChewingNumberKey",
@@ -101,6 +102,7 @@
   ],
   [
     {
+      "//Text": "R2",
       "a": 7,
       "f": 9,
       "class": "NormalKey",
@@ -212,6 +214,7 @@
   ],
   [
     {
+      "//Text": "R3",
       "class": "NormalKey",
       "code": 38,
       "keyName": "a",
@@ -319,6 +322,7 @@
   ],
   [
     {
+      "//Text": "R4",
       "class": "NormalKey",
       "code": 52,
       "keyName": "z",
@@ -422,6 +426,7 @@
   ],
   [
     {
+      "//Text": "R5",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ChewingModeSwitchKey"
@@ -501,6 +506,7 @@
   ],
   [
     {
+      "//Mark": "R1",
       "a": 7,
       "f": 9,
       "class": "MarkKey"
@@ -570,6 +576,7 @@
   ],
   [
     {
+      "//Mark": "R2",
       "x": 0.5,
       "scale": 0.5,
       "class": "DummyKey"
@@ -640,6 +647,7 @@
   ],
   [
     {
+      "//Mark": "R3",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ChewingMarkToggleKey"
@@ -711,6 +719,7 @@
   ],
   [
     {
+      "//Mark": "R4",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ChewingModeSwitchKey"
@@ -778,6 +787,7 @@
   ],
   [
     {
+      "//AdditionalMark": "R1",
       "class": "MarkKey"
     },
     "[",
@@ -845,6 +855,7 @@
   ],
   [
     {
+      "//AdditionalMark": "R2",
       "class": "DummyKey",
       "x": 0.5,
       "scale": 0.5
@@ -915,6 +926,7 @@
   ],
   [
     {
+      "//AdditionalMark": "R3",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ChewingMarkToggleKey"
@@ -986,6 +998,7 @@
   ],
   [
     {
+      "//AdditionalMark": "R4",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ChewingModeSwitchKey"
