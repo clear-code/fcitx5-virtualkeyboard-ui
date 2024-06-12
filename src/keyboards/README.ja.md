@@ -440,7 +440,7 @@ Layout=
   * ファイル名を変更するとレイアウト定義を適用できなくなる。
 * virtualkeyboardui-ko.ext.json
   * hangul向けのレイアウト定義ファイル。ENABLE_CUSTOM_LAYOUTを定義している場合に適用される。
-  * 仮想キーボードで対応するLayout=の設定あると適用される。
+  * 仮想キーボードで対応するLayout=の設定があると適用される。
 * virtualkeyboardui-ko.json
   * hangul向けのレイアウト定義ファイル。ENABLE_CUSTOM_LAYOUTを定義している場合に適用される。
   * 仮想キーボードの設定をしていない場合にフォールバック先として用いられる。
