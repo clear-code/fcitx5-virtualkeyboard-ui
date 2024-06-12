@@ -21,6 +21,7 @@
   },
   [
     {
+      "//Text Romaji Number": "R1",
       "a": 7,
       "f": 9,
       "class": "NormalKey",
@@ -116,6 +117,7 @@
   ],
   [
     {
+      "//Text Romaji Number": "R2",
       "x": 0.5,
       "scale": 0.5,
       "class": "DummyKey"
@@ -208,6 +210,7 @@
   ],
   [
     {
+      "//Text Romaji Number": "R3",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ShiftToggleKey"
@@ -301,6 +304,7 @@
   ],
   [
     {
+      "//Text Romaji Number": "R4",
       "c": "#333333",
       "t": "#ffffff",
       "class": "AnthyModeSwitchKey"
@@ -386,6 +390,7 @@
   ],
   [
     {
+      "//Text Romaji Setting": "R1",
       "a": 7,
       "f": 9,
       "class": "NormalKey",
@@ -471,6 +476,7 @@
   ],
   [
     {
+      "//Text Romaji Setting": "R2",
       "c": "#cccccc",
       "t": "#000000",
       "x": 0.5,
@@ -557,6 +563,7 @@
   ],
   [
     {
+      "//Text Romaji Setting": "R3",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ShiftToggleKey"
@@ -637,6 +644,7 @@
   ],
   [
     {
+      "//Text Romaji Setting": "R4",
       "c": "#333333",
       "t": "#ffffff",
       "class": "AnthyModeSwitchKey"
@@ -718,6 +726,7 @@
   ],
   [
     {
+      "//Mark Number": "R1",
       "a": 7,
       "f": 9,
       "c": "#cccccc",
@@ -815,6 +824,7 @@
   ],
   [
     {
+      "//Mark Number": "R2",
       "x": 0.5,
       "scale": 0.5,
       "class": "DummyKey"
@@ -909,6 +919,7 @@
   ],
   [
     {
+      "//Mark Number": "R3",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ShiftToggleKey",
@@ -1003,6 +1014,7 @@
   ],
   [
     {
+      "//Mark Number": "R4",
       "c": "#333333",
       "t": "#ffffff",
       "class": "AnthyModeSwitchKey"
@@ -1090,6 +1102,7 @@
   ],
   [
     {
+      "//Mark Setting": "R1",
       "a": 7,
       "f": 9,
       "c": "#cccccc",
@@ -1177,6 +1190,7 @@
   ],
   [
     {
+      "//Mark Setting": "R2",
       "c": "#cccccc",
       "t": "#000000",
       "x": 0.5,
@@ -1263,6 +1277,7 @@
   ],
   [
     {
+      "//Mark Setting": "R3",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ShiftToggleKey",
@@ -1344,6 +1359,7 @@
   ],
   [
     {
+      "//Mark Setting": "R4",
       "c": "#333333",
       "t": "#ffffff",
       "class": "AnthyModeSwitchKey"
@@ -1424,6 +1440,7 @@
   ],
   [
     {
+      "//Text Kana Number": "R1",
       "x": 0.4,
       "c": "#cccccc",
       "t": "#000000",
@@ -1547,6 +1564,7 @@
   ],
   [
     {
+      "//Text Kana Number": "R2",
       "x": 0.4,
       "c": "#cccccc",
       "t": "#000000",
@@ -1679,6 +1697,7 @@
   ],
   [
     {
+      "//Text Kana Number": "R3",
       "class": "AnthyKanaKey",
       "code": 38,
       "upperLabel": "",
@@ -1803,6 +1822,7 @@
   ],
   [
     {
+      "//Text Kana Number": "R4",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ShiftToggleKey"
@@ -1922,6 +1942,7 @@
   ],
   [
     {
+      "//Text Kana Number": "R5",
       "c": "#333333",
       "t": "#ffffff",
       "class": "AnthyModeSwitchKey"
@@ -2004,6 +2025,7 @@
   ],
   [
     {
+      "//Text Kana Setting": "R1",
       "x": 0.4,
       "c": "#cccccc",
       "t": "#000000",
@@ -2127,6 +2149,7 @@
   ],
   [
     {
+      "//Text Kana Setting": "R2",
       "x": 0.4,
       "c": "#cccccc",
       "t": "#000000",
@@ -2255,6 +2278,7 @@
   ],
   [
     {
+      "//Text Kana Setting": "R3",
       "c": "#cccccc",
       "t": "#000000",
       "class": "AnthyKanaKey",
@@ -2377,6 +2401,7 @@
   ],
   [
     {
+      "//Text Kana Setting": "R4",
       "c": "#333333",
       "t": "#ffffff",
       "class": "ShiftToggleKey"
@@ -2489,6 +2514,7 @@
   ],
   [
     {
+      "//Text Kana Setting": "R5",
       "c": "#333333",
       "t": "#ffffff",
       "class": "AnthyModeSwitchKey"
