@@ -15,6 +15,13 @@
 namespace fcitx {
 namespace classicui {
 
+FCITX_DECLARE_LOG_CATEGORY(keyboard);
+#if DEBUG
+#define FCITX_KEYBOARD_LAYOUT() FCITX_LOGC_IF(::keyboard, Debug, 1)
+#else
+#define FCITX_KEYBOARD_LAYOUT() FCITX_LOGC_IF(::keyboard, Debug, 0)
+#endif
+
 class KeyboardLayout {
 public:
     KeyboardLayout(const char *jsonPath) {
@@ -148,9 +155,6 @@ private:
     std::map<std::string, int> modeActions_;
     std::map<std::string, int> modeOffsets_;
 };
-
-FCITX_DECLARE_LOG_CATEGORY(keyboard);
-#define FCITX_KEYBOARD_LAYOUT() FCITX_LOGC_IF(::keyboard, Debug, 1)
 
 } // namespace classicui
 } // namespace fcitx
