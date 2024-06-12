@@ -26,8 +26,15 @@ public:
     const std::string languageCode() const override { return languageCode_; }
     void updateKeys() override;
     CustomKeyboard(const char *jsonPath) : I18nKeyboard() {
-        FCITX_KEYBOARD() << "path of keyboard layout file: " << jsonPath;
-        loader_ = new KeyboardLayout(jsonPath);
+        FCITX_KEYBOARD() << "given path of keyboard layout file: " << jsonPath;
+        auto parentDir = stringutils::joinPath(FCITX_INSTALL_PKGDATADIR,
+                                               "/virtualkeyboardui/");
+        auto relativePath = stringutils::joinPath(parentDir, jsonPath);
+        char fullPath[PATH_MAX];
+        realpath(relativePath.c_str(), fullPath);
+        FCITX_KEYBOARD() << "resolved full path of keyboard layout file: "
+                         << fullPath;
+        loader_ = new KeyboardLayout(fullPath);
         loader_->loadMetadata(0);
         label_ = loader_->label();
         languageCode_ = std::string(loader_->languageCode());
