@@ -141,7 +141,7 @@ Note that these extended properties were lost in KLE when uploading JSON.
   * `CustomModeSwitchKey`: The key which is used to switch mode in custom keyboard.
 * `scale`: the scale factor of keycap width. It depends on each key's default width.
 * `width`: the width of keycap.
-* `code`: the key code.
+* `code`: the key code. Specify the value when you switched the target language keyboard layout and collect the corresponding physical key code.
 * `upperLabel`: the label which is pressed with shift key.
 * `keyName`: the key name.
 
