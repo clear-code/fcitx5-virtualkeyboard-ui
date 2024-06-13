@@ -54,7 +54,7 @@ private:
 #if !USE_CUSTOM_LAYOUT
 class RussianDummyKey : public DummyKey {
 public:
-    RussianDummyKey(double witdh) : DummyKey() { width_ = witdh; }
+    RussianDummyKey(double width) : DummyKey() { width_ = width; }
 };
 
 class RussianShiftToggleKey : public ShiftToggleKey {
