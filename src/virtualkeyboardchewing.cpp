@@ -68,7 +68,7 @@ const char* ChewingEnterKey::label(VirtualKeyboard *keyboard) const {
 
 void ChewingEnterKey::click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) {
     // In fcitx5-chewing, EnterKey does nothing while selecting candidates.
-    // This is wierd because EnterKey displays `確認`.
+    // This is weird because EnterKey displays `確認`.
     // So send `Up` key in order to cancel selecting.
     if (keyboard->isSeletingCandidates())
     {
