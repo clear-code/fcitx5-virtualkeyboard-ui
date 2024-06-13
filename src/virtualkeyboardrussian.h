@@ -36,8 +36,8 @@ private:
 
 class RussianDummyKey : public DummyKey {
 public:
-    RussianDummyKey(double witdh) : DummyKey() {
-        width_ = witdh;
+    RussianDummyKey(double width) : DummyKey() {
+        width_ = width;
     }
 };
 
