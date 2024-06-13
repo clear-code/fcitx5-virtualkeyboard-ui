@@ -222,7 +222,7 @@ bool I18nKeyboard::containInputMethod(
 
 void I18nKeyboard::syncState(VirtualKeyboard *, const std::string &) {
     // Do nothing.
-    // Override this if need to do some processes depending on the launguage.
+    // Override this if need to do some processes depending on the language.
 }
 
 }
