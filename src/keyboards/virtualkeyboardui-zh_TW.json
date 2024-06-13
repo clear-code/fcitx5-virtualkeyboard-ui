@@ -436,12 +436,12 @@
       "c": "#cccccc",
       "t": "#000000",
       "class": "MarkKey",
-      "keyName": "comma"
+      "keyName": "less"
     },
     "，",
     {
       "class": "MarkKey",
-      "keyName": "period"
+      "keyName": "greater"
     },
     "。",
     {
