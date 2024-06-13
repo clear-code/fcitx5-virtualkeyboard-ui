@@ -1,0 +1,67 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: false
+      matrix:
+        #os: ['ubuntu-24.04', 'ubuntu-22.04', 'ubuntu-20.04']
+        os: ['ubuntu-22.04', 'ubuntu-20.04']
+        custom_layout: ['ON', 'OFF']
+        experimental: [false]
+        include:
+          - os: 'ubuntu-24.04'
+            experimental: true
+    env:
+      PKG_CONFIG_PATH: /opt/fcitx508/lib/pkgconfig
+    name: build on ${{ matrix.os }} custom ${{ matrix.custom_layout }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enable deb822 source repository
+        if: ${{ matrix.os == 'ubuntu-24.04' }}
+        run: |
+          sudo sed -i"" -e "s/Types: deb/Types: deb deb-src/" /etc/apt/sources.list.d/ubuntu.sources
+          sudo apt update
+      - name: Enable source repository
+        if: ${{ matrix.os != 'ubuntu-24.04' }}
+        run: |
+          cat /etc/apt/sources.list
+          sudo sed -i"" -e "s/# deb-src/deb-src/" /etc/apt/sources.list
+          sudo apt update
+      - name: Install addons
+        run: |
+          sudo apt-get build-dep -y fcitx5
+          sudo apt-get install -y liblua5.3-dev
+      - name: Purge old imdkit
+        if: ${{ matrix.os == 'ubuntu-20.04' }}
+        run: |
+          sudo apt-get purge -y libxcb-imdkit*
+      - name: Install components
+        run: |
+          pwd
+          find .
+          ./test/setup.sh 5.0.8
+      - name: Build fcitx5-virtualkeyboard-ui with ENABLE_CUSTOM_LAYOUT
+        if: ${{ matrix.custom_layout == 'ON' }}
+        run: |
+          pwd
+          git branch -a
+          git checkout -b fcitx-5.0.8
+          cmake -B build -DCMAKE_INSTALL_PREFIX=/opt/fcitx508 -DENABLE_CUSTOM_LAYOUT=ON -DENABLE_WAYLAND=ON
+          make -C build -j$(nproc);
+      - name: Build fcitx5-virtualkeyboard-ui without ENABLE_CUSTOM_LAYOUT
+        if: ${{ matrix.custom_layout == 'OFF' }}
+        run: |
+          pwd
+          git branch -a
+          git checkout -b fcitx-5.0.8
+          cmake -B build -DCMAKE_INSTALL_PREFIX=/opt/fcitx508 -DENABLE_CUSTOM_LAYOUT=OFF -DENABLE_WAYLAND=ON
+          make -C build -j$(nproc);
+      - name: Running ctest
+        run: |
+          cd build; \
+          ctest -V
