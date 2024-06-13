@@ -10,6 +10,13 @@
 #include "common.h"
 #include "fcitx/inputmethodmanager.h"
 
+FCITX_DECLARE_LOG_CATEGORY(keyboard);
+#if DEBUG
+#define FCITX_KEYBOARD_LAYOUT() FCITX_LOGC_IF(::keyboard, Debug, 1)
+#else
+#define FCITX_KEYBOARD_LAYOUT() FCITX_LOGC_IF(::keyboard, Debug, 0)
+#endif
+
 namespace fcitx {
 namespace classicui {
 
