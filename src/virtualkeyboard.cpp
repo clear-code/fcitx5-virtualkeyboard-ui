@@ -285,7 +285,7 @@ std::pair<unsigned int, unsigned int> VirtualKeyboard::size() {
 }
 
 bool VirtualKeyboard::click(InputContext *inputContext, int x, int y, bool isRelease) {
-    // Need to pay attention to the possibility of invalid poitner of `pushingKey_`,
+    // Need to pay attention to the possibility of invalid pointer of `pushingKey_`,
     // caused by changing the key-layout.
 
     auto [clickedKey, hasFound] = findClickedKey(x, y);
