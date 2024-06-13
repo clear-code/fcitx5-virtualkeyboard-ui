@@ -160,7 +160,7 @@ const char *AnthyKanaKey::label(VirtualKeyboard *keyboard) const {
 void AnthyKanaNumPadKey::click(VirtualKeyboard *keyboard, InputContext *inputContext, bool isRelease) {
     FCITX_KEYBOARD() << "AnthyKanaNumPadKey pushed";
 
-    // In JIS-kana-mode of fcitx5-anthy, nubmer keys are used for inputting KANAs, not numbers.
+    // In JIS-kana-mode of fcitx5-anthy, number keys are used for inputting KANAs, not numbers.
     // So limit sending the event to IME into the case selecting candidates.
     if (keyboard->isSeletingCandidates()) {
         auto event = KeyEvent(inputContext, fcitx::Key(name_), isRelease);
