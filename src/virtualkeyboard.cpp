@@ -214,7 +214,7 @@ void VirtualKeyboard::updateInputPanel() {
     inputContext->updateUserInterface(UserInterfaceComponent::InputPanel);
 }
 
-bool VirtualKeyboard::isSeletingCandidates() {
+bool VirtualKeyboard::isSelectingCandidates() {
     auto inputContext = lastInputContext_.get();
     if (!inputContext) {
         return false;

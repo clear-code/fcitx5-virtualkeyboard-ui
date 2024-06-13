@@ -66,7 +66,7 @@ const char *ChewingNumberKey::label(VirtualKeyboard *keyboard) const {
     // `ㄅ` is NumberKey of `1`, and `1` is used for selecting a candidate while
     // selecting candidates. So need to change the label while selecting
     // candidates.
-    if (keyboard->isSeletingCandidates()) {
+    if (keyboard->isSelectingCandidates()) {
         return number_.c_str();
     }
 
@@ -80,7 +80,7 @@ void ChewingNumPadKey::click(VirtualKeyboard *keyboard,
     // In order to numpad-keys can select candidates too.
     // Number sym keys input chewings such as `ㄅ`, so we need `commitString` to
     // input number chars.
-    if (keyboard->isSeletingCandidates()) {
+    if (keyboard->isSelectingCandidates()) {
         auto event = KeyEvent(inputContext, fcitx::Key(name_), isRelease);
         inputContext->keyEvent(event);
         return;
@@ -101,7 +101,7 @@ void ChewingEnterKey::click(VirtualKeyboard *keyboard,
     // In fcitx5-chewing, EnterKey does nothing while selecting candidates.
     // This is weird because EnterKey displays `確認`.
     // So send `Up` key in order to cancel selecting.
-    if (keyboard->isSeletingCandidates()) {
+    if (keyboard->isSelectingCandidates()) {
         auto event = KeyEvent(inputContext, fcitx::Key("Up"), isRelease);
         inputContext->keyEvent(event);
         return;

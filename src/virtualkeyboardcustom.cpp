@@ -94,7 +94,7 @@ const char *CustomNumberKey::label(VirtualKeyboard *keyboard) const {
         FCITX_KEYBOARD_LAYOUT()
             << "CustomNumber::label useNumberWithSelectingCandidate: "
             << useNumberWithSelectingCandidate_;
-        if (keyboard->isSeletingCandidates()) {
+        if (keyboard->isSelectingCandidates()) {
             return number_.c_str();
         }
     }
@@ -108,7 +108,7 @@ void CustomNumPadKey::click(VirtualKeyboard *keyboard,
     FCITX_KEYBOARD_LAYOUT() << "CustomNumPadKey::click()";
 
     if (useKeyNameWhenSelectingCandidates_) {
-        if (keyboard->isSeletingCandidates()) {
+        if (keyboard->isSelectingCandidates()) {
             auto event = KeyEvent(inputContext, fcitx::Key(name_), isRelease);
             inputContext->keyEvent(event);
             return;
@@ -140,7 +140,7 @@ void CustomEnterKey::click(VirtualKeyboard *keyboard,
                            InputContext *inputContext, bool isRelease) {
     FCITX_KEYBOARD_LAYOUT() << "CustomEnterKey::click()";
     if (forceWithUpKey_) {
-        if (keyboard->isSeletingCandidates()) {
+        if (keyboard->isSelectingCandidates()) {
             auto event = KeyEvent(inputContext, fcitx::Key("Up"), isRelease);
             inputContext->keyEvent(event);
             return;

@@ -132,7 +132,7 @@ public:
     void sendShiftModifierToIM(InputContext *inputContext, bool isRelease);
 
     bool isPreediting();
-    bool isSeletingCandidates();
+    bool isSelectingCandidates();
     void updateInputPanel();
 
     std::string languageCode() const { return i18nKeyboard_->languageCode(); }
