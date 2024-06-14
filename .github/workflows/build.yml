@@ -50,7 +50,7 @@ jobs:
         run: |
           pwd
           git branch -a
-          git checkout -b fcitx-5.0.8
+          git checkout fcitx-5.0.8
           cmake -B build -DCMAKE_INSTALL_PREFIX=/opt/fcitx508 -DENABLE_CUSTOM_LAYOUT=ON -DENABLE_WAYLAND=ON
           make -C build -j$(nproc);
       - name: Build fcitx5-virtualkeyboard-ui without ENABLE_CUSTOM_LAYOUT
