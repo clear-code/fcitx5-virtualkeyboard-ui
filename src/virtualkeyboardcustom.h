@@ -40,7 +40,7 @@ public:
         }
         FCITX_KEYBOARD_LAYOUT()
             << "resolved full path of keyboard layout file: " << fullPath;
-        loader_ = new KeyboardLayout(fullPath);
+        loader_.reset(new KeyboardLayout(fullPath));
         loader_->loadMetadata(0);
         label_ = loader_->label();
         languageCode_ = std::string(loader_->languageCode());
@@ -62,7 +62,7 @@ private:
     const char *label_ = nullptr;
     std::string languageCode_;
     void setLayerKeys(size_t offset);
-    KeyboardLayout *loader_;
+    std::unique_ptr<KeyboardLayout> loader_;
     int mode_ = 0;
     bool isAdditionalMarkOn_ = false;
 };

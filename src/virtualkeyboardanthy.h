@@ -84,7 +84,7 @@ protected:
 private:
 #if USE_CUSTOM_LAYOUT
     void setLayerKeys(size_t offset);
-    KeyboardLayout *loader_;
+    std::unique_ptr<KeyboardLayout> loader_;
 #else
     void setTextRomajiKeys();
     void setMarkKeys();

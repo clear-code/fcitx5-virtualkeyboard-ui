@@ -29,7 +29,8 @@ void CustomKeyboard::setLayerKeys(size_t offset) {
     FCITX_KEYBOARD_LAYOUT()
         << "loaded size of keys: " << loader_->keys().size();
     for (size_t i = 0; i < loader_->keys().size(); i++) {
-        keys_.emplace_back(loader_->keys()[i]);
+        // move ownership to custom keyboard
+        keys_.emplace_back(std::move(loader_->keys()[i]));
     }
     FCITX_KEYBOARD_LAYOUT()
         << "CustomKeyboard::setLayerKeys(): size of keys: " << keys_.size();

@@ -22,7 +22,7 @@ AnthyKeyboard::AnthyKeyboard()
         FCITX_INSTALL_PKGDATADIR "/virtualkeyboardui/virtualkeyboardui-ja.json";
     FCITX_KEYBOARD_LAYOUT()
         << "path of Japanese keyboard layout file: " << jsonPath;
-    loader_ = new KeyboardLayout(jsonPath);
+    loader_.reset(new KeyboardLayout(jsonPath));
 }
 #else
 AnthyKeyboard::AnthyKeyboard()
@@ -82,7 +82,7 @@ void AnthyKeyboard::setLayerKeys(size_t offset) {
     FCITX_KEYBOARD_LAYOUT()
         << "loaded size of keys: " << loader_->keys().size();
     for (size_t i = 0; i < loader_->keys().size(); i++) {
-        keys_.emplace_back(loader_->keys()[i]);
+        keys_.emplace_back(std::move(loader_->keys()[i]));
     }
 }
 #endif

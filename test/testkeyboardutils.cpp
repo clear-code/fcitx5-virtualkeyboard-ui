@@ -165,9 +165,12 @@ void KeyboardTester::testLoadKey(
             const char *expectedLabel =
                 static_cast<fcitx::classicui::NormalKey *>(expected[i])
                     ->label();
-            const char *actualLabel =
-                static_cast<fcitx::classicui::NormalKey *>(loader->keys()[i])
-                    ->label();
+            std::unique_ptr<fcitx::classicui::VirtualKey> virtualKey =
+                std::move(loader->keys()[i]);
+            fcitx::classicui::NormalKey *normalKey =
+                reinterpret_cast<fcitx::classicui::NormalKey *>(
+                    virtualKey.get());
+            const char *actualLabel = normalKey->label();
             // std::cout << "expected label: " << expectedLabel << std::endl;
             // std::cout << "actual label: " << actualLabel << std::endl;
             FCITX_ASSERT(!strcmp(expectedLabel, actualLabel));

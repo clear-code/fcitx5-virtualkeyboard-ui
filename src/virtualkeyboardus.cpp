@@ -59,7 +59,7 @@ void UsKeyboard::setLayerKeys(size_t offset) {
     loader_->load(offset);
     FCITX_KEYBOARD() << "loaded size of keys: " << loader_->keys().size();
     for (size_t i = 0; i < loader_->keys().size(); i++) {
-        keys_.emplace_back(loader_->keys()[i]);
+        keys_.emplace_back(std::move(loader_->keys()[i]));
     }
 }
 #else
