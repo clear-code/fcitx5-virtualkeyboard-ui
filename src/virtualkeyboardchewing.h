@@ -39,14 +39,14 @@ public:
             "/virtualkeyboardui/virtualkeyboardui-zh_TW.json";
         FCITX_KEYBOARD() << "path of Traditional chinese keyboard layout file: "
                          << jsonPath;
-        loader_ = new KeyboardLayout(jsonPath);
+        loader_.reset(new KeyboardLayout(jsonPath));
     }
 #endif
 
 private:
 #if USE_CUSTOM_LAYOUT
     void setLayerKeys(size_t offset);
-    KeyboardLayout *loader_;
+    std::unique_ptr<KeyboardLayout> loader_;
 #else
     void setTextKeys();
     void setMarkKeys();

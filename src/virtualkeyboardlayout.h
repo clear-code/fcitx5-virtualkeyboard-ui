@@ -35,6 +35,16 @@ public:
         }
     }
 
+    ~KeyboardLayout() {
+        FCITX_KEYBOARD_LAYOUT() << "~KeyboardLayout()";
+        keys_.clear();
+        stateLabels_.clear();
+        modeLabels_.clear();
+        modeActions_.clear();
+        modeOffsets_.clear();
+        // decrement the reference count
+        json_object_put(json_);
+    }
     // Keyboard metadata
     const char *label() { return label_; }
     const char *languageCode() { return languageCode_; }
@@ -50,7 +60,7 @@ public:
     bool loadMetadata(size_t offset);
     bool loadKeyLayout(size_t offset);
     bool load(size_t offset);
-    std::vector<VirtualKey *> &keys() { return keys_; }
+    std::vector<std::unique_ptr<VirtualKey>> &keys() { return keys_; }
     std::string modeLabel(int mode) { return modeLabels_[mode]; }
     std::map<std::string, int> &modeActions() { return modeActions_; }
     std::map<std::string, int> &modeOffsets() { return modeOffsets_; }
@@ -58,7 +68,7 @@ public:
                             std::map<std::string, int> conditions);
 
 protected:
-    std::vector<VirtualKey *> keys_;
+    std::vector<std::unique_ptr<VirtualKey>> keys_;
     bool parseMetadata(size_t offset);
     double parseDouble(json_object *object);
     bool parseKeyboard(json_object *keyboard, size_t offset);

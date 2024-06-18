@@ -36,14 +36,14 @@ public:
             "/virtualkeyboardui/virtualkeyboardui-ru.json";
         FCITX_KEYBOARD() << "path of Russian keyboard layout file: "
                          << jsonPath;
-        loader_ = new KeyboardLayout(jsonPath);
+        loader_.reset(new KeyboardLayout(jsonPath));
     }
 #endif
 
 private:
 #if USE_CUSTOM_LAYOUT
     void setLayerKeys(size_t offset);
-    KeyboardLayout *loader_;
+    std::unique_ptr<KeyboardLayout> loader_;
 #else
     void setCyrillicTextKeys();
     void setMarkKeys();
