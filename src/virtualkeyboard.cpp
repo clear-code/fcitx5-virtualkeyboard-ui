@@ -103,6 +103,8 @@ bool VirtualKeyboard::syncState() {
         setI18nKeyboard(newI18nKeyboard);
         return true;
     }
+    if (newI18nKeyboard)
+      delete newI18nKeyboard;
 #else
     auto [newI18nKeyboard, hasFound] = i18nKeyboardSelector_.select(imItems);
     if (hasFound && newI18nKeyboard->type() != i18nKeyboard_->type()) {
@@ -110,6 +112,8 @@ bool VirtualKeyboard::syncState() {
         setI18nKeyboard(newI18nKeyboard);
         return true;
     }
+    if (newI18nKeyboard)
+      delete newI18nKeyboard;
 #endif
 
     auto curImName = instance_->currentInputMethod();
