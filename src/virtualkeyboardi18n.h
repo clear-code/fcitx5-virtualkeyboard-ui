@@ -45,6 +45,7 @@ class VirtualKey;
 class VirtualKeyboard;
 class I18nKeyboard {
 public:
+    virtual ~I18nKeyboard() {}
     virtual KeyboardType type() const = 0;
     virtual const char *label() const = 0;
     virtual void updateKeys() = 0;

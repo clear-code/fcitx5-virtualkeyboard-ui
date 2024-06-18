@@ -193,8 +193,12 @@ bool I18nKeyboardSelector::canSelect(
     if (type == KeyboardType::Unknown) return false;
 
     auto [keyboard, hasFound] = selectByType(type);
-    if (!hasFound) return false;
-    return keyboard->checkOtherNecessaryImesExist(allItems);
+    bool exists = false;
+    if (keyboard) {
+      exists = keyboard->checkOtherNecessaryImesExist(allItems);
+      delete keyboard;
+    }
+    return hasFound && exists;
 }
 
 bool I18nKeyboard::checkOtherNecessaryImesExist(
