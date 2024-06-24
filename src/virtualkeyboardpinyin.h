@@ -26,7 +26,7 @@ enum class PinyinKeyboardMode {
 class PinyinKeyboard : public I18nKeyboard {
 public:
     KeyboardType type() const override { return KeyboardType::Pinyin; };
-    const char *label() const override { return "CH"; }
+    const char *label() const override { return "CN"; }
     const std::string languageCode() const override { return "zh_CN"; }
     void updateKeys() override;
     void switchMode();
