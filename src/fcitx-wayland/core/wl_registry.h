@@ -4,6 +4,19 @@
 #include <wayland-client.h>
 #include "fcitx-utils/signals.h"
 namespace fcitx::wayland {
+
+class WlOutput;
+
+template <typename T>
+static constexpr uint32_t supportedVersion(uint32_t requested) {
+    return requested;
+}
+
+template <>
+constexpr uint32_t supportedVersion<WlOutput>(uint32_t requested) {
+    return std::min(requested, 3u);
+}
+
 class WlRegistry final {
 public:
     static constexpr const char *interface = "wl_registry";
@@ -20,8 +33,10 @@ public:
     void setUserData(void *userData) { userData_ = userData; }
     template <typename T>
     T *bind(uint32_t name, uint32_t requested_version) {
+        uint32_t version =
+            supportedVersion<T>(requested_version);
         return new T(static_cast<typename T::wlType *>(
-            wl_registry_bind(*this, name, T::wlInterface, requested_version)));
+            wl_registry_bind(*this, name, T::wlInterface, version)));
     }
     auto &global() { return globalSignal_; }
     auto &globalRemove() { return globalRemoveSignal_; }
