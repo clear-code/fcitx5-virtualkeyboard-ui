@@ -233,8 +233,11 @@ void VirtualKeyboard::paint(cairo_t *cr, unsigned int offsetX, unsigned int offs
 void VirtualKeyboard::paintBackground(cairo_t *cr) {
     auto [keyboardWidth, keyboardHeight] = size();
     cairo_set_source_rgb(cr, 0.95, 0.95, 0.95);
-    cairo_rectangle(cr, -marginX(), -marginY(),
-        keyboardWidth  + 2 * marginX(), keyboardHeight + 2 * marginY());
+    cairo_rectangle(cr,
+                    -static_cast<double>(marginX()),
+                    -static_cast<double>(marginY()),
+                    keyboardWidth  + 2 * marginX(),
+                    keyboardHeight + 2 * marginY());
     cairo_fill(cr);
 }
 
