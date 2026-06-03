@@ -1,6 +1,9 @@
 #include "wl_registry.h"
 #include <cassert>
 namespace fcitx::wayland {
+
+class WlOutput;
+
 const struct wl_registry_listener WlRegistry::listener = {
     [](void *data, wl_registry *wldata, uint32_t name, const char *interface,
        uint32_t version) {
